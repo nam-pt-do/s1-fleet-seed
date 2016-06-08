@@ -4512,7 +4512,7 @@ input[type="submit"].btn.btn-mini {
 .btn {
   border-color: #d4d4d4;
   font-family: "GE Sans", "ge-sans", "GE Inspira", "ge-inspira", Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font: 13px "GE Sans", "ge-sans", "GE Inspira", "ge-inspira", Helvetica, Arial, sans-serif !important;
   font-weight: normal;
   line-height: 19px;
   padding: 0 10px !important;
@@ -4866,7 +4866,7 @@ input[type="submit"].btn.btn-mini {
   font-size: 12px;
 }
 .btn-group > .btn-large {
-  font-size: 15px;
+  font: 15px "GE Sans", "ge-sans", "GE Inspira", "ge-inspira", Helvetica, Arial, sans-serif !important;
 }
 .btn-group > .btn-icon {
   font-size: 17px;
