@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+# s1-fleet-seed
+=======
 #Predix Experience Seed
 Dashboard Seed is an application that uses Px Web Components and <a href="https://github.com/PredixDev/px-library-design/" target="_blank">Px UI Elements</a> inside an Angular application.
 
@@ -400,4 +403,5 @@ with the written permission of GE Global Research or in accordance
 with the terms and conditions stipulated in the agreement/contract
 under which the software has been supplied.
 
-
+>>>I was here
+>>>>>>> refs/remotes/origin/develop
