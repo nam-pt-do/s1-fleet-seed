@@ -16,7 +16,7 @@ module.exports = {
                     'views/**/*',
                     'stylesheets/**/*',
                     'scripts/**/*',
-                    //'components/**/*',
+                    'components/**/*',
                     'bower_components/**/*',
                    /* 
                     'bower_components/webcomponentsjs/webcomponents-lite.js',
