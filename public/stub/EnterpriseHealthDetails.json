@@ -1,0 +1,275 @@
+{
+  "status": "200",
+  "classType": "EnterpriseHealthDetails",
+  "isArray": true,
+  "response": [
+    {
+      "severity": {
+        "hover_name": "Highest Severity Alarm",
+        "color": "ORANGE",
+        "display" : "Severity"
+      },
+      "source": {
+        "hover_name": "Data Source System",
+        "type": "System1",
+        "subtype": "Classic",
+        "display" : "Source"
+      },
+      "name": {
+        "hover_name": "Name of the Node",
+        "id": "Platform_N_ea0c98ea-4805-4113-bad7-409810c77b07",
+        "name": "Platform_N",
+        "type": "Enterprise",
+        "pointsNoData": 1,
+        "mappedNamePath": null,
+        "namePath": "Platform_N",
+        "idPath": "Platform_N_ea0c98ea-4805-4113-bad7-409810c77b07",
+        "display" : "Name"
+      },
+      "status": {
+         "agentLastPingDateTime": "2015-12-18T00:48:35.933Z",
+         "brokerLastPingDateTime": "2015-12-18T00:48:35.933Z",
+         "proxyLastPingDateTime": "2015-12-18T00:45:26.876Z",
+         "systemLastPingDateTime": "2015-12-18T00:45:26.876Z",
+         "runningState": null,
+         "statusEnum": "Active",
+         "enterpriseConnectionStatusEnum": "inactive",
+         "proxyStatus": null,
+         "communicationStatus": "Not Communicating",
+         "communicationStatusMessage": "Agent: Not Communicating",
+         "daqStatus": {
+                "daqId": 99,
+                "daqName": "SYS1-APLNG",
+                "isActive": true
+              }
+        },
+      "ip": {
+        "hover_name": "Instrument Protection Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 0,
+        "highAlarmCount": 0,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 0,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "IP"
+      },
+      "totalAlarms": {
+        "hover_name": "Total Alarm Count",
+        "count": 6,
+        "display" : "TotalAlarms"
+      },
+      "mediumAlarms": {
+        "hover_name": "Medium Severity Alarm Count",
+        "count": 0,
+        "display" : "MediumAlarms"
+      },
+      "ap": {
+        "hover_name": "Asset Protection Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 0,
+        "highAlarmCount": 0,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 0,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "AP"
+      },
+      "am": {
+        "hover_name": "Asset Management Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 6,
+        "highAlarmCount": 6,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 6,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "AM"
+      },
+      "ac": null,
+      "im": {
+        "hover_name": "Instrument Management Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 0,
+        "highAlarmCount": 0,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 0,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "IM"
+      },
+      "ic": null,
+      "ss": {
+        "hover_name": "SmartSignal Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 0,
+        "highAlarmCount": 0,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 0,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "SS"
+      },
+      "pf": null,
+      "highAlarms": {
+        "hover_name": "High Severity Alarm Count",
+        "count": 6,
+        "display" : "HighAlarms"
+      },
+      "lowAlarms": {
+        "hover_name": "Low Severity Alarm Count",
+        "count": 0,
+        "display" : "LowAlarms"
+      }
+    },
+    {
+      "severity": {
+        "hover_name": "Highest Severity Alarm",
+        "color": "GREEN",
+        "display" : "Severity"
+      },
+      "source": {
+        "hover_name": "Data Source System",
+        "type": "System1",
+        "subtype": "Evolution",
+        "display" : "Source"
+      },
+      "name": {
+        "hover_name": "Name of the Node",
+        "id": "PerfDBEVO2_8e1b1839-6aa3-4494-b52b-abf59423c60a",
+        "name": "PerfDBEVO2",
+        "type": "Enterprise",
+        "pointsNoData": 0,
+        "mappedNamePath": null,
+        "namePath": "PerfDBEVO2",
+        "idPath": "PerfDBEVO2_8e1b1839-6aa3-4494-b52b-abf59423c60a",
+        "display" : "Name"
+      },
+       "status": {
+         "agentLastPingDateTime": "2015-12-18T00:48:35.933Z",
+         "brokerLastPingDateTime": "2015-12-18T00:48:35.933Z",
+         "proxyLastPingDateTime": "2015-12-18T00:45:26.876Z",
+         "systemLastPingDateTime": "2015-12-18T00:45:26.876Z",
+         "runningState": null,
+         "statusEnum": "Active",
+         "enterpriseConnectionStatusEnum": "active",
+         "proxyStatus": null,
+         "communicationStatus": "Communicating",
+         "communicationStatusMessage": "Communicating",
+         "daqStatus": {
+                "daqId": 99,
+                "daqName": "SYS1-APLNG",
+                "isActive": true
+              }
+        },
+      "ip": {
+        "hover_name": "Instrument Protection Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 0,
+        "highAlarmCount": 0,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 0,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "IP"
+      },
+      "totalAlarms": {
+        "hover_name": "Total Alarm Count",
+        "count": 0,
+        "display":"TotalAlarms"
+      },
+      "mediumAlarms": {
+        "hover_name": "Medium Severity Alarm Count",
+        "count": 0,
+        "display" : "MediumAlarms"
+      },
+      "ap": {
+        "hover_name": "Asset Protection Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 0,
+        "highAlarmCount": 0,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 0,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "AP"
+      },
+      "am": {
+        "hover_name": "Asset Management Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 0,
+        "highAlarmCount": 0,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 0,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "AM"
+      },
+      "ac": null,
+      "im": {
+        "hover_name": "Instrument Management Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 0,
+        "highAlarmCount": 0,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 0,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "IM"
+      },
+      "ic": null,
+      "ss": {
+        "hover_name": "SmartSignal Index",
+        "color": "GRAY",
+        "index": 0,
+        "dangerThreshold": 66,
+        "alertThreshold": 33,
+        "totalAlarmCount": 0,
+        "highAlarmCount": 0,
+        "medAlarmCount": 0,
+        "lowAlarmCount": 0,
+        "scaleMin": 0,
+        "scaleMax": 100,
+        "display" : "SS"
+      },
+      "pf": null,
+      "highAlarms": {
+        "hover_name": "High Severity Alarm Count",
+        "count": 0,
+        "display" : "HighAlarms"
+      },
+      "lowAlarms": {
+        "hover_name": "Low Severity Alarm Count",
+        "count": 0,
+        "display" : "LowAlarms"
+      }
+    }
+  ]
+}

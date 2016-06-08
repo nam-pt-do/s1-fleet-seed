@@ -1,0 +1,1 @@
+define({r:0.5,st:'Stem',n:1,t:[0],u:['../Content/System1_Fleet/a_User_Guide/1_getting_started.htm'],s:['1'],p:[['1',0],['for',2],['session',17]]});

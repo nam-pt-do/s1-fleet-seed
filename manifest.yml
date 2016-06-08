@@ -1,13 +1,14 @@
 ---
 applications:
-  - name: predix-seed
+  - name: s1-fleet-seed
     buildpack: predix_openresty_buildpack
     path: dist
     memory: 64M
     stack: cflinuxfs2
     services:
-            - your_redis_instance # change this to your redis service instance name
-            - your_view_service_instance # change this to your view service instance name
+            - s1fleetredis # change this to your redis service instance name
+            - s1-fleet-views # change this to your view service instance name
+#            - System1FleetUAA 
     env:
-      UAA_SERVER_URL: https://your-uaa-instance.grc-apps.svc.ice.ge.com # change to your UAA instance url
+      UAA_SERVER_URL: https://64617d19-5675-4dfb-b563-147cd48e40a3.predix-uaa.run.asv-pr.ice.predix.io # change to your UAA instance url
       REDIS: redis

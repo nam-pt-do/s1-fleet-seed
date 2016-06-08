@@ -1,0 +1,336 @@
+<div class="fluid messages" style="margin-bottom:5px;text-align: left;" ng-if="message">
+    <div class="alert alert-{{message.type}}">
+        <button type="button" class="close" ng-click="clearMessage()">×</button>
+        <strong>{{message.title}}</strong>
+        {{message.content}}
+    </div>
+</div>
+<div class="clearfix header-content" ng-hide="fullScreenMode.visible">
+    <div class="asset-nav-tool clearfix">
+        <span>{{selectedCustomerTitle}}</span>
+    </div>
+    <div class="page-header pull-left">
+        <h1 class="pull-left voice-brand">Analysis</h1>
+        <!--<div filter-main request-data="getData()" control="filterCancel" class="pull-left"></div>-->
+    </div>
+    <div class="pull-right">
+        <ul class="nav nav-pills pull-left padding-t">
+            <li class="subtabs-fleetview" ng-repeat="item in subtabs"
+                testid="{{item.testid}}" ng-class="{active: sbTabClass(item.id)}" ng-cloak="">
+                <a ui-shref=".{{item.link}}" ng-click="btnAction(item)">
+                    <lang text="{{item.label}}"></lang>
+                </a>
+            </li>
+        </ul>
+
+        <div onoff-switch class="pull-left onoff-switch" switch-on="autoRefreshStatus" is-disabled="autoRefreshDisabled"></div>
+        <div class="top-row-selector input-append pull-right btn-group" id="period-selector">
+            <span class="btn">{{staticData.buttons.timeRangeOptions[analysisContext.selectedTimeIndex].label}}</span>
+            <button class="btn dropdown-toggle" data-toggle="dropdown" data-ng-disabled="plottedCharts.length === 0">
+                <i class="icon-calendar"></i>
+            </button>
+            <ul class="pull-right dropdown-menu">
+                <li  ng-repeat="btn in staticData.buttons.timeRangeOptions" ng-class="{'active': $index === analysisContext.selectedTimeIndex}">
+                    <a href="#"
+                       id="time{{btn.label}}"
+                       ng-click="applyTimeFilter($index, $event)"
+                       analytics-on
+                       analytics-event="click"
+                       analytics-category="button"
+                       analytics-label="Time Range : {{btn.label}}">
+                        {{btn.label}}
+                    </a>
+                </li>
+            </ul>
+            <div a-datepicker
+                 datepicker-on="customDate"
+                 ng-show="customDate.isDatepickerVisible"
+                 class="pull-left"
+                 analytics-on
+                 analytics-event="click"
+                 analytics-category="button"
+                 analytics-label="Time Range : Custom">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tray filter-tray fleet top  hidden-phone"
+     id="filterstray" collapse="chartTool.openMenu"
+     analysis-tool
+     load-chart= "loadPresetChart"
+     create-new="createNewPreset()"
+     preset-data="preset"
+     open-menu="chartTool">
+</div>
+<div class="row" id="analysis-view">
+    <div class="span12" ng-hide="fullScreenMode.visible">
+        <div class="module clearfix" id="analysis-toolbar">
+            <div class="pull-left text-left clearfix">
+                <div class="btn-group">
+                    <!-- PRESET DROP DOWN-->
+                    <button class="btn btn-primary" ng-click="chartTool.openMenu = !chartTool.openMenu">
+                        Choose a configuration
+                    </button>
+
+                </div>
+            <!-- PLOT NEW CHART-->
+                <div class="btn-group">
+                    <button class="btn btn-info" ng-click="openAnalysisPlotNewChart()"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: Plot new chart"
+                            rel="tooltip" title=""
+                            data-original-title="Plot new chart"
+                            lang text="analysis.button.plotnew">Plot New
+                    </button>
+                </div>
+                <!--<pre>{{hasMultipleCustomer}}</pre>-->
+            <!-- JUST SAVE AS -->
+                <div class="btn-group" ng-if="!showAllBtns">
+                    <button class="btn" data-action-id="saveAsPreset"
+                            ng-click="openPresetModal($event)"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: save preset as new"
+                            data-ng-disabled="emptyChart"
+                            lang text="application.buttons.saveas">Save As
+                    </button>
+                </div>
+            <!-- SAVE / SAVE AS DROP DOWN-->
+                <!--showSaveAsOnly is false when modifying tags-->
+                <div ng-if="showAllBtns" class="btn-group">
+                    <button class="btn" data-action-id="savePreset"
+                            ng-click="savePreset($event)"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: Save existing preset"
+                            lang text="application.buttons.save">
+                    </button>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"  data-action-id="saveAsPreset"
+                               ng-click="openPresetModal($event)"
+                               analytics-on
+                               analytics-event="click"
+                               analytics-category="button"
+                               analytics-label="Analysis: Save preset as new"
+                               lang text="application.buttons.saveas">
+                            Save as</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Reset Zoom -->
+                <div class="btn-group">
+                    <button ng-show="isZoomApplied" class="btn btn-primary" lang="" text="analysis.resetZoomBtn"
+                            data-target="#filterstray"
+                            data-toggle="collapse" type="button"
+                            testid="alarms_filterbtn"
+                            ng-click="resetZoom()"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: Reset Zooming">Reset Zoom</button>
+                </div>
+            </div>
+        <!-- BUTTONS TOOLS RIGHT-->
+            <div id="btnShowTbl" class="pull-right margin-l-10">
+                <div id="btnTimeZone" class="btn-group">
+                    <button class="btn btn-inverse dropdown-toggle analysis-timezone-btn" data-toggle="dropdown" ng-disabled="plottedCharts.length === 0 || hasMultipleSite">
+                        <span ng-cloak>{{staticData.buttons.timeZoneBtns[analysisContext.selectedTimeZoneIndex].label}}</span>
+                        <i class="icon-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        <li class="nav-header"><span>VIEW AS</span></li>
+                        <li ng-repeat=" btn in staticData.buttons.timeZoneBtns">
+                            <a ng-click="switchTimeZone($event, $index)"> {{btn.label}} </a>
+                        </li>
+                    </ul>
+                </div>
+                <div  class="btn-group">
+                    <!-- DELETE PRESET-->
+                    <button data-action-id="deletePreset"
+                            title="Delete Preset"
+                            ng-click="openPresetModal($event)"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: delete preset"
+                            data-ng-disabled="!enableDeletePreset" class="btn">
+                        <i data-action-id="deletePreset" class="icon-trash"></i>
+                    </button>
+                    <!--  FULL SCREEN -->
+                    <button title="Fullscreen"
+                        id="fullScreenFleetView"
+                        class="btn btn-icon"
+                        data-ng-click="fullScreenToggle()"
+                        ng-disabled="plottedCharts.length === 0"
+                        analytics-on
+                        analytics-event="click"
+                        analytics-category="button"
+                        analytics-label="Analysis full screen view">
+                        <i class="icon-fullscreen"></i>
+                    </button>
+                </div>
+            </div>
+
+        <!-- END BUTTON RIGHT-->
+        </div>
+    </div>
+    <div ng-show="fullScreenMode.visible" class="clearfix">
+        <button title="Fullscreen"
+                class="btn btn-icon pull-right margin-b-10" data-ng-click="fullScreenMinimize()">
+            <i class="icon-resize-small"></i>
+        </button>
+    </div>
+</div>
+
+<div spinner ng-show="loading" class="spinner-wrapper">
+    <span class="spinner-text"lang text="loading"> </span>
+</div>
+
+<div class="row">
+    <div id="analysis-chart-container" ng-class="{'span12': fullScreenMode.visible === false}">
+        <div data-ng-repeat="plottedChart in plottedCharts" class="module nestable">
+            <div slide-menu-chart
+                 auto-refresh-status="autoRefreshStatus"
+                 slider-status="inlineChartFltr"
+                 index = "$index"
+                 chart-data = "chartData"
+                 plotted-chart = "plottedChart"
+                 update-chart-series = "updateChartSeries"
+            >
+             </div>
+
+            <div class="btn-group margin-r analysis-chart-edit-btn" ng-hide="fullScreenMode.visible">
+                <!-- EXPORT CSV-->
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle margin-l-10"
+                            data-toggle="dropdown"
+                            ng-disabled="plottedCharts.length === 0"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: Open export menu">
+                        <i class="icon-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li data-ng-repeat="exportOpt in staticData.buttons.exportOptions">
+                            <a ng-click="export($parent.$index)">Save as CSV</a>
+                        </li>
+                    </ul>
+                </div>
+                <button title="Chart Details" class="btn"
+                   data-toggle="modal"
+                   ng-click="openAnalysisChartDetails($index)"
+                   data-ng-disabled="!plottedChart.tagsValues">
+                    <i class="icon-resize-full"></i></button>
+                <button title="Edit Chart" class="btn hidden-phone"
+                   data-toggle="modal"
+                   ng-click="openAnalysisEditChart($index, plottedChart)"
+                   data-ng-disabled="!plottedChart.tagsValues">
+                   <i class="icon-cog"></i></button>
+                <button title="Apply Filter" class="btn"
+                    ng-click="inlineChartFltr = true"
+                    data-ng-disabled="!plottedChart.tagsValues">
+                    <i class="icon-reorder"></i>
+                </button>
+
+            </div>
+            <div class="highcharts-container">
+                <analysis-chart class="clearfix" taginfo="plottedChart" chartobjs='chartobjs' on-zoom='applyZoom'></analysis-chart>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #analysis-chart-container{
+        overflow: hidden;
+    }
+    .highcharts-container, .highcharts-container svg {
+        overflow: visible !important;
+    }
+    .chart-menu {
+        position: absolute;
+        right: -244px;
+        border: 1px solid #ccc;
+        z-index: 100;
+        background: rgb(65, 65, 65);
+        width: 220px;
+        height: 305px;
+        margin-top: -15px;
+        border-radius: 0 5px 5px 0;
+        color: #fff;
+        padding: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+    .chart-menu header{
+        text-align: right;
+    }
+    .chart-menu legend{
+        font-size: 12px;
+        color: #fff;
+    }
+    .chart-menu header button {
+        background: none;
+        border: none;
+        color: #fff;
+    }
+    .chart-menu.show {
+        right:0;
+
+    }
+    .onoff-switch {
+        line-height: 2.5em;
+    }
+
+    .chart-content{
+        width : 75%
+    }
+    div#legend {
+        padding: 30px 5px 20px 0px;
+        width : 24.5%;
+    }
+    #legend >li {
+        border: 1px solid #CCCCCC;
+        padding: 0 3px;
+        padding-left: 0px;
+        list-style: none;
+        border-top: 0;
+    }
+    #legend >li:hover{
+        cursor: pointer;
+    }
+    #legend >li:first-child {
+        border-top: 1px solid #CCCCCC;
+    }
+    #legend >li span {
+        padding-top: 2px;
+        padding-left: 5px;
+        font-size: 12px;
+        vertical-align: middle;
+    }
+    #legend >li i + span {
+        border-right: 1px solid #CCCCCC;
+        border-left: 1px solid #CCCCCC;
+        width: 70%;
+        display: inline-block;
+        padding-right: 10px;
+        word-break: break-all;
+        line-height: 1em;
+        padding: 5px;
+    }
+    #legend i.icon-minus {
+        padding: 5px;
+    }
+    #legend li.disabled {
+        color : #cccccc !important;
+    }
+
+</style>

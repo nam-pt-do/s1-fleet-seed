@@ -1,0 +1,17 @@
+{
+  "data": {
+    "status": 200,
+    "response": {
+      "title": "Alarm Count",
+      "categories": ["Site A", "Site B", "Site C"],
+      "series": [
+        {"name":"System 1 High", "data":[1,2,1], "stack":"System 1"},
+        {"name":"System 1 Medium", "data":[4,3,3], "stack":"System 1"},
+        {"name":"System 1 Low", "data":[15,10,7], "stack":"System 1"},
+        {"name":"SmartSignal High", "data":[2,1,1], "stack":"SmartSignal"},
+        {"name":"SmartSignal Medium", "data":[3,9,3], "stack":"SmartSignal"},
+        {"name":"SmartSignal Low", "data":[4,12,17], "stack":"SmartSignal"}
+      ]
+    }
+  }
+}

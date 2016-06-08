@@ -14,41 +14,61 @@ define(['angular', 'angular-ui-router'], function(angular) {
          * This is where the name of the route is matched to the controller and view template.
          */
         $stateProvider
+        	
+			.state('secure', {
+							template: '<ui-view>',
+							abstract: true,
+							resolve: {
+								userInfo: ['$users', function ($users) {
+									return $users.resolveUserInfo();
+								}]
+							}
+						})
+			
+            /*
             .state('secure', {
-                template: '<ui-view/>',
-                abstract: true,
-                resolve: {
-                    authenticated: ['$q', 'PredixUserService', function ($q, predixUserService) {
-                        var deferred = $q.defer();
-                        predixUserService.isAuthenticated().then(function(userInfo){
-                            deferred.resolve(userInfo);
-                        }, function(){
-                            deferred.reject({code: 'UNAUTHORIZED'});
-                        });
-                        return deferred.promise;
-                    }]
-                }
-            })
-            .state('dashboards', {
+                            template: '<ui-view/>',
+                            abstract: true,
+                            resolve: {
+                                authenticated: ['$q', 'PredixUserService','$users', function ($q, predixUserService,$users) {
+                                    console.log($users);
+                                    var deferred = $q.defer();
+                                    predixUserService.isAuthenticated().then(function(userInfo){
+                                        deferred.resolve(userInfo);
+                                    }, function(){
+                                        deferred.reject({code: 'UNAUTHORIZED'});
+                                    });
+                                    return deferred.promise;
+                                }]
+                            }
+                        })*/
+            
+            .state('assets', {
                 parent: 'secure',
-                url: '/dashboards',
-                templateUrl: 'views/dashboards.html',
-                controller: 'DashboardsCtrl'
+                url: '/assets',
+                templateUrl: 'views/dashboard.html',
+                controller: 'DashboardCtrl'
             })
-            .state('blankpage', {
-                url: '/blankpage',
-                templateUrl: 'views/blank-page.html'
+            .state('assets.overview', {
+                url: '/overview',
+                parent : 'assets',
+                templateUrl: 'views/overview/overview.html',
+                controller: 'DetailCtrl'
+
             })
-            .state('blanksubpage', {
-                url: '/blanksubpage',
-                templateUrl: 'views/blank-sub-page.html'
-            });
+            .state('timeseries', {
+                url: '/timeseries',
+                parent : 'secure',
+                templateUrl: 'views/overview/timeseries.html',
+                controller: 'TimeSeriesCtrl'
+            })            
+            ;
 
 
         $urlRouterProvider.otherwise(function ($injector) {
             var $state = $injector.get('$state');
-            document.querySelector('px-app-nav').markSelected('/dashboards');
-            $state.go('dashboards');
+            document.querySelector('px-app-nav').markSelected('/assets');
+            $state.go('assets.overview');
         });
 
     }]);

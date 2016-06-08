@@ -1,0 +1,61 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="changePreset(this)">×</button>
+    <h3>{{data.header}}</h3>
+</div>
+
+
+<div class="modal-body" >
+
+    <div class="fluid messages" style="margin-bottom:5px;text-align: left;" ng-if="message">
+
+        <div class="alert alert-{{message.type}}">
+            <button type="button" class="close" ng-click="clearMessage()">×</button>
+            <strong>{{message.title}}</strong>
+            {{message.content}}
+        </div>
+    </div>
+
+    <!-- Save As Section-->
+    <div ng-if="(modalType === 'saveAsPreset' || modalType === 'saveAsPresetWithMsg')">
+        <!--show only when user is admin-->
+        <!--<div ng-if="modalType === 'saveAsPresetWithMsg' " class="margin-b-10">-->
+            <!--{{data.msg}}-->
+        <!--</div>-->
+        <div class="config-name margin-b-10" >
+            <label>Name</label>
+            <input type="text" class="input-medium ng-pristine ng-valid" maxlength="25" ng-model="config.presetName">
+            <span popover="Spaces and following characters are not allowed while naming configuration. ` ~ ! @ # $ % ^ & * ( ) + = ; ’ , / :"
+                  popover-placement="right"
+                  popover-label="Rules"
+                  popover-trigger="mouseenter">
+                <i class="icon-info-sign"></i>
+            </span>
+        </div>
+        <div class="clearfix margin-b-10" ng-init="config.presetType='sys'">
+            <label class="pull-left">
+                <input type="radio" ng-model="config.presetType" value="usr">
+                <span class="margin-r-10">Private</span>
+            </label>
+
+            <label class="pull-left">
+                <input type="radio" ng-model="config.presetType" value="sys">
+                <span class="margin-r-10">Public</span>
+            </label>
+        </div>
+    </div>
+    <!-- Save / Delete Message-->
+    <div ng-if="(modalType === 'deletePreset' || modalType === 'savePreset' || modalType === 'overWritePreset')" class="margin-b-10">
+        {{data.msg}}
+    </div>
+</div>
+
+<div class="modal-footer" style="margin-top:10px; padding-top:10px; clear:both;">
+	<button class="btn {{data.cancelType}}"
+            
+            ng-click="changePreset(this.$parent, btn.id, config.presetType, config.presetName)">Cancel</button>
+    <button id="primaryModalAction" class="btn {{btn.type}}"
+            ng-repeat="btn in data.buttons"
+            ng-show="!btn.hide || (btn.label == 'Save' && modalType === 'savePreset')"
+            data-ng-disabled="(!hasPresetOpt && !config.presetType && (btn.label !== 'Cancel'))"
+            ng-click="changePreset(this.$parent, btn.id, config.presetType, config.presetName)">{{btn.label}}</button>
+</div>

@@ -1,0 +1,97 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"  ng-click="cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h3 class="modal-title">Add New User</h3>
+</div>
+<div class="modal-body">
+  <form class="form-vertical marginBt0" name="createUserForm">
+    <div class="row-fluid">
+      <div class="span6 marginBt0">
+        <div class="control-group">
+          <label class="control-label"><i class="icon-asterisk req-field"></i>Username</label>
+          <input type="text" ng-model="newUser.userId" name="userId" ng-pattern="/^[\w]{8,20}$/" required />
+          <div  class="form-error" ng-show="createUserForm.$submitted || createUserForm.userId.$error.pattern">
+<small class="label label-warning" ng-show="!createUserForm.userId.$error.required || createUserForm.userId.$error.pattern">
+                Username needs to be between 8 and 20 <br/> alphanumeric characters with no spaces</small>
+          </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label"><i class="icon-asterisk req-field"></i>Role</label>
+            <select required name="role"
+                    ng-model="newUser.role"
+                    ng-options="role.id as role.name for role in userRoles">
+            </select>
+            <div class="form-error">
+              <small 
+                  ng-show="createUserForm.role.$error.required 
+                              && createUserForm.role.$touched 
+                              || createUserForm.$submitted">
+                  Required
+              </small>
+            </div>
+        </div>
+        <div class="control-group">
+            <span>
+                The following fields will be editable by the user in the Account Profile:
+            </span>
+        </div>
+        <div class="control-group">
+          <label class="control-label"><i class="icon-asterisk req-field"></i>Name</label>
+          <input type="text" ng-model="newUser.name"  name="name" required ng-pattern="/^[\w\s]{2,30}$/" />
+          <div  class="form-error" ng-show="createUserForm.$submitted || createUserForm.name.$error.pattern">
+            <small class="label label-warning" ng-show="!createUserForm.name.$error.required 
+                            || createUserForm.name.$error.pattern">
+                Name needs to be between 2 and 30 alphanumeric characters</small>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label"><i class="icon-asterisk req-field"></i>Email </label>
+          <input type="email" ng-model="newUser.tempEmail" name="tempEmail" required
+                 ng-pattern ="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"/>
+          <div  class="form-error" ng-show="createUserForm.$submitted || createUserForm.tempEmail.$error.pattern">
+            <small class="label label-warning" ng-show="!createUserForm.tempEmail.$error.required 
+                            && (createUserForm.tempEmail.$error.email 
+                            || createUserForm.tempEmail.$error.pattern)">
+                Invalid Email</small>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label"><i class="icon-asterisk req-field"></i>Password</label>
+          <input type="password" ng-model="newUser.tempPassword" required name="tempPassword"
+          ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" />
+            <span class="label label-warning" ng-show="!createUserForm.tempPassword.$error.required && (createUserForm.tempPassword.$error.minlength || createUserForm.tempPassword.$error.maxlength)">
+                  Passwords must be between 8 and 20 characters.</span>
+            <span class="label label-warning" ng-show="!createUserForm.tempPassword.$error.required && !createUserForm.tempPassword.$error.minlength && !createUserForm.tempPassword.$error.maxlength && createUserForm.tempPassword.$error.pattern">
+                  Must contain one lower &amp; uppercase letter <br/> and one non-alpha character (number or symbol).
+            </span>
+            <div class="controls">
+                <label class="control-label"></i>Please re-enter password</label>
+                <input type="password" name="confirmPassword" ng-model="newUser.confirmPassword" id="confirmPassword" password-match="newUser.tempPassword" required />
+                <span class="label label-warning" ng-show="!createUserForm.confirmPassword.$error.required && createUserForm.confirmPassword.$error.unique ">Passwords do not match.</span>
+            </div>         
+        </div>
+        
+      </div>
+      <div class="span6 marginBt0">
+        <label><i class="icon-asterisk req-field"></i>Customer Access</label>
+        <div class="control-group checkboxes" ng-repeat="customer in currentUser.customers">
+            <label class="checkbox">
+                <input type="checkbox" ng-change="sync(bool, customer)"
+                       ng-model="bool" ng-checked="isChecked(customer.key)" name="checkboxes">
+                {{customer.name}}
+          </label>
+        </div>
+        <div class="form-error" ng-show="createUserForm.$submitted || createUserForm.checkboxes.$error.required">
+          <small class="form-error" ng-show="createUserForm.checkboxes.$error.required 
+                          || selectedCustomers.length ==0">
+                          Required</small>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-primary" ng-click="ok()" type="submit" ng-disabled="!createUserForm.$valid || selectedCustomers.length ==0">Add User</button>
+</div>

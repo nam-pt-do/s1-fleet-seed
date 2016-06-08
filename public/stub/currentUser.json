@@ -1,0 +1,22 @@
+{
+  "data": {
+    "status":200,
+    "response": {
+      "id": 42,
+      "role": "admin",
+      "type": "external",
+      "name": "Ted H.",
+      "customers": [
+        {"key":"shell","name":"shell"},
+        {"key":"CoP","name":"CoP"},
+        {"key":"tempcust","name":"Temporary Customer"}
+      ],
+      "preferences": {
+        "customerId": "tempcust",
+        "fleetId": "f1",
+        "nodeId": "PlatformA",
+        "timezone": "gmt"
+      }
+    }
+  }
+}

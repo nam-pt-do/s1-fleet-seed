@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CatapultTargetConcepts>
+    <!-- saved from url=(0016)http://localhost -->
+    <ConceptEntry Term="Alarms">
+        <ConceptLink Title="Introduction to System 1 Fleet Management" Link="/Content/Sys1Fleet2/aboutprod1.htm#aanchor5" UsedConditions="" LocalConditions="" />
+    </ConceptEntry>
+    <ConceptEntry Term="Copying">
+        <ConceptLink Title="Introduction to System 1 Fleet Management" Link="/Content/Sys1Fleet2/aboutprod1.htm#aanchor5" UsedConditions="" LocalConditions="" />
+    </ConceptEntry>
+    <ConceptEntry Term="Exporting">
+        <ConceptLink Title="Introduction to System 1 Fleet Management" Link="/Content/Sys1Fleet2/aboutprod1.htm#aanchor5" UsedConditions="" LocalConditions="" />
+    </ConceptEntry>
+    <ConceptEntry Term="Users">
+        <ConceptLink Title="Administering Users" Link="/Content/Sys1Fleet2/administration.htm#aanchor0" UsedConditions="" LocalConditions="" />
+        <ConceptLink Title="Creating Users" Link="/Content/Sys1Fleet2/creating_users.htm#aanchor1" UsedConditions="" LocalConditions="" />
+        <ConceptLink Title="Creating Users" Link="/Content/Sys1Fleet2/creating_users.htm#aanchor2" UsedConditions="" LocalConditions="" />
+        <ConceptLink Title="Deleting Users" Link="/Content/Sys1Fleet2/deleting_users.htm#aanchor3" UsedConditions="" LocalConditions="" />
+        <ConceptLink Title="Editing Users" Link="/Content/Sys1Fleet2/editing_users.htm#aanchor4" UsedConditions="" LocalConditions="" />
+        <ConceptLink Title="Introduction to System 1 Fleet Management" Link="/Content/Sys1Fleet2/aboutprod1.htm#aanchor5" UsedConditions="" LocalConditions="" />
+    </ConceptEntry>
+</CatapultTargetConcepts>

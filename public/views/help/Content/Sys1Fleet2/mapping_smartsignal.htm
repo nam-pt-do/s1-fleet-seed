@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="System1Fleetv20_online_help.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Administration Module">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Mapping a Smart Signal System</title>
+        <link href="../Resources/TableStyles/gescoe/note.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/gescoestyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../System1Fleetv20_online_help.htm#Sys1Fleet2/mapping_smartsignal.htm">Open topic with navigation</a>
+        </p>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix"></span><a class="MCBreadcrumbsLink" href="administration.htm">Administration Module</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Mapping System 1 and SmartSignal Machines</span>
+        </div>
+        <h1>Mapping System 1 and SmartSignal Machines.</h1>
+        <p>The <b>Mapping</b> feature allows administrators to correlate data from identical assets that are being monitored simultaneously by System 1 and SmartSignal. System 1 and <span class="System1Fleetv2OtherSS">SmartSignal</span> use different naming conventions to identify the same assets. </p>
+        <p>The following figure shows the hierarchy of the System 1 and SmartSignal data sources. The highlighted sections in the drawing show three assets that are each being monitored at the same time by System 1  and <span class="System1Fleetv2OtherSS">SmartSignal</span>.</p>
+        <p><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/sys1dleet/mapping_diagram.png" data-mc-popup-alt="hierarchies"><img class="MCPopupThumbnail img imgMaxWidth100Percent" data-mc-width="600" data-mc-height="600" src="../Resources/Images/sys1dleet/mapping_diagram_thumb_0_48.png" alt="hierarchies" title="hierarchies" tabindex="" /></a>
+        </p>
+        <p>As shown in the figure, <b>Machine 2</b> in the System 1 hierarchy is the same piece of equipment as <b>Asset X</b> in the <span class="System1Fleetv2OtherSS">SmartSignal</span> hierarchy. In this procedure is a turbine. </p>
+        <p>The purpose of mapping equipment that is being monitored by <span class="System1Fleetv2OtherSS">SmartSignal</span> and System 1 is to consolidate and present both sets of alarm and event data collected by each system on the Dashboard and Alarm pages of the <span class="System1Fleetv2OtherProdName">System 1 Fleet Management</span> portal.</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/gescoe/note.css');" class="TableStyle-note" cellspacing="0">
+            <col class="TableStyle-note-Column-Column1" />
+            <col class="TableStyle-note-Column-Column2" />
+            <tbody>
+                <tr class="TableStyle-note-Body-Body1">
+                    <td class="TableStyle-note-BodyB-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-note-BodyA-Column2-Body1">After you complete mapping one or more pieces of equipment to each other, the <span class="System1Fleetv2OtherProdName">System 1 Fleet Management</span> portal displays an icon next to the asset's name in the portal on both the Dashboard and Alarm pages.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Before you begin</h3>
+        <p>Identify the identical assets that are being monitored by both <span class="System1Fleetv2OtherSS">SmartSignal</span> and <span class="System1Fleetv2OtherProdName">System 1 Fleet Management</span>. Each application uses a unique naming convention for its components. Make a list of the machines that you want to map.</p>
+        <p>For example, in System 1, you  have a wind turbine identified as <b>Power Turbine[Platform_F_1ac60089-5479-4b04-aa6d-39bf451779f1~154]</b></p>
+        <p>&#160;</p>
+        <p>The <b>same</b> wind turbine in <span class="System1Fleetv2OtherSS">SmartSignal</span> is identified as <b>Test Wind Turbine 1[SS-175_5d5dd94e-a5d4-4cca-a019-e9ab38f25fc0~0f1a36fa-4a87-4cbc-896d-ed01ddd7e956]</b></p>
+        <p><b>Restrictions:</b>
+        </p>
+        <ul>
+            <li class="ul1" value="1">You cannot map an asset to a folder.</li>
+            <li class="ul1" value="2">You can only map a <span class="System1Fleetv2OtherSS">SmartSignal</span> Asset to a System 1 Asset (Train or Machine)</li>
+            <li class="ul1" value="3">The mapping ratio is 1:1.</li>
+        </ul>
+        <h3>Exporting Hierarchies</h3>
+        <p>Follow the instructions in this section to export all hierarchy members from <span class="System1Fleetv2OtherSS">SmartSignal</span> and System 1 to a single spreadsheet file in the .xls format. You must open the file and perform the mapping tasks in a spreadsheet that can interpret an .xls file, for example, Microsoft Excel.</p>
+        <ol>
+            <li class="ol1" value="1">Complete your mapping plan.</li>
+            <li class="ol1" value="2">From the home page, click <b>Administration</b>. The <b>Users</b> page is displayed.</li>
+            <li class="ol1" value="3">Click <b>Mapping</b>. The Mapping page is displayed as shown below. If the <b>Mapping</b> page displays <b>No Data Available</b>, then no previous mappings have been performed. The message does not indicate that there is no data to be mapped. <br /><br /><br /><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/sys1dleet/mapping_kes.png" data-mc-popup-alt="mapping page example"><img class="MCPopupThumbnail img imgMaxWidth100Percent" data-mc-width="889" data-mc-height="384" src="../Resources/Images/sys1dleet/mapping_kes_thumb_0_48.png" alt="mapping page example" title="mapping page example" tabindex="" /></a></li>
+            <li class="ol1" value="4">From the drop-down menu, select a <b>Fleet</b> name, for example, <b>GE.</b></li>
+            <li class="ol1" value="5">In the <b>Default Asset View</b> drop-down, select <b>System 1</b> or <b>SmartSignal</b>. The selection you make controls the contents of the left column of the spreadsheet.</li>
+            <li class="ol1" value="6">A file named <b>S1Fleet-Customer(xx)-enterprise-mapping.xls</b> is created and stored in the <b>Downloads folder</b>. A button appears in the bottom left corner of the browser window. <a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/sys1dleet/map_button.png" data-mc-popup-alt="map button"><img class="MCPopupThumbnail img imgMaxWidth100Percent" data-mc-width="206" data-mc-height="50" src="../Resources/Images/sys1dleet/map_button_thumb_0_48.png" alt="map button" title="map button" tabindex="" /></a></li>
+            <li value="7">Click the button to open the exported spreadsheet. </li>
+            <li value="8">Click <b>Enable Editing</b>. </li>
+            <li value="9">Click and drag the column borders to create three distinct columns. Make sure that the empty "B" column named <b>SmartSignal Mappings</b> is in the middle of the spreadsheet.<br /><br /><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/sys1dleet/sxampleof ss.png" data-mc-popup-alt="example of spreadsheet"><img class="MCPopupThumbnail img imgMaxWidth100Percent" data-mc-width="1872" data-mc-height="239" src="../Resources/Images/sys1dleet/sxampleof ss_thumb_0_48.png" alt="example of spreadsheet" title="example of spreadsheet" tabindex="" /></a></li>
+        </ol>
+        <h3>Map the assets</h3>
+        <p><b>Important</b>: Do not cut and paste asset names from the "A" or "C" columns when you populate the "B"&#160;column. Copy and paste the asset names, instead. </p>
+        <p>In this procedure, you map two assets (see the following table).</p>
+        <p><span class="System1Fleetv2OtherSS">SmartSignal</span> <b>Test Wind Turbine Group[SS-175_5d5dd94e-a5d4-4cca-a019-e9ab38f25fc0~d506a0bd-ecc3-40b2-b062-23c9d0530643]</b> (see highlighted row C5 in the figure below)</p>
+        <p>System 1 <b>Power Turbine[Platform_F_1ac60089-5479-4b04-aa6d-39bf451779f1~154] </b>(see highlighted row A8 in the figure below.)</p>
+        <p>&#160;</p>
+        <p><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/sys1dleet/selections1.png" data-mc-popup-alt="asset row selections"><img class="MCPopupThumbnail img imgMaxWidth100Percent" data-mc-width="1865" data-mc-height="223" src="../Resources/Images/sys1dleet/selections1_thumb_0_48.png" alt="asset row selections" title="asset row selections" tabindex="" /></a>
+        </p>
+        <ol>
+            <li class="ol1" value="1">In the left column, identify the System 1 asset that you want to map to its <span class="System1Fleetv2OtherSS">SmartSignal</span> counterpart (see A8 in the figure above).</li>
+            <li class="ol1" value="2">In the right column, select the <span class="System1Fleetv2OtherSS">SmartSignal</span> asset you want to map to the System 1 asset selected in step 1 (see C5 in the figure above).</li>
+            <li class="ol1" value="3">Copy the asset in the right column.</li>
+            <li class="ol1" value="4">Click in column <b>B8. </b></li>
+            <li class="ol1" value="5">Click <b>Paste</b>.</li>
+            <li class="ol1" value="6">Click <b>Save</b> to update the spreadsheet you exported and preserve the mapping information.</li>
+            <li class="ol1" value="7">Verify that the updated spreadsheet looks similar to the following figure. <a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/sys1dleet/final.png" data-mc-popup-alt="a mapped spreadsheet"><img class="MCPopupThumbnail img imgMaxWidth100Percent" data-mc-width="1659" data-mc-height="196" src="../Resources/Images/sys1dleet/final_thumb_0_48.png" alt="a mapped spreadsheet" title="a mapped spreadsheet" tabindex="" /></a></li>
+        </ol>
+        <p><b>Option</b>: Rename the mapped spreadsheet. </p>
+        <h3>Import the Mapped Spreadsheet File</h3>
+        <ol>
+            <li class="ol1" value="1">Bring up the <span class="System1Fleetv2OtherProdName">System 1 Fleet Management</span> Mapping page.</li>
+            <li class="ol1" value="2">In the right pane, click <b>Choose File</b>.</li>
+            <li class="ol1" value="3">Navigate to the file that was mapped in the previous procedure.</li>
+            <li class="ol1" value="4">Click once on the name of the mapped file.</li>
+            <li class="ol1" value="5">Click <b>Open</b>. The Mapping page is displayed. </li>
+            <li class="ol1" value="6">In the right pane of the Mapping page, click <b>Import File</b>.</li>
+            <li class="ol1" value="7">The bottom pane of the <b>Mapping</b> page should resemble the following figure. </li>
+        </ol>
+        <p><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../Resources/Images/sys1dleet/mapping_one.png" data-mc-popup-alt="mapped assets"><img class="MCPopupThumbnail img imgMaxWidth100Percent" data-mc-width="550" data-mc-height="105" src="../Resources/Images/sys1dleet/mapping_one_thumb_0_48.png" alt="mapped assets" title="mapped assets" tabindex="" /></a>
+        </p>
+        <h3>Verifying the Mapping on the Dashboard page</h3>
+        <ol>
+            <li class="ol1" value="1">Click <b>Dashboard</b>.</li>
+            <li class="ol1" value="2">Click the fleet name that contains the systems you mapped, for example, GE.</li>
+            <li class="ol1" value="3">Click <b>System 1 Hierarchy</b>.</li>
+            <li class="ol1" value="4">Drill down in the hierarchy menu to the name of the Power Turbine asset that you mapped to the <span class="System1Fleetv2OtherSS">SmartSignal</span> Test Wind Turbine.</li>
+            <li class="ol1" value="5">Verify that the System 1 Power Turbine asset is marked with the mapped icon.</li>
+            <li class="ol1" value="6">Click <span class="System1Fleetv2OtherSS">SmartSignal</span> Hierarchy.</li>
+            <li class="ol1" value="7">Drill down in the hierarchy to the name of the <span class="System1Fleetv2OtherSS">SmartSignal</span> Test Wind Turbine that you mapped to the System 1 Power Turbine.</li>
+            <li class="ol1" value="8">Verify that the System 1 Power Turbine asset is marked with the mapped icon.</li>
+        </ol>&#160;<p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkBottom"><a href="../../System1Fleetv20_online_help.htm#Sys1Fleet2/mapping_smartsignal.htm">Open topic with navigation</a></p></body>
+</html>

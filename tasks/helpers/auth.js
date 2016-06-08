@@ -6,11 +6,11 @@ var request = require('request');
 module.exports = {
   init: function (options) {
     options = options || {}
-    this.clientId = options.clientId || 'predix-seed';
-    this.serverUrl = options.serverUrl || 'https://etc.predix-uaa-staging.grc-apps.svc.ice.ge.com';
+    this.clientId = options.clientId || 'nam';
+    this.serverUrl = options.serverUrl || 'https://64617d19-5675-4dfb-b563-147cd48e40a3.predix-uaa.run.asv-pr.ice.predix.io';
     this.accessToken = null;
     this.defaultClientRoute = options.defaultClientRoute || '/about';
-    this.base64ClientCredential = options.base64ClientCredential || 'cHJlZGl4LXNlZWQ6TTBhVzdrTmZRRndyTTZ3ZHJpV2h3bVc2ck1HQ045Q0x1cnI5VnI3elc0cz0=';
+    this.base64ClientCredential = options.base64ClientCredential || 'bmFtOkFiYzEyZGVm';
     this.user = null;
     return this.getMiddlewares();
   },

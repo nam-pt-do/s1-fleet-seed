@@ -1,0 +1,1314 @@
+/*<meta />*/
+
+@namespace MadCap url(http://www.madcapsoftware.com/Schemas/MadCap.xsd);
+
+body
+{
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	line-height: 16px;
+	border-bottom-width: 4px;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	border-top-width: 4px;
+	background-repeat: no-repeat;
+	background-position: 50% 1in;
+	max-width: 100%;
+	background-image: none;
+	font-size: 11pt;
+	margin: 16px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	mc-hyphenate: never;
+}
+
+h1
+{
+	font-weight: bold;
+	margin: 8px;
+	margin-right: 0px;
+	margin-left: 0px;
+	font-size: 20pt;
+	margin-top: 32px;
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	line-height: 22pt;
+	margin-bottom: 30px;
+}
+
+h1.Appendix
+{
+	
+}
+
+h1.Appendix2
+{
+	font-size: 16px;
+	line-height: 17px;
+	mc-auto-number-format: 'GA:Appendix {A+}: ';
+}
+
+h2
+{
+	font-weight: bold;
+	text-align: left;
+	mc-heading-level: 2;
+	page-break-before: always;
+	margin-left: 0px;
+	margin-right: 0px;
+	font-size: 16pt;
+	margin-bottom: 16px;
+	margin-top: 24px;
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	line-height: 18pt;
+}
+
+h2.NoPageBreakBefore
+{
+	page-break-before: avoid;
+}
+
+h3
+{
+	font-weight: bold;
+	margin: 12px;
+	margin-left: 0px;
+	margin-right: 0px;
+	font-size: 13pt;
+	margin-top: 16px;
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	line-height: 15pt;
+}
+
+h3.TOC
+{
+	mc-heading-level: 3;
+}
+
+h4
+{
+	font-weight: bold;
+	font-size: 12.0pt;
+}
+
+h5
+{
+	font-weight: bold;
+	font-size: 10.0pt;
+}
+
+h6
+{
+	font-weight: bold;
+	font-size: 8.0pt;
+}
+
+Div.FooterTable
+{
+	background-repeat: repeat;
+	background-image: url('../Images/gescoe/diagonal_lines.png');
+	margin-right: -17px;
+	margin-left: -17px;
+}
+
+Div.GlossaryPageTerm
+{
+	font-size: 9pt;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+Div.GlossaryPageDefinition
+{
+	font-size: 8pt;
+	margin-left: 24px;
+}
+
+Div.GlossaryPageEntry
+{
+	margin-bottom: 12px;
+}
+
+Div.GlossaryPageHeading
+{
+	color: #363636;
+	font-size: 11pt;
+	border-bottom-style: none;
+	border-top-style: none;
+	margin-bottom: 9px;
+	margin-left: 0px;
+	margin-top: 19px;
+}
+
+span.uiElement
+{
+	font-weight: bold;
+}
+
+span.EmphasisItalic
+{
+	font-weight: normal;
+	font-style: italic;
+}
+
+p
+{
+	font-size: 11pt;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	line-height: 17pt;
+}
+
+p.bold
+{
+	font-weight: bold;
+}
+
+p.code
+{
+	font-family: 'Courier New', 'Monotype Corsiva', monospace;
+}
+
+p.codeIndentol1ul1
+{
+	margin-left: 19px;
+	font-family: 'Courier New', 'Monotype Corsiva', monospace;
+}
+
+p.columns
+{
+	column-count: 3;
+	column-gap: 11px;
+	column-rule: 1px solid black;
+}
+
+p.Copyright
+{
+	font-size: 8pt;
+	margin-right: 0px;
+	text-indent: 0px;
+}
+
+p.CopyrightAddress
+{
+	font-size: 8pt;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p.CopyrightHeading
+{
+	font-weight: bold;
+	font-size: 11pt;
+	padding: 0px;
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+	column-break-before: always;
+	padding-top: 4px;
+	margin-top: 10px;
+}
+
+p.CopyrightIndent
+{
+	font-size: 8pt;
+	margin-top: 0px;
+	top: 0px;
+	margin-left: 0.25in;
+	text-indent: 0px;
+}
+
+p.ContentsHeadingPrint
+{
+	page-break-before: always;
+	letter-spacing: -1px;
+	margin-bottom: 0px;
+	vertical-align: baseline;
+	font-size: 29pt;
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	font-weight: normal;
+	margin-top: 0px;
+}
+
+p.ExampleHead
+{
+	font-variant: small-caps;
+	border-top: solid 1px #BECFDC;
+	border-left: solid 1px #BECFDC;
+	border-right: solid 1px #BECFDC;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-bottom: 0px;
+	letter-spacing: 5px;
+	mc-heading-level: 0;
+	margin-top: 5px;
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	text-transform: none;
+	color: #003366;
+	font-weight: bold;
+	text-align: left;
+	padding-left: 19px;
+	padding-right: 19px;
+	padding-top: 14px;
+	padding-bottom: 5px;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #BECFDC;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #BECFDC;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #BECFDC;
+	background-color: #ddedfe;
+	font-size: 11pt;
+}
+
+p.Example
+{
+	color: #003366;
+	border-bottom: solid 1px #BECFDC;
+	border-left: solid 1px #BECFDC;
+	border-right: solid 1px #BECFDC;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-top: 0px;
+	padding-left: 19px;
+	padding-right: 19px;
+	padding-top: 5px;
+	padding-bottom: 14px;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #BECFDC;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #BECFDC;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #BECFDC;
+	background-color: #ddedfe;
+}
+
+p.ExampleMiddleSection
+{
+	color: #003366;
+	border-left: solid 1px #BECFDC;
+	border-right: solid 1px #BECFDC;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-left: 19px;
+	padding-right: 19px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #BECFDC;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #BECFDC;
+	background-color: #ddedfe;
+}
+
+p.Figure
+{
+	color: #696969;
+	font-style: italic;
+	mc-auto-number-format: 'CH:Figure {chapnum}-{n+} ';
+	mc-auto-number-class: FigureNum;
+	font-size: 11pt;
+}
+
+p.Footer
+{
+	margin-bottom: 0px;
+	margin-top: 0px;
+	text-align: Right;
+	color: #000000;
+	font-size: 8pt;
+}
+
+p.Footer2
+{
+	text-align: left;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	color: #000000;
+	white-space: nowrap;
+	font-size: 8pt;
+}
+
+p.FooterHeading
+{
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 0px;
+	margin-top: 12px;
+	color: #becfdc;
+}
+
+p.FooterHeadingAlignRight
+{
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-top: 12px;
+	text-align: right;
+	color: #becfdc;
+}
+
+p.FooterSpaceAboveRight
+{
+	margin-bottom: 0px;
+	color: #000000;
+	margin-top: 12px;
+	text-align: right;
+	font-size: 8pt;
+}
+
+p.FooterTopicMaster
+{
+	margin-bottom: 0px;
+	margin-top: 0px;
+	color: #ffffff;
+	margin: 0px;
+	padding: 0px;
+	line-height: 16px;
+	font-weight: bold;
+	text-align: left;
+	font-size: 9pt;
+}
+
+p.GlossaryPrintHead
+{
+	font-weight: normal;
+	letter-spacing: -1px;
+	margin-top: 0px;
+	mc-heading-level: 1;
+	margin: 0px;
+	line-height: 0px;
+	vertical-align: super;
+	page-break-before: always;
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+	font-size: 29pt;
+}
+
+p.Gray
+{
+	color: #f5f5f5;
+}
+
+p.IndexPrintHead
+{
+	page-break-before: always;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	border-bottom: solid 0px #000000;
+	line-height: 0px;
+	letter-spacing: -1px;
+	font-weight: normal;
+	vertical-align: super;
+	font-size: 29pt;
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+}
+
+p.ManualTitle0
+{
+	mc-leader-indent: 0px;
+	text-indent: 0.175in;
+	color: #99bdff;
+	color: device-cmyk(0.4,0.26,0,0);
+	line-height: 0px;
+	margin-bottom: 1px;
+	font-family: 'GE Inspira Book', Arial, Calibri, sans-serif;
+	font-size: 17pt;
+}
+
+p.ManualTitle1
+{
+	font-size: 15pt;
+	text-indent: 0.175in;
+	color: #9c9c9c;
+	word-spacing: 3px;
+	margin: 0px;
+	margin-bottom: 0px;
+	margin-top: 7px;
+	line-height: 0px;
+	font-family: 'GE Inspira Book', Arial, Calibri, sans-serif;
+}
+
+p.ManualTitle2
+{
+	font-size: 48pt;
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+	margin: 0px;
+	margin-bottom: 0px;
+	margin-top: 1.5in;
+	line-height: 0px;
+	mc-leader-indent: 0px;
+	font-family: 'GE Inspira Book', Arial, Calibri, sans-serif;
+	margin-left: 0.1275in;
+}
+
+p.ManualTitle3
+{
+	mc-leader-indent: 0px;
+	margin-left: 0px;
+	text-indent: 0.15in;
+	margin-top: 11px;
+	margin-bottom: 0px;
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+	font-size: 16pt;
+	line-height: 0px;
+	font-family: 'GE Inspira Book', Arial, Calibri, sans-serif;
+}
+
+p.ManualTitlePicIndent
+{
+	text-indent: 0.175in;
+}
+
+p.ManualVersionNumber
+{
+	color: #9c9c9c;
+	font-size: 17pt;
+	margin-top: 11px;
+	text-indent: 0.175in;
+	font-family: 'GE Inspira Book', Arial, Calibri, sans-serif;
+}
+
+p.Table
+{
+	color: #696969;
+	font-style: italic;
+	font-size: 11pt;
+	mc-auto-number-class: TableNum;
+	mc-auto-number-format: 'CH:Table {chapnum}-{n+} ';
+}
+
+p.TableText
+{
+	font-size: 11pt;
+	color: #000000;
+	margin-bottom: 2px;
+	margin-top: 7px;
+	bottom: 12px;
+	top: 12px;
+}
+
+p.TableTextCenter
+{
+	font-size: 11pt;
+	margin-bottom: 2px;
+	bottom: 12px;
+	top: 12px;
+	text-align: center;
+}
+
+p.TableTextEmphasis
+{
+	font-size: 11pt;
+	font-style: normal;
+	font-weight: bold;
+	margin-bottom: 2px;
+	color: #003366;
+}
+
+p.TableTextHead
+{
+	font-size: 11pt;
+	margin-bottom: 2px;
+	margin-top: 7px;
+	bottom: 12px;
+	top: 12px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+p.TableTextSmall
+{
+	font-size: 10pt;
+	color: #000000;
+	margin-bottom: 2px;
+	margin-top: 7px;
+	bottom: 12px;
+	top: 12px;
+}
+
+p.TableSuperSubscript
+{
+	line-height: 23px;
+	font-size: 11pt;
+}
+
+p.TOC1
+{
+	margin: 0px;
+	tab-stops: right dotted 5in;
+	margin-bottom: 0.545em;
+	margin-top: 5px;
+	color: #000000;
+	font-weight: 100;
+	mc-leader-offset: 9px;
+	mc-leader-indent: 5px;
+	font-size: 11pt;
+}
+
+p.TOC2
+{
+	tab-stops: right dotted 5in;
+	font-weight: 100;
+	margin-bottom: 3px;
+	margin-left: 14px;
+	margin-top: 3px;
+	mc-leader-indent: 5px;
+	mc-leader-offset: 9px;
+	font-size: 11pt;
+}
+
+p.TOC3
+{
+	font-weight: 100;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	tab-stops: right dotted 5in;
+	mc-leader-offset: 9px;
+	mc-leader-indent: 5px;
+	font-size: 11pt;
+}
+
+li
+{
+	color: #000000;
+	orphans: 2;
+	widows: 2;
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	line-height: 17pt;
+}
+
+li.ol1
+{
+	list-style-type: decimal;
+	margin-left: -19px;
+}
+
+li.ol2
+{
+	list-style-type: lower-alpha;
+	margin-left: 0px;
+}
+
+li.ol3
+{
+	list-style-type: lower-roman;
+	margin-left: 20px;
+}
+
+li.ul1
+{
+	list-style-type: disc;
+	margin-left: -21px;
+}
+
+li.ul2
+{
+	list-style-type: circle;
+	margin-left: 0px;
+}
+
+li.ul3
+{
+	margin-left: 20px;
+	list-style-type: square;
+}
+
+li.tableul1
+{
+	margin-left: -23px;
+	list-style-type: disc;
+}
+
+li.tableul2
+{
+	list-style-type: circle;
+	margin-left: -6px;
+}
+
+li.tableul3
+{
+	list-style-type: square;
+	margin-left: 12px;
+}
+
+li.tableol1
+{
+	list-style-type: decimal;
+	margin-left: -23px;
+}
+
+li.tableol2
+{
+	list-style-type: lower-alpha;
+	margin-left: -4px;
+}
+
+li.tableol3
+{
+	list-style-type: lower-roman;
+	margin-left: 12px;
+}
+
+ul
+{
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	margin-right: 0px;
+	margin-left: 40px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	-webkit-padding-start: 0px;
+}
+
+ol
+{
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	margin-left: 40px;
+	display: block;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	-webkit-padding-start: 0px;
+}
+
+img
+{
+	border: none;
+	background-repeat: no-repeat;
+	border-color: #3378ff;
+	border-color: device-cmyk(0.8,0.53,0,0);
+}
+
+img:hover
+{
+	background-repeat: no-repeat;
+}
+
+img.MaxWidth100Percent
+{
+	mc-thumbnail: popup;
+	border-left-style: solid;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-right-width: 2px;
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	max-width: 100%;
+}
+
+img.MaxWidth100PercentNoThumbnail
+{
+	mc-thumbnail: none;
+	margin: 0px;
+	max-width: 100%;
+}
+
+img.MaxWidth100PercentNoThumbnail:hover
+{
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: none;
+	border-top-style: none;
+}
+
+img.MaxWidth75Percent
+{
+	mc-thumbnail: popup;
+	border-left-style: solid;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-right-width: 2px;
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	max-width: 75%;
+}
+
+img.MaxWidth75PercentNoThumbnail
+{
+	mc-thumbnail: none;
+	margin: 0px;
+	max-width: 75%;
+}
+
+img.MaxWidth50Percent
+{
+	mc-thumbnail: popup;
+	border-left-style: solid;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-right-width: 2px;
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	max-width: 50%;
+}
+
+img.MaxWidth50PercentNoThumbnail
+{
+	mc-thumbnail: none;
+	margin: 0px;
+	max-width: 50%;
+}
+
+img.ReduceButtonSize
+{
+	mc-thumbnail: none;
+	padding: 0pt;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	max-height: 15px;
+	vertical-align: text-bottom;
+}
+
+a.Popup
+{
+	
+}
+
+a:link
+{
+	color: #3378ff;
+}
+
+b.for_table
+{
+	vertical-align: top;
+}
+
+i.for_table
+{
+	vertical-align: top;
+}
+
+td
+{
+	margin-top: 7px;
+	line-height: normal;
+}
+
+td.valignbottom
+{
+	margin-bottom: 8px;
+	margin-left: 8px;
+	margin-right: 8px;
+	margin: 8px;
+	margin-top: 8px;
+}
+
+tt
+{
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+}
+
+th
+{
+	
+}
+
+tr
+{
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+}
+
+tbody
+{
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+}
+
+thead
+{
+	font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+}
+
+MadCap|breadcrumbsProxy
+{
+	mc-breadcrumbs-prefix: '  ';
+	border-bottom-style: none;
+	border-bottom-width: 0px;
+	mc-breadcrumbs-divider: ' > ';
+}
+
+MadCap|conceptLink
+{
+	color: #3378ff;
+	mc-label: 'More Information';
+}
+
+.link-list-popup
+{
+	
+}
+
+.link-list-popup ul
+{
+	
+}
+
+.link-list-popup ul li
+{
+	font-size: 0.727em;
+	font-weight: bold;
+	margin-bottom: 0em;
+	margin-top: 0em;
+}
+
+MadCap|expandingHead
+{
+	font-style: italic;
+	font-weight: normal;
+	cursor: hand;
+	text-decoration: none;
+	color: #006600;
+}
+
+MadCap|expandingBody
+{
+	color: #777777;
+	font-style: italic;
+}
+
+MadCap|dropDownHotspot
+{
+	cursor: hand;
+	font-style: italic;
+	text-decoration: none;
+	color: #006600;
+}
+
+MadCap|tocProxy
+{
+	border-top-width: 0px;
+	border-top-style: none;
+}
+
+MadCap|glossaryProxy
+{
+	border-top-width: 0px;
+	border-top-style: none;
+}
+
+MadCap|indexProxy
+{
+	border-top-style: none;
+	border-top-width: 0px;
+}
+
+MadCap|topicToolbarProxy
+{
+	
+}
+
+MadCap|xref:focus
+{
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+}
+
+MadCap|xref:hover
+{
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+}
+
+MadCap|xref
+{
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+	mc-format: 'Refer to {quote}{paratext}{quote}';
+}
+
+MadCap|xref.Concept
+{
+	mc-format: 'Refer to {quote}{paratext}{quote}';
+	color: #3378ff;
+	color: device-cmyk(0.8,0.53,0,0);
+}
+
+MadCap|xref.ConceptPageNumber
+{
+	mc-format: 'Refer to {quote}{paratext}{quote} on page {page}';
+}
+
+MadCap|xref.FigureOrTable
+{
+	mc-format: 'Refer to {paranum}{paratext}';
+}
+
+MadCap|xref.StepNumber
+{
+	mc-format: 'Step {paranumonly}';
+}
+
+MadCap|xref.StepText
+{
+	mc-format: 'Use this step {quote}{paratext}{quote} here.';
+}
+
+MadCap|xref.TopicTitle
+{
+	mc-format: 'Refer to {title}';
+}
+
+MadCap|xref.TopicTitleAndPageNumber
+{
+	mc-format: 'Refer to {title} on page {page}';
+}
+
+@media print
+{
+	h1
+	{
+		color: #3378ff;
+		color: device-cmyk(0.8,0.53,0,0);
+		font-weight: normal;
+		mc-auto-number-format: 'GH: {n+} ';
+		margin: 8px;
+		margin-right: 0px;
+		margin-left: -35px;
+		font-size: 24pt;
+		margin-bottom: 60px;
+	}
+
+	h1.Appendix
+	{
+		mc-auto-number-position: float-left;
+		padding-left: 0px;
+		font-weight: normal;
+		line-height: 17px;
+		padding-top: 0px;
+		top: 0px;
+		vertical-align: baseline;
+		margin-bottom: 70px;
+		font-size: 16pt;
+		color: #3378ff;
+		color: device-cmyk(0.8,0.53,0,0);
+		mc-auto-number-format: 'GH:Appendix  ';
+	}
+
+	h1.Appendix2
+	{
+		font-size: 16pt;
+		line-height: 17px;
+		color: #3378ff;
+		color: device-cmyk(0.8,0.53,0,0);
+		mc-auto-number-format: 'GA:Appendix {A+}: ';
+	}
+
+	h1.qr
+	{
+		color: #ffffff;
+		mc-auto-number-position: none;
+		mc-auto-number-format: '{ }';
+		margin-left: 0px;
+		background-color: #3b73b9;
+		width: 471px;
+		margin-right: 0px;
+		margin-bottom: 0px;
+		background-image: none;
+		background-repeat: repeat;
+		vertical-align: baseline;
+		border-bottom-color: #ffffff;
+		border-bottom-style: solid;
+		border-bottom-width: 0px;
+		border-top-style: none;
+		border-top-width: 0px;
+		margin: 0px;
+		padding: 10px;
+		padding-left: 15px;
+		z-index: 6px;
+		top: 0px;
+		padding-top: 0px;
+		mc-auto-number-class: ChapAutoNum;
+		mc-hyphenate: never;
+		font-size: 26pt;
+		line-height: 28pt;
+	}
+
+	h1.releaseNotes
+	{
+		mc-auto-number-position: none;
+		margin-right: 0px;
+		margin-left: -132px;
+	}
+
+	h2
+	{
+		color: #3378ff;
+		color: device-cmyk(0.8,0.53,0,0);
+		font-weight: normal;
+		line-height: 18pt;
+		vertical-align: baseline;
+		border-bottom-color: #ffffff;
+		border-bottom-style: solid;
+		border-bottom-width: 0px;
+		mc-auto-number-position: float-left;
+		mc-hyphenate: never;
+		margin-bottom: 16px;
+		margin-top: 25px;
+		font-size: 18pt;
+	}
+
+	h3
+	{
+		color: #3378ff;
+		color: device-cmyk(0.8,0.53,0,0);
+		font-weight: normal;
+		mc-heading-level: 0;
+		margin-bottom: 16px;
+		margin-top: 22px;
+		font-size: 14pt;
+	}
+
+	div.breadcrumb
+	{
+		float: left;
+		font-size: 11pt;
+		font-weight: bold;
+		color: #3378ff;
+		color: device-cmyk(0.8,0.53,0,0);
+		margin-left: -150px;
+		margin-top: 5px;
+		mc-hyphenate: never;
+		width: 100px;
+		font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	}
+
+	div.breadcrumb_list
+	{
+		float: left;
+		font-size: 10pt;
+		font-weight: bold;
+		color: #3378ff;
+		color: device-cmyk(0.8,0.53,0,0);
+		margin-left: -170px;
+		margin-top: 5px;
+		mc-hyphenate: never;
+		width: 120px;
+		font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	}
+
+	div.breadcrumb_releasenotes
+	{
+		float: left;
+		font-size: 11pt;
+		font-weight: bold;
+		color: #3378ff;
+		color: device-cmyk(0.8,0.53,0,0);
+		width: 90px;
+		margin-left: -130px;
+		mc-hyphenate: never;
+		margin-top: 2.5pt;
+		font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+	}
+
+	span.ChapAutoNum
+	{
+		font-style: normal;
+		letter-spacing: -1px;
+		vertical-align: baseline;
+		font-family: 'GE Inspira Book', Arial, Calibri, sans-serif;
+		color: #3378ff;
+		color: device-cmyk(0.8,0.53,0,0);
+		font-size: 24pt;
+	}
+
+	p.columnbreakbefore
+	{
+		column-break-before: always;
+	}
+
+	p.FrameFooterPageNum
+	{
+		font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+		color: #000000;
+		margin-top: 0px;
+		font-size: 10pt;
+	}
+
+	p.FrameFooterText
+	{
+		color: #000000;
+		mc-auto-number-position: none;
+		mc-auto-number-format: '{ }';
+		font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+		margin-top: 0px;
+		font-size: 10pt;
+	}
+
+	p.FrameHeaderText
+	{
+		margin: 0px;
+		color: #000000;
+		margin-bottom: 8px;
+		font-size: 10pt;
+	}
+
+	p.FrameHeaderTextTable
+	{
+		padding-top: 28px;
+		font-size: 10pt;
+	}
+
+	p.qrtitle
+	{
+		font-size: 14pt;
+		padding-left: 15px;
+		text-indent: 1px;
+		top: 0px;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-bottom: 8px;
+		orphans: 2;
+		widows: 2;
+		color: #ffffff;
+		line-height: normal;
+		font-family: 'GE Inspira', Arial, Calibri, sans-serif;
+		margin-top: 8px;
+		mc-hyphenate: never;
+	}
+
+	p.FooterTopicMaster
+	{
+		font-size: 9pt;
+		mc-auto-number-format: '{ }';
+	}
+
+	p.Footer
+	{
+		line-height: 13px;
+		white-space: nowrap;
+		margin-bottom: 5px;
+		margin-top: 5px;
+		mc-auto-number-format: '{ }';
+	}
+
+	p.Footer2
+	{
+		font-size: 9pt;
+		line-height: 13pt;
+		mc-auto-number-format: '{ }';
+	}
+
+	p.FooterSpaceAboveRight
+	{
+		font-size: 9pt;
+		font-weight: bold;
+	}
+
+	img.MaxWidth100Percent
+	{
+		border-bottom-style: none;
+		border-left-style: none;
+		border-right-style: none;
+		border-top-style: none;
+	}
+
+	img.MaxWidth50Percent
+	{
+		border-bottom-style: none;
+		border-left-style: none;
+		border-right-style: none;
+		border-top-style: none;
+	}
+
+	img.MaxWidth75Percent
+	{
+		border-bottom-style: none;
+		border-left-style: none;
+		border-right-style: none;
+		border-top-style: none;
+	}
+
+	MadCap|breadcrumbsProxy
+	{
+		mc-breadcrumbs-prefix: ' ';
+		mc-breadcrumbs-divider: ' > ';
+	}
+
+	p.ContentsHeadingPrint
+	{
+		margin-bottom: 60px;
+	}
+
+	p.GlossaryPrintHead
+	{
+		margin-bottom: 60px;
+	}
+
+	p.IndexPrintHead
+	{
+		margin-bottom: 80px;
+	}
+
+	p.Copyright
+	{
+		line-height: 12pt;
+		padding: 0px;
+	}
+
+	p.CopyrightHeading
+	{
+		font-size: 9pt;
+		line-height: 12pt;
+		margin-top: 0px;
+		padding-top: 20px;
+	}
+
+	p.CopyrightIndent
+	{
+		line-height: 12pt;
+		padding: 0px;
+	}
+
+	p.CopyrightAddress
+	{
+		padding: 0px;
+	}
+
+	table
+	{
+		column-break-inside: avoid;
+		frame-break-inside: avoid;
+	}
+
+	img.ReduceButtonSize
+	{
+		
+	}
+
+	MadCap|xref
+	{
+		mc-format: 'Refer to {quote}{paratext}{quote} on page {page}';
+	}
+}
+
+@media non-print
+{
+	MadCap|breadcrumbsProxy
+	{
+		color: #3378ff;
+	}
+}
+
+MadCap|breadcrumbsProxy
+{
+	color: #3378ff;
+}
+

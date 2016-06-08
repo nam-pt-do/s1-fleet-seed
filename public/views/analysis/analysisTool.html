@@ -1,0 +1,77 @@
+<div class="tray-inner">
+    <ul class="filter-list-wrapper clearfix">
+        <li class="pull-left">
+            <select ng-model="selectedPlotOption"
+                    data-ng-change="resetChildOption()"
+                    ng-options="tool.label for tool in plotOptions" ></select>
+        </li>
+        <li class="pull-left">
+            <select ng-model="selectedPlotObj"
+                    data-ng-change="templateCheck()"
+                    ng-options="plotObj.presetName for plotObj in selectedPlotOption.data">
+                    <option value="">Select a Plot Session</option>
+                    </select>
+        </li>
+    </ul>
+    <!-- <ul ng-show="selectedPlotOption.label === 'Template' && selectedPlotObj.presetName" class="filter-list-wrapper clearfix">
+    <!--<ul class="filter-list-wrapper clearfix">-->
+
+        <!--<li class="pull-left">-->
+            <!--<select ng-model="selectedCustomer" ng-options="customerObj.customerId for customerObj in customerData.customers" ng-show="view"></select>-->
+            <!--<select  ng-model="selectedCustomer" ng-options="customerObj.customerName for customerObj in customerData.customers" ng-show="!view"></select>-->
+        <!--</li>-->
+
+       <!--  <li class="pull-left">
+            <select ng-show="view" ng-model="selectedSite"
+                    ng-change="updateLineup()"
+                    ng-options="siteObj.siteId for siteObj in selectedCustomer.sites">
+                <option value="">{{customerData.defaultSite}}</option>
+            </select>
+            <select ng-show="!view" ng-model="selectedSite"
+                    ng-change="updateLineup()"
+                    ng-options="siteObj.siteName for siteObj in selectedCustomer.sites">
+                <option value="">{{customerData.defaultSite}}</option>
+            </select>
+        </li>
+        <li class="pull-left">
+            <select ng-show="view" ng-model="selectedLineup"
+                    ng-change="checkTplFltr()"
+                    ng-options="lineupObj.lineupId for lineupObj in selectedSite.lineups">
+                <option value="">{{customerData.defaultLineup}}</option>
+            </select>
+            <select ng-show="!view" ng-model="selectedLineup"
+                    ng-change="checkTplFltr()"
+                    ng-options="lineupObj.lineupName for lineupObj in selectedSite.lineups">
+                <option value="">{{customerData.defaultLineup}}</option>
+            </select>
+        </li> -->
+
+   <!--  </ul> -->
+    <div class="clearfix">
+        <!--button lang text="analysis.button.clearallchart"
+                ng-click="cancelFilter()"
+                testid="fleetview_Filter_Cancel_Btn"
+                class="btn btn-inverse pull-left clear-all-chart">Clear all chart</button-->
+        <div class="btn-group pull-right">
+            <button lang text="fleetview.filtercancelbtn"
+                    ng-click="openMenu.openMenu = true"
+                    testid="fleetview_Filter_Cancel_Btn"
+                    class="btn btn-inverse">Cancel</button>
+
+            <button lang text="fleetview.filterapplybtn"
+                    ng-click="applyFilter()"
+                    testid="fleetview_Filter_Apply_Btn"
+                    data-ng-disabled="!(selectedPlotObj.presetName && canApplyFltr)"
+                    class="btn btn-primary" >Apply</button>
+        </div>
+    </div>
+
+</div>
+
+
+<style>
+    .clear-all-chart{
+        margin-left : 25px;
+    }
+
+</style>

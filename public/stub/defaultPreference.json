@@ -1,0 +1,32 @@
+{
+    "customerId"            :   "",
+    "fleetId"               :   "default",
+    "tzOption"              :   "tzGmt",
+    "autoRefresh"           :   "off",
+    "refreshInterval"       :   5,
+    "hierarchyOption"       :   "System1",
+    "overviewStyle"         :   "viewGrid",
+    "widgetStyle"           :   "gaugeWidget",
+    "index"                 :   {
+                                    "name"                      :   "on",
+                                    "s1MachinePIndex"           :   "on",
+                                    "s1MachineCMIndex"          :   "on",
+                                    "s1MachineCIndex"           :   "off",
+                                    "s1InstProtectionIndex"     :   "on",
+                                    "s1InstCMIndex"             :   "on",
+                                    "s1InstCIndex"              :   "off",
+                                    "ssPIndex"                  :   "on",
+                                    "tpIndex"                   :   "on"
+                                },
+    "widgetSort"            :   "name",
+    "overviewGridSort"      :   "severity",
+    "overviewGridSortOrder" :   "desc",
+    "gridSize"              :   10,
+    "alarmChart"            :   "alarm-plot",
+    "alarmGridSize"         :   10,
+    "alarmsGridSortOrder"   :   "desc",
+    "alarmsGridSort"        :   "lastOccurrenceTime",
+    "analysisVariables"     :   {},
+    "plotSelections"        :   {},
+    "hideFeatures"          :   "true"
+}

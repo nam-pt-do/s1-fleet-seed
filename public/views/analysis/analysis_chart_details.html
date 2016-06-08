@@ -1,0 +1,86 @@
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancelAnalysisChartDetails(this)">×</button>
+        <h3 lang text="analysis.model.chartdetail.title"></h3>
+    </div>
+    <div class="modal-body no-padding-lr plot-chart">
+        <div id="analysis-details" class="table responsive table-bordered table-no-highlight dataTable" role="grid">
+            <div class="tbl-wrapper">
+                <table cellpadding="0" cellspacing="0" border="0"
+                   class="table table-bordered table-no-highlight dataTable" data-table-name="chart-plot-0"
+                   id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
+                <thead>
+                <tr class="nw" role="row">
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="analysis-details" rowspan="1"
+                        colspan="1" aria-label="Standard tags: activate to sort column ascending" style="width: 0px;" lang text="analysis.tableheader.centraltagname">
+                        Std tag name
+                    </th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="analysis-details" rowspan="1"
+                        colspan="1" aria-label="Customer tags: activate to sort column ascending" style="width: 0px;" lang text="analysis.tableheader.centraltagdesc">
+                        Std tag desc
+                    </th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="analysis-details" rowspan="1"
+                        colspan="1" aria-label="Unit: activate to sort column ascending" style="width: 0px;" lang text="analysis.tableheader.centraltagunit">Std tag unit
+                    </th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="analysis-details" rowspan="1"
+                        colspan="1" aria-label="Value: activate to sort column ascending" style="width: 0px;" lang text="analysis.tableheader.stdtagname">Cust tag name
+                    </th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="analysis-details" rowspan="1"
+                        colspan="1" aria-label="Min value: activate to sort column ascending" style="width: 0px;" lang text="analysis.tableheader.stdtagdec">Cust tag desc
+                    </th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="analysis-details" rowspan="1"
+                        colspan="1" aria-label="Max value: activate to sort column ascending" style="width: 0px;" lang text="analysis.tableheader.stdtagunit">Cust tag unit
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody role="alert" aria-live="polite" aria-relevant="all">
+                <tr ng-class="{even: $even, odd: $odd}"
+                    data-ng-repeat="tag in plottedCharts[selectedPlottedChartForDetails].tags | startFrom:(currentPage-1)*pageSize | limitTo:pageSize">
+                    <td class=" ">
+                        <span ng-show="userView.iCenter">{{tag.centralTagName}}</span>
+                        <span ng-show="!userView.iCenter">{{tag.custTagName}}</span>
+                    </td>
+                    <td class=" ">{{tag.centralTagDesc}}</td>
+                    <td class=" ">{{tag.centralTagUom}}</td>
+                    <td class=" ">{{tag.stdTagName}}</td>
+                    <td class=" ">{{tag.stdTagDesc}}</td>
+                    <td class=" ">{{tag.stdTagUom}}</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="table-controls">
+                <div class="pull-left">
+                    <div id="DataTables_Table_1_length" class="dataTables_length">
+                        <label>
+                            <span lang text="fleetview.showlb"></span>
+                            <select  size="1" data-ng-model="pageSize">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                            </select>
+                            <span lang text="fleetview.entrieslb"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div class="dataTables_info" id="DataTables_Table_1_info">
+                        <strong>{{(currentPage - 1)*pageSize + 1 }}</strong>
+                        -
+                        <strong ng-if="currentPage < numPages">{{(currentPage)*pageSize}}</strong>
+                        <strong ng-if="currentPage === numPages">{{plottedCharts[selectedPlottedChartForDetails].tags.length}}</strong>
+                        <span lang text="fleetview.oflb"></span>
+                        <strong>{{plottedCharts[selectedPlottedChartForDetails].tags.length}}</strong>
+                    </div>
+                    <div class="dataTables_paginate paging_bootstrap pagination" ng-show="plottedCharts[selectedPlottedChartForDetails].tags.length > pageSize"
+                         pagination total-items="plottedCharts[selectedPlottedChartForDetails].tags.length" items-per-page="pageSize"
+                         num-pages="numPages" max-size="0"  next-text=">" previous-text="<" page="currentPage">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer" style="margin-top:10px; padding-top:10px; clear:both;">
+        <div class="pull-right">
+            <a class="btn btn-info" ng-click="cancelAnalysisChartDetails(this)" lang text="analysis.button.close">Close</a>
+        </div>
+    </div>

@@ -1,0 +1,24 @@
+{
+  "data": {
+    "status": 200,
+    "response": [
+        {"name":"lastOccurrenceTime", "label":"Last Occurred", "type":"dateTime", "show":true, "sort":"sorting_asc"}
+        ,{"name":"firstOccurrenceTime", "label":"First Occurred", "type":"dateTime", "show":false}
+        ,{"name":"dataSource", "label":"Data Source", "type":"string", "show":true }
+        ,{"name":"normalizedSeverityLevel", "label":"Fleet Level", "type":"segment", "show":true}
+        ,{"name":"severityLevel", "label":"Source Level", "type":"number", "show":false}
+        ,{"name":"assetNamePath", "label":"Asset Path", "type":"string", "show":true}
+        ,{"name":"trainMachine", "label":"Asset", "type":"string", "show":true}
+        ,{"name":"point", "label":"Point/Variable", "type":"string", "show":true}
+        ,{"name":"type", "label":"Type/Message", "type":"string", "show":true}
+        ,{"name":"fleetCategoryEnum", "label":"Category", "type":"string", "show":false}
+        ,{"name":"count", "label":"Count", "type":"number", "show":true}
+        ,{"name":"density", "label":"Density(%)", "type":"number", "show":true}
+        ,{"name":"eventStateEnum", "label":"Active", "type":"string", "show":true}
+        ,{"name":"acknowledged", "label":"Acknowledged", "type":"string", "show":false}
+        ,{"name":"acknowledgedDateTime", "label":"Time of Acknowledgement", "type":"string", "show":false}
+        ,{"name":"eventId", "label":"Event ID", "type":"string", "show":false}
+        ,{"name":"sourceId", "label":"Source ID", "type":"string", "show":false}
+    ]
+  }
+}

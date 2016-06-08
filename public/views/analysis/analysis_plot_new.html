@@ -1,0 +1,170 @@
+    <div class="modal-header" style="position:relative;">
+        <button type="button" class="close" ng-click="cancelAnalysisPlotNewChart(this)">×</button>
+        <h3 style="width:90px;">New Chart</h3>
+        <div class="pull-left hdr-loader" style="position:absolute; top:27%; left:110px;" ng-show="showSpinner">
+            <i class="icon-spinner icon-spin"></i>
+            <span>{{spinnerText}}</span>
+        </div>
+    </div>
+    <div class="modal-body no-padding-lr plot-chart">
+	    <div class="span11 marginLt0">
+	    	<accordion  close-others="false">
+	    		
+		    	<accordion-group heading="Plot Selection" is-open="true">
+			      <div class="fluid messages" ng-if="displayMessage">
+		            <div class="alert alert-success">
+		                <button type="button" class="close" ng-click="clearMessage()">×</button>
+		                {{message}}
+		            </div>
+		        </div>
+		        <div class="clearfix analysis-filter-btn-group marginRt0 marginLt0 paddingRt0" style="padding-left:0px !important; padding-right:0px !important;">
+		            <!--div hierarchy-selector call-back="selectionChanged"></div-->
+		            
+		            <div class="pull-left">
+				        <div class="btn-group" dropdown>
+				            <button type="button" class="btn btn-primary btn-large">{{cId ||'Select '}} Customer
+				            	</button>
+				            <button type="button" class="btn btn-primary btn-large  dropdown-toggle">
+				                <i class="icon-chevron-down"></i>
+				            </button>
+				            <ul class="dropdown-menu myddmenu fixHeight" role="menu">
+				                <li ng-if="!currentUser.customers || currentUser.customers.length ==0" style="padding: 5px;">No Customer
+				                    Available
+				                </li>
+				                <li ng-repeat="customer in currentUser.customers"
+				                    ng-if="currentUser.customers && currentUser.customers.length >0">
+				                    <a ng-click="setCustomer(customer.key);customerName =customer.name">{{customer.name}}</a></li>
+				            </ul>
+				        </div>
+				    </div> 
+		            <asset-hierarchy
+		            	customer-id="{{customerId}}"     
+			            enterprise-list="{{enterpriseList}}"
+			            selected-enterprise="selectedEnterprise"
+			            selected-node-name="{{selectedNodeName}}"
+			            node-severity="{{nodeSeverity}}"
+			            node-no-datapoints="{{nodeNoDatapoints}}"
+			            node-type="{{nodeType}}"
+			            get-enterprise-nodes="getEnterpriseNodes(node)"
+			            get-enterprises="getEnterprises()"
+			            show-drop-down-spinner="{{showDropDownSpinner}}"
+					    >
+					</asset-hierarchy>
+		        </div>
+		        <div class="module-body" style="background-color:red;">
+		            <div style="height:100%;" class="marginLt0 pull-left span6">
+		                <table class="table">
+		                        <thead>
+		                        <tr>
+		                            <th ng-if="enterpriseType == 'System1'">Points</th>
+		                        	<th ng-if="enterpriseType == 'SmartSignal'" colspan="2">Tags</th>
+		                        	<th ng-if="enterpriseType == ''">&nbsp;</th>
+		                        </tr>
+		                        </thead>
+		                    </table>
+		                    <div style="height: 200px;overflow-y: auto; margin-top:-20px;border: solid #BCBCBC; border-width: 0px 1px 1px;">
+		                        <table class="table dataTable table-hover table-condensed" data="availablePts" ng-show="enterpriseType == 'System1'" ng-hide="enterpriseType != 'System1'"> 
+		                            <tbody>
+		                            <tr data-ng-repeat="point in availablePts track by $index" ng-click="setSelected(this)" class="{{selected}}">
+		                                <td style="border: 0px;">{{point}}</td>
+		                            </tr>
+		                            </tbody>
+		                        </table>
+		                        <table class="table" data="availablePts"  ng-show="enterpriseType == 'SmartSignal'" ng-hide="enterpriseType != 'SmartSignal'"> 
+		                            <tbody>
+		                            <tr data-ng-repeat="point in availablePts track by $index" ng-click="setSelected(this)" class="{{selected}}">
+		                                <td style="width: 8%;">
+		                                    <input type="checkbox" name="group" ng-model="point.selected"
+		                                           id="{{point.id}}" ng-click="onSelectionOfTagInPlotNewChart(point)"/>
+		                                </td>
+		                                <td>{{point.name}}</td>
+		                            	
+		                            </tr>
+		                            </tbody>
+		                        </table>
+								<div ng-hide="availablePts.length > 0" style="text-align: center;line-height: 200px; background-color: #fafafa; text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);font-size: 24px; color:#999">No points or tags selected</div>
+		                    </div>
+		            </div>
+		            <div style="height:100%;" class="pull-left span4" ng-show="enterpriseType == 'System1'" ng-hide="enterpriseType != 'System1'">
+		                <table class="table">
+		                        <thead>
+		                        <tr>
+		                            
+		                            <th colspan="2"> Variables</th>
+		                        </tr>
+		                        </thead>
+		                    </table>
+		                    <div style="height: 200px;overflow-y: auto; margin-top:-20px;">
+		                        <table class="table table-bordered" data="availableVars" ng-if="availableVars.length>0">
+		                            <tbody>
+		                            <tr data-ng-repeat="variable in availableVars">
+		                                <td style="width: 8%;">
+		                                    <input type="checkbox" name="group" ng-model="variable.selected"
+		                                           id="{{variable.nodeId}}" ng-click="onSelectionOfTagInPlotNewChart(variable)"/>
+		                                </td>
+		                                <td>{{variable.name}}</td>
+		                            </tr>
+		                            </tbody>
+		                        </table>
+		                        <div ng-hide="availableVars.length > 0" style="text-align: center;line-height: 198px; background-color: #fafafa; text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);font-size: 24px; color:#999; border: 1px solid #bcbcbc;">No variables selected</div>
+		                    </div>
+		            </div>
+		        </div>
+			    </accordion-group >
+			    <accordion-group is-open="status.open">
+			      <accordion-heading>
+			        Current Selections: {{selectedTags.length}} selected <i class="pull-right" ng-class="{'icon-chevron-down': status.open, 'icon-chevron-right': !status.open}"></i>
+			      </accordion-heading>
+			      <div class="selected-tags-overview marginLt0 span10" ng-if="selectedTags.length>0">
+			    	<table class="selected-tags-overview-table table table-bordered">
+			    		<thead>
+			    			<tr>
+			    				<th>Path</th>
+			    				<th>Variable/Tag</th>
+			    				<th>Action</th>
+			    			</tr>
+			    		</thead>
+			    		<tbody>
+							<tr ng-repeat="tag in selectedTags">
+								<td  class="span7">{{tag.namepath}}</td>
+								<td  class="span2">{{tag.nodeName}}</td>
+								<td  class="span1"><a class="btn" data-ng-click="onDeleteSelectedTag(tag)">Delete</a></td>
+							</tr>    			
+			    		</tbody>
+			    	</table>
+			    </div>
+			    </accordion-group >
+		    </accordion>
+	    </div>
+	    
+    </div>
+    
+    <div class="modal-footer">
+        <a class="btn" data-ng-click="cancelAnalysisPlotNewChart(this)">Cancel</a>
+        <a class="btn btn-info" id="plot" data-ng-click="analysisPlotNewChart(this)" ng-disabled="selectedTags.length==0">Plot new chart</a>
+    </div>
+    <style>
+        .modal-footer{
+            margin-top:10px;
+            padding-top:10px;
+            clear:both;
+        }
+        .fluid.messages{
+            margin-bottom:5px;
+            text-align: left;
+        }
+        table.dataTable tr .tag-select-col{
+            padding:0 10px;
+            margin:0px;
+            width:30px;
+        }
+        table.dataTable tr .tag-central{
+            padding:0 10px;
+            margin:0px;
+            width:250px;
+        }
+        .analysis-filter-btn-group {
+            padding : 0 15px 15px;
+        }
+
+    </style>

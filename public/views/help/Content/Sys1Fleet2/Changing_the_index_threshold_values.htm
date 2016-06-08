@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="System1Fleetv20_online_help.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Dashboard Module">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Changing the Index Threshold Values</title>
+        <link href="../Resources/TableStyles/gescoe/note.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/gescoestyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../System1Fleetv20_online_help.htm#Sys1Fleet2/Changing_the_index_threshold_values.htm">Open topic with navigation</a>
+        </p>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix"></span><a class="MCBreadcrumbsLink" href="dashboard.htm">Dashboard Module</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Changing the Index Threshold Values</span>
+        </div>
+        <h2 class="NoPageBreakBefore">Changing the Index Threshold Values</h2>
+        <p>System 1 Fleet uses index threshold values to color-code the health status of enterprises, folders and nodes in Health Index View. Customers can configure different threshold values for each enterprise.</p>
+        <p>To change the index threshold values,complete the following steps;</p>
+        <ol>
+            <li class="ol1" value="1">Launch the pgadmin3 client tool under C:\Program Files (x86)\Fleet2.0\fleetdb\pgsql\bin\ pgAdmin3.exe.</li>
+            <li class="ol1" value="2">Connect to the <span class="System1Fleetv2OtherProdName">System 1 Fleet Management</span> database. To log in, enter the User ID and Password assigned during database installation.</li>
+            <li class="ol1" value="3">Execute the following queries with appropriate values. Replace &lt;EnterpriseId&gt; in the query with the actual enterprise identifier.</li>
+        </ol>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/gescoe/note.css');" class="TableStyle-note" cellspacing="0">
+            <col class="TableStyle-note-Column-Column1" />
+            <col class="TableStyle-note-Column-Column2" />
+            <tbody>
+                <tr class="TableStyle-note-Body-Body1">
+                    <td class="TableStyle-note-BodyB-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-note-BodyA-Column2-Body1">Perform severity mapping changes immediately after installing <span class="System1Fleetv2OtherProdName">System 1 Fleet Management</span>. After  events are synced, changing severity mapping might result in an erroneous display.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="code">update fms.severity_mapping set normalized_severity = 1 where source_system = 'SYSTEM1' and source_system_severity = 1;</p>
+        <p class="code">update fms.severity_mapping set normalized_severity = 2 where source_system = 'SYSTEM1' and source_system_severity = 2;</p>
+        <p class="code">update fms.severity_mapping set normalized_severity = 2 where source_system = 'SYSTEM1' and source_system_severity = 3;</p>
+        <p class="code">update fms.severity_mapping set normalized_severity = 3 where source_system = 'SYSTEM1' and source_system_severity = 4;</p>
+        <p class="code">update fms.severity_mapping set normalized_severity = 3 where source_system = 'SMARTSIGNAL' and source_system_severity = 1;</p>
+        <p class="code">update fms.severity_mapping set normalized_severity = 2 where source_system = 'SMARTSIGNAL' and source_system_severity = 2;</p>
+        <p class="code">update fms.severity_mapping set normalized_severity = 2 where source_system = 'SMARTSIGNAL' and source_system_severity = 3;</p>
+        <p class="code">update fms.severity_mapping set normalized_severity = 1 where source_system = 'SMARTSIGNAL' and source_system_severity = 4;</p>
+        <p class="code">update fms.severity_mapping set normalized_severity = 1 where source_system = 'SMARTSIGNAL' and source_system_severity = 5;</p>&#160;<p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkBottom"><a href="../../System1Fleetv20_online_help.htm#Sys1Fleet2/Changing_the_index_threshold_values.htm">Open topic with navigation</a></p></body>
+</html>

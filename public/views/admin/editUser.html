@@ -1,0 +1,91 @@
+<div class="modal-header">
+  <h3>Edit User</h3>
+</div>
+<div class="modal-body">
+
+  <form class="form-vertical" name="editUserForm">
+
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="control-group">
+            <div class="control-label">Username </div>
+            <div class="controls">
+                <input type="text" ng-model="user.newUserId" name="userId" ng-minlength="4" ng-maxlength="20" ng-disabled="true" required>
+                <span class="label label-warning" ng-show="editUserForm.userId.$error.required">Required</span>
+                <span class="label label-warning" ng-show="!editUserForm.userId.$error.required && (editUserForm.userId.$error.minlength || editUserForm.userId.$error.maxlength)">
+                      Must be between 4 and 20 characters.</span>
+            </div>
+        </div>
+        <div class="control-group posRelative">
+            <div class="control-label">Name </div>
+            <div class="controls">
+                <input type="text" ng-model="user.userName" name="userName" required>
+                <span class="label label-warning" ng-show="editUserForm.userName.$error.required">Required</span>
+            </div>
+        </div>
+        <div class="control-group posRelative">
+          <div class="control-label">Role </div>
+          <div class="controls">
+                <select ng-model="user.userRole" ng-options="role.id as role.name for role in userRoles" name="role" ng-disabled="{{disableRoles}}">
+                </select>
+              <span class="label label-warning" ng-show="editUserForm.role.$error.required">Required</span>
+          </div>
+        </div>
+        <div class="control-group posRelative">
+            <div class="control-label">Email </div>
+            <div class="controls">
+                <input type="email" ng-model="user.userEmail" name="email" required ng-pattern ="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"/>                
+                <span class="label label-warning" ng-show="editUserForm.email.$error.required">Required</span>
+                <span class="label label-warning" ng-show="!editUserForm.email.$error.required && (editUserForm.email.$error.email || editUserForm.email.$error.pattern)"> Invalid Email</span>
+         
+            </div>
+        </div>
+
+      </div>
+      <div class="span6">
+        <label>Customer Access </label>
+        <div class="control-group checkboxes" ng-repeat="customer in currentUser.customers">
+          <label class="checkbox">
+            <input type="checkbox" ng-change="sync(bool, customer)" ng-model="bool" ng-checked="isChecked(customer.key)" name="checkboxes">
+              {{customer.name}}
+          </label>
+        </div>
+          <span class="label label-warning" ng-show="editUserForm.checkBoxes.$error.required || selectedCustomers.length ==0">Required</span>
+      </div>
+    </div>
+  <div class="row-fluid">
+    <div class="span6">
+        <div class="posRelative"><a ng-click="setEditPswd()" ng-if="!editPswd">Reset Password</a></div>
+        <div class="control-group" ng-if="editPswd">
+            <div class="control-label">New Password </div>
+            <div class="controls">
+                <input type="password" ng-model="user.newPassword" required name="newPassword"
+                       ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" >
+                <span ng-show="editUserForm.newPassword.$error.required" class="label label-warning">Required</span>
+                <span class="label label-warning" ng-show="!editUserForm.newPassword.$error.required && (editUserForm.newPassword.$error.minlength || editUserForm.newPassword.$error.maxlength)">
+                  Passwords must be between 8 and 20 characters.</span>
+                <span class="label label-warning" ng-show="!editUserForm.newPassword.$error.required && !editUserForm.newPassword.$error.minlength && !editUserForm.newPassword.$error.maxlength && editUserForm.newPassword.$error.pattern">
+                <p>Must contain one lower &amp; uppercase letter </p><p> and one non-alpha character (number or symbol).</p></span>
+            </div>
+            <div class="control-label">Re-enter New Password </div>
+            <div class="controls">
+                <input type="password" name="confirmPassword" ng-model="user.confirmPassword" id="confirmPassword"
+                       password-match="user.newPassword" required />
+                <span class="label label-warning" ng-show="editUserForm.confirmPassword.$error.required">Please re-enter password.</span>
+                <span class="label label-warning" ng-show="!editUserForm.confirmPassword.$error.required && editUserForm.confirmPassword.$error.unique ">Passwords do not match.</span>
+            </div>
+            <div class="controls">
+                <div class="control-label"><a ng-click="setEditPswd()">Don't Change Password</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </form>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning pull-left" ng-click="deleteUser(user)" ng-init="showDelete=false" ng-if="showDelete">Delete User</button>
+    <button class="btn cancel" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="ok()" ng-disabled="editUserForm.$invalid || selectedCustomers.length ==0">Save</button>
+</div>

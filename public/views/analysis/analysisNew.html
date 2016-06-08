@@ -1,0 +1,393 @@
+<div class="fluid messages" style="margin-bottom:5px;text-align: left;" ng-if="message">
+    <div class="alert alert-{{message.type}}">
+        <button type="button" class="close" ng-click="clearMessage()">×</button>
+        <strong>{{message.title}}</strong>
+        {{message.content}}
+    </div>
+</div>
+<!-- <div class="clearfix header-content" ng-hide="fullScreenMode.visible">
+    <div class="page-header pull-left">
+        <h1 class="pull-left voice-brand">Analysis</h1>
+    </div>
+    <div class="pull-right">
+        <ul class="nav nav-pills pull-left padding-t">
+            <li class="subtabs-fleetview" ng-repeat="item in subtabs"
+                testid="{{item.testid}}" ng-class="{active: sbTabClass(item.id)}" ng-cloak="">
+                <a ui-shref=".{{item.link}}" ng-click="btnAction(item)">
+                    <lang text="{{item.label}}"></lang>
+                </a>
+            </li>
+        </ul>
+        <div class="top-row-selector input-append pull-right btn-group" id="period-selector">
+            <span class="btn">{{staticData.buttons.timeRangeOptions[analysisContext.selectedTimeIndex].label}}</span>
+            <button class="btn dropdown-toggle" data-toggle="dropdown" data-ng-disabled="plottedCharts.length === 0">
+                <i class="icon-calendar"></i>
+            </button>
+            <ul class="pull-right dropdown-menu">
+                <li  ng-repeat="btn in staticData.buttons.timeRangeOptions" ng-class="{'active': $index === analysisContext.selectedTimeIndex}">
+                    <a href="#"
+                       id="time{{btn.label}}"
+                       ng-click="applyTimeFilter($index, $event)"
+                       analytics-on
+                       analytics-event="click"
+                       analytics-category="button"
+                       analytics-label="Time Range : {{btn.label}}">
+                        {{btn.label}}
+                    </a>
+                </li>
+            </ul>
+            <div a-datepicker
+                 datepicker-on="customDate"
+                 ng-show="customDate.isDatepickerVisible"
+                 class="pull-left"
+                 analytics-on
+                 analytics-event="click"
+                 analytics-category="button"
+                 analytics-label="Time Range : Custom">
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="row" id="analysis-view">
+    <div class="span12" ng-hide="fullScreenMode.visible" style="margin-bottom: 0">
+        <div class="module clearfix" id="analysis-toolbar" style="margin-bottom:0">
+            <div class="pull-left col-md-4 col-sm-4 marginBt0 marginLt0">
+                <span class="customHeader voice-brand pull-left">Analysis {{presetName}}{{changeStatus}}</span>
+                <div class="pull-left hdr-loader" ng-show="loading">
+                    <i class="icon-spinner icon-spin"></i>
+                    <em class="hidden-xs hidden-sm">Fetching Data...</em>
+                </div>
+            </div>
+            <div class="pull-right text-left clearfix">
+                <div class="btn-group">
+                    <!-- PRESET DROP DOWN-->
+                    <button class="btn btn-primary" ng-click="chartTool.openMenu = !chartTool.openMenu"
+                        tooltip="Choose an existing plot session" tooltip-append-to-body="true">
+                        Open Plot Session
+                    </button>
+                </div>
+            <!-- PLOT NEW CHART-->
+                <div class="btn-group">
+                    <button class="btn btn-info" ng-click="openAnalysisPlotNewChart()"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: Plot new chart"
+                            rel="tooltip" title=""
+                            data-original-title="Plot new chart"
+                            tooltip="Plot new chart" tooltip-append-to-body="true">
+                            New Plot 
+                    </button>
+                </div>
+                <!--<pre>{{hasMultipleCustomer}}</pre>-->
+                <div class="btn-group" ng-if="!showAllBtns">
+                    <button class="btn" data-action-id="savePreset"
+                            ng-click="savePreset()"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: save preset as new"
+                            data-ng-disabled="presetType != 'usr'"
+                            tooltip-append-to-body="true">
+                            Save
+                    </button>
+                </div>
+            <!-- JUST SAVE AS -->
+                <div class="btn-group" ng-if="!showAllBtns">
+                    <button class="btn" data-action-id="saveAsPreset"
+                            ng-click="openPresetModal($event)"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            data-ng-disabled="emptyChart"
+                            analytics-label="Analysis: save preset as new"
+                            tooltip-append-to-body="true">
+                            Save As
+                    </button>
+                </div>
+            <!-- SAVE / SAVE AS DROP DOWN-->
+                <!--showSaveAsOnly is false when modifying tags-->
+                <div ng-if="showAllBtns" class="btn-group">
+                    <button class="btn" data-action-id="savePreset"
+                            ng-click="savePreset($event)"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: Save existing preset"
+                            lang text="application.buttons.save">
+                    </button>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"  data-action-id="saveAsPreset"
+                               ng-click="openPresetModal($event)"
+                               analytics-on
+                               analytics-event="click"
+                               analytics-category="button"
+                               tooltip-append-to-body="true"
+                               analytics-label="Analysis: Save preset as new">
+                                Save as
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Reset Zoom -->
+                <div class="btn-group">
+                    <button ng-show="isZoomApplied" class="btn btn-primary"
+                            data-target="#filterstray"
+                            data-toggle="collapse" type="button"
+                            testid="alarms_filterbtn"
+                            ng-click="resetZoom()"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: Reset Zooming">Reset Zoom
+                    </button>
+                </div>
+                 <!-- DELETE PRESET-->
+                <div  class="btn-group">
+                    <button data-action-id="deletePreset"
+                            ng-click="openPresetModal($event)"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: delete preset"
+                            tooltip-append-to-body="true"
+                            data-ng-disabled="!enableDeletePreset && !isSystemPreset || !enableDeletePreset && isAdmin" class="btn">
+                        <span data-action-id="deletePreset">Delete</span>
+                    </button>
+                </div>
+                <div  class="btn-group">
+                    <button data-action-id="clearPlotPreset"
+                            ng-click="clearAllPlots()"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: clear plot preset"
+                            tooltip-append-to-body="true"
+                            data-ng-disabled="emptyChart" class="btn">
+                        <span data-action-id="clearPlotPreset">Clear</span>
+                    </button>
+                </div>
+                <div  class="btn-group">
+                	<div time-range class="marginRt10" ng-if="!showHierarchy"></div>
+                </div>
+                <div  class="btn-group">
+                    <button data-action-id="refreshPlot"
+                            ng-click="refreshPlot($event)"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: refresh plot"
+                            tooltip="Refresh plot" tooltip-append-to-body="true"
+                           class="btn">
+                        <i data-action-id="refreshPlot" class="icon-refresh"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="fullScreenMode.visible" class="clearfix">
+        <button title="Fullscreen"
+                class="btn btn-icon pull-right margin-b-10" data-ng-click="fullScreenMinimize()">
+            <i class="icon-resize-small"></i>
+        </button>
+    </div>
+</div>
+<div class="tray filter-tray fleet top  hidden-phone"
+     id="filterstray" collapse="chartTool.openMenu"
+     analysis-tool
+     load-chart= "loadPresetChart"
+     create-new="createNewPreset()"
+     preset-data="preset"
+     tag-changed="changeStatus"
+     force-load="forceLoadPlot"
+     open-save="PromptSave()"
+     clear-plot="clearAllChartsForNewConfig()"
+     open-menu="chartTool">
+
+</div>
+<div spinner ng-show="loading" class="spinner-wrapper">
+    <span class="spinner-text"lang text="loading"> </span>
+</div>
+<div class="row">
+    <div id="analysis-chart-container" ng-class="{'span12': fullScreenMode.visible === false}">
+        <!-- CHART -->
+          <div data-ng-repeat="plottedChart in plottedCharts" class="module nestable">
+            <div class="pull-left hdr-loader" ng-show="loading">
+                    <i class="icon-spinner icon-spin"></i>
+                    <em class="hidden-xs hidden-sm">Fetching Data...</em>
+            </div>
+            <div class="btn-group margin-r analysis-chart-edit-btn" ng-hide="fullScreenMode.visible">
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle margin-l-10"
+                            data-toggle="dropdown"
+                            ng-disabled="plottedCharts.length === 0"
+                            analytics-on
+                            analytics-event="click"
+                            analytics-category="button"
+                            analytics-label="Analysis: Open export menu">
+                        <i class="icon-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" style="left:-85px;">
+                        <!--li data-ng-repeat="exportOpt in staticData.buttons.exportOptions">
+                            <a ng-click="export($parent.$index)">{{exportOpt.label}}</a>
+                        </li-->
+                        <li>
+                        	<a ng-click="exportTo($index,'image/svg+xml')">Export to SVG</a>
+                            <a ng-click="exportTo($index,'image/png')">Export to PNG</a>
+                            <a ng-click="exportTo($index,'image/jpeg')">Export to JPEG</a>
+                            <a ng-click="exportTo($index,'application/pdf')">Export to PDF</a>
+                        </li>
+                    </ul>
+                </div>
+                <button title="Edit Chart" class="btn hidden-phone"
+                   data-toggle="modal"
+                   ng-click="openAnalysisEditChart($index, plottedChart)"
+                   data-ng-disabled="!plottedChart.response">
+                   <i class="icon-cog"></i>
+               </button>
+            </div>
+            <div class="highcharts-plot-container">
+                <analysis-chart class="clearfix" taginfo="plottedChart" chartobjs='chartobjs' on-zoom='applyZoom'></analysis-chart>
+                    <div class="span11" style="margin-bottom: 0">
+                    <accordion close-others="false">
+                        <accordion-group is-open="status.open">
+                        <accordion-heading>
+                            Failed trend(s): {{(plottedChart.sources|filter:customFilter).length}} <i class="pull-right" ng-class="{'icon-chevron-down': status.open, 'icon-chevron-right': !status.open}"></i>
+                        </accordion-heading>
+                        <div class="selected-tags-overview marginLt0 span10">
+                            <table class="selected-tags-overview-table table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Path</th>
+                                        <th>Variable/Tag</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="failedPlot in plottedChart.sources | filter:customFilter">
+                                        <td  class="span7">{{failedPlot.namepath}}</td>
+                                        <td  class="span2">{{failedPlot.selectedNodeObj.name || failedPlot.name}}</td>
+                                        <td  class="span1">Failed</td>
+                                    </tr>    			
+                                </tbody>
+                            </table>
+                        </div>
+                        </accordion-group >
+                </accordion>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #analysis-chart-container{
+        overflow: hidden;
+    }
+    .highcharts-container, .highcharts-container svg {
+        overflow: visible !important;
+    }
+    .chart-menu {
+        position: absolute;
+        right: -244px;
+        border: 1px solid #ccc;
+        z-index: 100;
+        background: rgb(65, 65, 65);
+        width: 220px;
+        height: 305px;
+        margin-top: -15px;
+        border-radius: 0 5px 5px 0;
+        color: #fff;
+        padding: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+    .chart-menu header{
+        text-align: right;
+    }
+    .chart-menu legend{
+        font-size: 12px;
+        color: #fff;
+    }
+    .chart-menu header button {
+        background: none;
+        border: none;
+        color: #fff;
+    }
+    .chart-menu.show {
+        right:0;
+
+    }
+    .onoff-switch {
+        line-height: 2.5em;
+    }
+
+    .chart-content{
+        /*width : 75%*/
+    }
+    #legend {
+    	width: 285px;
+    	border-collapse: collapse;
+    	table-layout: fixed;
+    }
+    #legend {
+    	margin-top: 5px;
+    }
+    #legend td {
+    	border: 1px solid #ccc;
+    	padding: 5px;
+    	word-break: break-all;
+    }
+     
+    /*
+    div#legend {
+            padding: 30px 5px 20px 0px;
+            width : 24.5%;
+        }
+        #legend >li {
+            border: 1px solid #CCCCCC;
+            padding: 0 3px;
+            padding-left: 0px;
+            list-style: none;
+            border-top: 0;
+        }
+        #legend >li:hover{
+            cursor: pointer;
+        }
+        #legend >li:first-child {
+            border-top: 1px solid #CCCCCC;
+        }
+        #legend >li span {
+            padding-top: 2px;
+            padding-left: 5px;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+        
+        #legend >li i + span {
+            border-right: 1px solid #CCCCCC;
+            border-left: 1px solid #CCCCCC;
+            width: 70%;
+            display: inline-block;
+            padding-right: 10px;
+            word-break: break-all;
+            line-height: 1em;
+            padding: 5px;
+        }
+        #legend i.plot-index {
+            padding: 9px 4px;
+            border-right: 1px solid #CCCCCC;
+            vertical-align: middle;
+        }
+        #legend i.icon-minus {
+            padding: 5px;
+        }
+        #legend li.disabled {
+            color : #cccccc !important;
+        }*/
+    
+
+</style>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="System1Fleetv20_online_help.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Changing Performance Thresholds per Machin</title>
+        <link href="../Resources/TableStyles/gescoe/note.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/gescoestyles.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../System1Fleetv20_online_help.htm#Sys1Fleet2/Changing_performance_thresholds_per_machine.htm">Open topic with navigation</a>
+        </p>
+        <h2 class="NoPageBreakBefore">Changing Performance Thresholds per Machine</h2>
+        <p>The thermal performance index threshold for each machine can be configured based on the performance of the machine. </p>
+        <p>To change the thermal performance for a machine with node ID (22978) and enterprise ID ‘Platform_ea0c98ea-4805-4113-bad7-409810c77b07’, execute the following SQL commands in the pgadmin console:</p>
+        <ol>
+            <li style="font-family: 'GE Inspira';" value="1">update fms.health_index set</li>
+            <li style="font-family: 'GE Inspira';" value="2">tp_med = 85.0,</li>
+            <li style="font-family: 'GE Inspira';" value="3">tp_high = 91.0</li>
+        </ol>
+        <p style="font-family: 'GE Inspira';">where path = 'Platform_ea0c98ea-4805-4113-bad7-409810c77b07/100/238/8267/22911/22919/22974/22978/';</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/gescoe/note.css');" class="TableStyle-note" cellspacing="0">
+            <col class="TableStyle-note-Column-Column1" />
+            <col class="TableStyle-note-Column-Column2" />
+            <tbody>
+                <tr class="TableStyle-note-Body-Body1">
+                    <td class="TableStyle-note-BodyB-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-note-BodyA-Column2-Body1">
+                        <p>NOTE : The path of the node must be the fully-qualified path of the node, including the node ID’s for all intermediate nodes. To query The mode path for a given node ID, issue the following SQL select path from fms.node,where enterprise_id = 'PlatformNERv15_ea0c98ea-4805-4113-bad7-409810c77b07' and id = '22978';</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>&#160;<p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkBottom"><a href="../../System1Fleetv20_online_help.htm#Sys1Fleet2/Changing_performance_thresholds_per_machine.htm">Open topic with navigation</a></p></body>
+</html>

@@ -1,0 +1,496 @@
+<div class="module">
+    <div>
+        <div class="pull-left">
+			<div>
+				<span class="customHeader voice-brand">Alarms</span>
+				<span ng-if="statusMessage != ''" class="alert alert-danger">{{statusMessage}}</span>
+			</div>
+		</div>
+
+        <div class="viewMenu pull-right">
+            <button class="btn addMarginRight" ng-click="mnRefresh()"><span tooltip="Refresh"
+            tooltip-append-to-body="true"><i class="auto-refresh-icon" ng-show="autoRefresh == 'on'"></i><i class="icon-refresh" ng-hide="autoRefresh == 'on'"></i></span></button>
+             
+            <div class="btn-group" data-toggle="buttons-radio">
+                <!-- REMOVED FOR R1 -->
+                <!--<button data-ng-disabled="{{hideFeatures}}" class="btn" ng-click="chartType='category';resetFilters()"
+                        ng-class="{'active':chartType === 'category'}"><span tooltip="Bar Chart"
+                        tooltip-append-to-body="true"><i class="icon-bar-chart"></i></span></button>
+                <button ng-disabled="{{hideFeatures}}" class="btn" ng-click="chartType='time-series';resetFilters()"
+                        ng-class="{'active':chartType === 'time-series'}"><span
+                        ng-class="{'customIconLineChart':chartType === 'time-series','customIconLineChartBlack':chartType != 'time-series' }"
+                        tooltip="Line Chart" tooltip-append-to-body="true"></span></button>-->
+                <button class="btn" ng-click="chartType='alarm-plot';resetFilters()"
+                        ng-class="{'active':chartType === 'alarm-plot'}"><span
+                        ng-class="{'customIconAlarmPlot':chartType === 'alarm-plot','customIconAlarmPlotBlack':chartType != 'alarm-plot' }"
+                        tooltip="Alarm Plot" tooltip-append-to-body="true"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="module">
+
+    <div ng-show="showFetchingIcon" ng-hide="!showFetchingIcon">
+            <i class="icon-spinner icon-spin" style="font-size: 30px;margin-left: 30%;margin-top: 1%;"></i> <span>Fetching...</span>
+    </div>
+    <!-- CHART -->
+    <div ng-show="alarms.length<1" class="placeholderForCharts">
+        <div class="placeholderForCharts">
+            <div class="btn-warning center-div error-message span5 centerText" style="margin-left: 30%;">
+                <span class="centerText ">No Data Available</span>
+            </div>
+        </div>
+        <!--<div ng-if="errorCode">
+            <div class="btn-warning center-div error-message span5 centerText" style="margin-left: 30%;">
+                <span class="centerText "><strong>Data cannot be retrieved.</strong><br/>If this problem persists, please contact your  system administrator.</span>
+            </div>
+        </div>-->
+    </div>
+    <div ng-hide="{{hideFeatures}}" ng-show="{{!hideFeatures}}" class="row-fluid">
+        <div ng-if="chartType!='alarm-plot'" visibility="true">
+            <div class="row-fluid">
+                <div class="span3">
+                    <div>
+                        View By:&nbsp;
+                        <div class="action btn-group" dropdown>
+                            <button type="button" class="btn dropdown-toggle">
+                                {{viewByType(viewType)}}&nbsp;&nbsp;<i class="icon-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a ui-sref="assets.alarms({viewType:'EventType'})"
+                                       ng-click="viewType='EventType'">Event Type</a></li>
+                                <li><a ui-sref="assets.alarms({viewType:'Subgroup'})"
+                                       ng-click="viewType='Subgroup'">Subgroup</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div ng-if="chartType==='category' && viewType==='EventType'"
+                     chart-category-event
+                     data="chartData"
+                     stacked="true" style="height:400px">
+
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div ng-if="chartType==='category' && viewType==='Subgroup'"
+                     chart-category
+                     data="chartData"
+                     stacked="true" style="height:400px"></div>
+            </div>
+            <div class="row-fluid">
+                <div ng-if="chartType==='time-series' && viewType==='EventType'"
+                     chart-time-series
+                     data="chartData"
+                     stacked="true"
+                      xAxis="false" style="height:400px"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div ng-hide="{{hideFeatures}}" ng-show="{{!hideFeatures}}" ng-if="chartType==='time-series' && viewType==='Subgroup'"
+             chart-time-series-subgroup
+             data="chartData"
+             stacked="true"
+             xaxis="false">
+        </div>
+    </div>
+
+<div ng-if="chartType=='alarm-plot' && plotType==='System 1'" visibility="true">
+    <div class="row-fluid chartPane">
+        <div class="pull-left buttonPane">
+            <h4>{{optMachine}}&nbsp;&nbsp;</h4>
+        </div>
+        <div class="action btn-group pull-left" dropdown>
+            <button type="button" class="btn dropdown-toggle" ng-model="modelOptPoint">{{opt}}&nbsp;&nbsp;<i
+                    class="icon-chevron-down"></i></button>
+            <ul class="dropdown-menu">
+                <li ng-repeat="opt in optPoint">
+                    <a ng-click="updatePoints(this,optVar)">{{opt.name}}</a></li>
+            </ul>
+        </div>
+        <div class="action btn-group pull-left " dropdown>
+            <button type="button" class="btn dropdown-toggle" ng-model="modelOptVariable">{{optVar}}&nbsp;&nbsp;<i
+                    class="icon-chevron-down"></i></button>
+            <ul class="dropdown-menu">
+                <li ng-repeat="optVar in optVariable">
+                    <a ng-click="updateTrendSeries(this,optVar)">{{optVar.name}}</a></li>
+            </ul>
+        </div>
+        <div class="action btn-group pull-left" dropdown>
+            <button type="button" class="btn dropdown-toggle">
+                {{timeByType(timeDuration)}}&nbsp;&nbsp;<i class="icon-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="timeDuration='1day'">1 day </a></li>
+                <li><a ng-click="timeDuration='1week'">1 week </a></li>
+                <li><a ng-click="timeDuration='1month'">1 month </a></li>
+                <li><a ng-click="timeDuration='3months'">3 months </a></li>
+                <li><a ng-click="timeDuration='6months'">6 months </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="setpointBanner span7" ng-show="hasData"></div>
+        <div id="tooltipTimeSeries"
+             class="pull-right span4 customLegend customLegend-hide tooltipTimeSeriesDefault">&nbsp;</div>
+    </div>
+
+    <div class="row-fluid">
+        <div ng-if="chartType==='alarm-plot' &&
+            chartData.length>0 &&
+            optPoint.length>0 &&
+            chartDataAlarmPlot.response.length>0 &&
+            !showSpinner && hasData"
+            chart-alarm-plot data="chartDataAlarmPlot" title="System 1 Plot" stacked="true" xAxis="false" height="370" class="span11">
+
+        </div>
+
+        <!-- <div ng-show="(chartDataAlarmPlot.response).indexOf('Error')>-1 || optPoint.length<1 || chartDataAlarmPlot.response.length<1" class="placeholderForCharts" ng-model="chartDataAlarmPlot">
+             <div>
+                 <h3 class="centerText">No Data Available</h3>
+             </div>
+         </div>-->
+        <div ng-if="!hasData && !showSpinner">
+            <div class="placeholderForCharts">
+                <div class="btn-warning center-div error-message span5 centerText" style="margin-left: 30%;">
+                    <span class="centerText ">No Data Available</span>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="showSpinner">
+            <i class="icon-spinner icon-spin" style="font-size: 30px;margin-left: 30%;margin-top: 1%;"></i> <span>New Chart Loading...</span>
+        </div>
+    </div>
+    <!-- <div ng-repeat="cd in chartData" ng-if="cd">
+         <div ng-if="chartType==='alarm-plot'" chart-alarm-plot data="chartData" stacked="" xAxis="false"></div>
+     </div>-->
+
+    <div class="chartPane">
+        <div class="row-fluid">
+            <div class="pull-left buttonPane"><h4>{{optMachine}}&nbsp;&nbsp;</h4></div>
+            <div class="action btn-group pull-left" dropdown>
+                <button type="button" class="btn dropdown-toggle" ng-model="modelOptPoint">{{opt}}&nbsp;&nbsp;<i
+                        class="icon-chevron-down"></i></button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="opt in optPoint">
+                        <a ng-click="updatePoints(this)">{{opt.name}}</a></li>
+                </ul>
+            </div>
+
+            <div class="action btn-group pull-left" dropdown ng-hide="!optVariableWaveform">
+                <button type="button" class="btn dropdown-toggle" ng-model="modelOptVariableWaveform">{{optWave}}&nbsp;&nbsp;<i
+                        class="icon-chevron-down"></i></button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="optWave in optVariableWaveform">
+                        <a ng-click="updateWaveform(this)">{{optWave.name}}</a></li>
+                </ul>
+            </div>
+            <div class="action btn-group pull-left" dropdown>
+                <button type="button" class="btn dropdown-toggle">
+                    {{waveformByType(waveformType)}}&nbsp;&nbsp;<i class="icon-chevron-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a ng-click="waveformType='Frequency'">Frequency</a></li>
+                    <li><a ng-click="waveformType='Time'">Time</a></li>
+                </ul>
+            </div>
+            <div class="pull-right" ng-if="modelTimeSwitch">
+                <button ng-if="!prevDisable" class="btn btn-small"
+                        style="vertical-align: top;display: inline-block;margin-right: -5px;height:25px;"
+                        ng-click="prev(this)"><i class="icon-caret-left"></i></button>
+                <span ng-model="modelTimeSwitch" class="input-medium uneditable-input">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{waveformTimeDisplay}}</span>
+                <button ng-if="!nextDisable" class="btn btn-small"
+                        style="vertical-align: top;display: inline-block;height:25px;margin-left: -5px;"
+                        ng-click="next(this)"><i class="icon-caret-right"></i></button>
+            </div>
+        </div>
+    </div>
+        <div class="row-fluid">
+            <div id="tooltipWaveform" class="pull-right customLegend customLegend-hide"> </div>
+            
+                <div ng-show="!showSpinnerForWaveform && hasDataforWaveform" chart-alarm-plot-waveform data="chartDataWaveform" stacked="true" xAxis="false" height="370"
+                     id="chartDataWaveform" class="span11" style="margin: 0;">
+                </div>
+            
+            <div ng-hide="hasDataforWaveform">
+                <div class="placeholderForCharts">
+                    <div class="errorAlert center-div error-message centerText" style="margin: 50px auto 0;width: 40%;">
+                        <span class="centerText ">No {{waveformByType(waveformType)}} waveform  data for this point </span>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="showSpinnerForWaveform">
+                <i class="icon-spinner icon-spin" style="font-size: 30px;margin-left: 30%;margin-top: 1%;"></i> <span>New Chart Loading...</span>
+            </div>
+        </div>
+
+</div>
+<div ng-alarms id="alarms" ng-if="chartType==='alarm-plot' && plotType==='smartSignal'" visibility="true"
+     class="row-fluid" style="display: block;">
+    <div ng-repeat="el in chartDataSSWaveform" ng-show="el.advisoriesNode[0].name && !showSpinnerForSSPlots ">
+        <div ng-model="collapsed" ng-click="collapsed=!collapsed" class="customAccordionHeader span12"
+             style="display: inline-block!important">
+            <i ng-class="{'icon-chevron-down':collapsed,'icon-chevron-right':!collapsed}"></i>
+
+            <span>({{el.tagNode.name}}) - {{el.tagNode.ssExtra.dataSourceTagName}}, {{el.tagNode.ssExtra.description}}, {{el.tagNode.units}}</span>
+        </div>
+        <div ng-show="collapsed" style="display: inline-block;!important;margin-bottom:-15px;" class="span12">
+            <div ng-if="chartType==='alarm-plot' && plotType==='smartSignal'" visibility="true" chart-alarm-plot
+                 data="el" class="span11" title="Smart Signal Plot" height="300"></div>
+        </div>
+    </div>
+
+    <div style="display: block;!important;">
+        <div ng-show="chartType==='alarm-plot' && plotType==='smartSignal' && !showSpinnerForSSPlots  "
+             class="pull-right" style="display: block;">
+            <button class="btn btn-small buttonPane" data-ng-click="downloadTagGrid()" tooltip="Download Tag Grid"><i
+                    class="icon-download-alt"></i></button>
+            <button type="button" class="btn buttonPane" data-toggle="button" data-ng-click="toggleGrid()">
+                {{toggleBtnName}}
+            </button>
+        </div>
+        <table id="tblTagGrid" class="table table-bordered" style="border: 1px solid #bcbcbc"
+               ng-show="showGrid  && !showSpinnerForSSPlots">
+            <thead>
+            <tr>
+                <th>Contributing Tag Name</th>
+                <th>Tag Datasource</th>
+                <th>Units</th>
+                <th>Actual</th>
+                <th>Estimate</th>
+                <th>Rule</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="el in chartDataSSWaveform">
+                <td>{{el.grid.tagName}}</td>
+                <td>{{el.grid.tagDataSource}}</td>
+                <td>{{el.grid.tagUnits}}</td>
+                <td>{{el.grid.ruleActual}}</td>
+                <td>{{el.grid.ruleEstimate}}</td>
+                <td>({{el.grid.ruleName}})</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-if="plotType=='smartSignal' && chartType=='alarm-plot'"
+         ng-hide="'chartDataSSWaveform[0].advisoryNode[0].name'" class="row-fluid">
+        <div class="placeholderForCharts">
+            <div class="btn-warning center-div error-message" style="margin-left: 30%;">
+                <span class="centerText ">No Data Available</span>
+            </div>
+        </div>
+
+    </div>
+    <div ng-show="showSpinnerForSSPlots" class="placeholderForCharts center-div">
+        <i class="icon-spinner icon-spin" style="font-size: 30px;margin-left: 45%;margin-top: 5%;"></i>
+        <span>Loading...</span>
+
+    </div>
+
+    <div ng-show="showErrorForSSPlots" class="row-fluid">
+        <div class="placeholderForCharts">
+            <div class="btn-warning center-div error-message" style="width: 30%;">
+                <span class="centerText" style="margin:auto; display: block;">No Data Available</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="module">
+    <div class="row">
+        <div class="actions pull-right">
+            <div class="action">
+                <button class="btn" ng-click="resetFilters()" ng-show="showResetFilter" tooltip="Clear Filters"><span
+                        class="customRemoveFilters"></span></button>
+                <button class="btn {{filtered}}" ng-click="toggleFilter()" tooltip="Show Filters"><i class="icon-filter"
+                                                                                                     ng-model="showFilters"></i>
+                </button>
+            </div>
+            <div class="action alarmFields btn-group" dropdown>
+                <button type="button" class="btn dropdown-toggle" tooltip="Show/Hide Columns">
+                    <i class="icon-list"></i><i class="icon-chevron-down"></i>
+                </button>
+
+                <ul class="dropdown-menu span5" style="overflow: visible; height:auto; width: auto;">
+                    <li ng-repeat="field in fieldsToShow">
+                        <input type="checkbox" ng-model="field.show" data-ng-click="setColumns(field,$event)"/>
+                        {{field.label}}
+                    </li>
+                </ul>
+            </div>
+            <!-- <div class="action btn-group" style="display: none;">-->
+            <!-- REMOVED FOR R1-->
+            <!--<div class="action btn-group">
+                <button type="button" class="btn dropdown-toggle" tooltip="Export table" disabled>
+                    <i class="icon-download-alt"></i><i class="icon-chevron-down"></i>
+                </button>
+                <ul class="dropdown-menu alignMenuRight" role="menu">
+                    <li>
+                        <a tooltip="Export table as shown. Alarm occurrences are consolidated into a single table row."
+                           ng-click="consolidated=true; exportToCSV('true')">Export consolidated table
+                        </a>
+                    </li>
+                    <li>
+                        <a tooltip="Export all alarm occurrences as separate table rows. This option could generate a large amount of data."
+                           ng-click="consolidated=false;
+                        exportToCSV('false')">Export unconsolidated table
+                        </a>
+                    </li>
+                </ul>
+            </div>-->
+        </div>
+        <div class="filters pull-left span5">
+            Alarm List Range:&nbsp;
+            <div class="action btn-group" dropdown>
+                <!-- <button type="button" class="btn dropdown-toggle">
+                    {{rangeString(range)}}&nbsp; <i class="icon-chevron-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a ui-sref="assets.alarms({range:'active'})">Active</a></li>
+                    <li><a ui-sref="assets.alarms({range:'1m'})">1 Month</a></li>
+                    <li><a ui-sref="assets.alarms({range:'3m'})">3 Month</a></li>
+                    <li><a ui-sref="assets.alarms({range:'6m'})">6 Months</a></li>
+                    <li><a ui-sref="assets.alarms({range:'1y'})">1 Year</a></li>
+                </ul> -->
+                <select class="btn alarmRageSelector"
+                        ng-init="selectedItem = selectedMonthVals[0]"
+                        ng-model="selectedItem"
+                        ng-options="selectedMonthVal as selectedMonthVal.name for selectedMonthVal in selectedMonthVals"
+                        ng-change="changedRange(selectedItem.id)" style="width:100%">
+                </select>
+                <!-- <option value"selectedItem.name">{{selectedItem}}</option> -->
+            </div>
+        </div>
+    </div>
+
+    <!--  <input type="text" ng-model="dynamicPopoverTitle" class="form-control">
+      <input type="text" ng-model="dynamicPopover" class="form-control">
+
+      <button popover="{{dynamicPopover}}" popover-title="{{dynamicPopoverTitle}}" class="btn btn-default">Dynamic Popover</button>-->
+    <!-- <input ng-model="filterAlarm">
+
+   <button id="ExportChart">Export</button>-->
+    <div class="row-fluid tableContainer">
+        <div native-table table-data="alarms" filtered="filteredAlarms" ng-show="alarms.length>0" show-search="false">
+            <table id="tbl" class="table dataTable table-bordered table-hover table-condensed" style="border: 1px solid #bcbcbc">
+                <thead>
+                <tr>
+                    <th native-th="{{field.name}}" default-sort="{{field.sort}}" ng-repeat="field in fieldsToShow" ng-if="field.show"
+                        class="sortable" ng-click="reverse=!reverse;order(field.name, reverse)">
+                        {{field.label}}
+                    </th>
+                </tr>
+                <tr class="filter-row" ng-show="showFilters">
+                    <td ng-repeat="field in fieldsToShow" ng-if="field.show">
+                        <input class="customFilter" type="search" ng-model="freeText[field.name]"
+                               ng-if="field.name !== 'dataSource' && field.name !== 'normalizedSeverityLevel' && field.name!== 'severityLevel' && field.name!== 'acknowledged' && field.name!== 'eventStateEnum' && field.name!== 'count' && field.name!== 'density'  ">
+                        <select class="btn md-sel selectFilter"
+                                ng-options="dataSource for dataSource in dataSourceOptions"
+                                ng-if="field.name === 'dataSource'" ng-model="myValue.dataSource"></select>
+                        <select class="btn md-sel selectFilter"
+                                ng-options="normalizedSeverityLevel for normalizedSeverityLevel in fleetSeverityOptions"
+                                ng-if="field.name === 'normalizedSeverityLevel'"
+                                ng-model="myValue.normalizedSeverityLevel"></select>
+                        <select class="btn md-sel selectFilter"
+                                ng-options="severityLevel for severityLevel in sourceSeverityOptions"
+                                ng-if="field.name === 'severityLevel'" ng-model="myValue.severityLevel"></select>
+                        <select class="btn md-sel selectFilter" ng-options="acknowledged for acknowledged in ackOptions"
+                                ng-if="field.name === 'acknowledged'" ng-model="myValue.acknowledged"></select>
+                        <select class="btn md-sel selectFilter"
+                                ng-options="eventStateEnum for eventStateEnum in activeRange"
+                                ng-if="field.name === 'eventStateEnum'" ng-model="myValue.active"></select>
+                        <select class="btn md-sel selectFilter" ng-options="count for count in countRange"
+                                ng-if="field.name === 'count'" ng-model="myValue.count"></select>
+                        <select class="btn md-sel selectFilter" ng-options="density for density in densityRange"
+                                ng-if="field.name === 'density'" ng-model="myValue.density"></select>
+                    </td>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <!--   <tr>
+                       <td ng-repeat="field in fieldsToShow" ng-if="field.show" ng-click="startsWithW({{field.name}})"><input type="text" ng-model="search_dataSource" /></td>
+                       | filter:sourceSeverityFilter | filter:countFilter | filter:densityFilter | filter:activeFilter |filter:sevFilter
+                       filter:searchText | filter:dataSourceFilter | filter:ackFilter | filter:sourceSeverityFilter | filter:countFilter | filter:densityFilter | filter:activeFilter |filter:sevFilter
+                       |filter:searchText:strict| filter:countFilter| filter:dataSourceFilter| filter:densityFilter |filter:activeFilter |filter:sourceSeverityFilter |filter:sevFilter
+                 |filter:searchText:strict| filter:countFilter| filter:dataSourceFilter| filter:densityFilter |filter:activeFilter |filter:sourceSeverityFilter |filter:sevFilter
+                 |filter:dataSourceFilter|filter:sevFilter|filter:sourceSeverityFilter |filter:countFilter|filter:freeText:strict|filter:ackFilter
+
+                 |pagination: (currentPage-1) * pageSize | limitTo: (pageSize)
+                   </tr>-->
+                <!--
+                                 ng-click="select(alarm[this.sourceId])" class={{selected}}
+                -->
+               <!-- <tr ng-repeat="alarm in alarms|filter:dataSourceFilter|filter:sevFilter|filter:sourceSeverityFilter |filter:countFilter|filter:freeText:strict|filter:ackFilter| filter:densityFilter |filter:activeFilter|pagination: (currentPage-1) * pageSize | limitTo: (pageSize)"
+                    ng-click="setRowSelection(this)" class={{selected}}>  -->
+                    
+                    
+                    
+                    <tr ng-repeat="alarm in alarms|filter:dataSourceFilter|filter:sevFilter|filter:sourceSeverityFilter |filter:countFilter|filter:freeText:strict|filter:ackFilter| filter:densityFilter |filter:activeFilter|pagination: (currentPage-1) * pageSize | limitTo: (pageSize)"
+                    ng-click="setRowSelection(this)" class={{selected}} ng-Init="alarm.sourceId == lastSelected.alarm.sourceId ? setRowSelection(this): '' ">  
+                    
+
+
+                    <!--
+                                ng-class="{selected: $index==0&&loadSelectedRow!=true&&chartType == 'alarm-plot'}"
+                                <td ng-repeat="field in fieldsToShow" ng-if="field.show" format type="{{field.type}}" data="{{alarm[field.name]}}" ng-if="{{field.name}}==='assetNamePath'" title="{{alarm['tooltip']}}" ng-if="field.name==='count'" popover="{{alarm['count']}}" popover-title="{{dynamicPopoverTitle}}">{{alarm[field.name]}}</td>
+                    -->
+                    <!-- CLICKABLE COUNT REMOVED FOR R1 -->
+                    <td ng-repeat="field in fieldsToShow " ng-if="field.show" format type="{{field.type}}"
+                        data="{{alarm[field.name]}}" ng-click="getColumn(this,alarm, field.name)"
+                        ng-class="{'countText':field.name == 'count'}">{{alarm.field.name}} 
+                    </td>
+                    <!--td ng-repeat="field in fieldsToShow " ng-if="field.show" format type="{{field.type}}"
+                        data="{{alarm[field.name]}}" ng-class="{'countText':field.name == 'count'}">{{alarm.field.name}}
+                    </td-->
+                    <!--
+                                <td ng-repeat="field in fieldsToShow " ng-if="field.show && field.name==='count'" format type="{{field.type}}" data="{{alarm[field.name]}}" popover={{alarm[field.name]}} popover-title="Event Occurrences" popover-trigger="mouseenter">{{alarm[field.name]} </td>
+                    -->
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="pull-left customShowEntries" ng-hide="alarms.length<1">
+            <div class="dataTables_length">
+                <label>Show
+                    <select class="btn" ng-options="pages for pages in pageRange" ng-model="pages"></select>
+                    entries
+                </label>
+            </div>
+        </div>
+       
+        <div class="pagination pagination-centered pull-right" ng-show="alarms.length">
+            <div ng-show="alarms.length" class="dataTables_paginate paging_bootstrap" pagination
+                 total-items="alarms.length" num-pages="totalItems" max-size="5" items-per-page="pageSize"
+                 on-select-page="setPage(page)" page="currentPage" next-text=">" previous-text="<">
+            </div>
+        </div>
+
+        <div native-table table-data="alarms" filtered="filteredAlarms" ng-show="alarms.length<1" show-search="false">
+            <table class="table dataTable table-bordered table-hover table-condensed" style="border: 1px solid #bcbcbc">
+                <thead>
+                <tr>
+                    <th ng-repeat="field in fieldsToShow" ng-if="field.show" class="sortable">{{field.label}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td colspan="10"><h3 class="centerText">No Data Available</h3></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+
+<!--link rel="import" href="bower_components/iron-ajax/iron-ajax.html"/>
+<link rel="import" href="bower_components/px-simple-line-chart/px-simple-line-chart.html"/>
+
+<px-simple-line-chart
+                    width="40"
+                    height="20"
+                    columns="1"
+                    rows="1"
+                    line-data="{{sampleData.series}}">
+                </px-simple-line-chart> 
+<iron-ajax
+                auto
+                url="demo-data/sample-data.json"
+                handleAs="json"
+                last-response="{{sampleData}}">
+            </iron-ajax-->
+<px-card header-text="Timeseries" id="my-timeseries-card">
+   <div class="container">
+   		<div id="highcharts_container"></div>
+   </div> 
+</px-card>

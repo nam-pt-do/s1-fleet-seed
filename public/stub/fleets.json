@@ -1,0 +1,10 @@
+{
+  "data": {
+    "status":200,
+    "response": [
+      {"id":"f1", "name":"Fleet 1"},
+      {"id":"f2", "name":"Fleet 2"},
+      {"id":"f3", "name":"Fleet 3"}
+    ]
+  }
+}

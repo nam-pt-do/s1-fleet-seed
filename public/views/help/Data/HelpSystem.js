@@ -1,0 +1,18 @@
+var xmlHelpSystemData = "";
+xmlHelpSystemData += '<?xml version=\"1.0\" encoding=\"utf-8\"?>';
+xmlHelpSystemData += '<WebHelpSystem DefaultUrl=\"Content/System1_Fleet/a_User_Guide/1_getting_started.htm\" Toc=\"Data/Toc.js\" Index=\"Data/Index.js\" Concepts=\"Data/Concepts.js\" BrowseSequence=\"Data/BrowseSequence.js\" Glossary=\"Data/Glossary.js\" SearchDatabase=\"Data/Search.js\" Alias=\"Data/Alias.xml\" Synonyms=\"Data/Synonyms.xml\" SkinName=\"System1Fleet_WebsiteSkin\" Skins=\"System1Fleet_WebsiteSkin,WebsiteSkin\" BuildTime=\"4/4/2016 8:59:07 AM\" BuildVersion=\"11.1.2.31113\" TargetType=\"WebHelp2\" SkinTemplateFolder=\"Skin/\" InPreviewMode=\"false\" MoveOutputContentToRoot=\"false\" MakeFileLowerCase=\"false\" UseCustomTopicFileExtension=\"false\" PreventExternalUrls=\"false\" EnableResponsiveOutput=\"true\" IncludeGlossarySearchResults=\"true\" ResultsPerPage=\"20\">';
+xmlHelpSystemData += '    <!-- saved from url=(0016)http://localhost -->';
+xmlHelpSystemData += '    <CatapultSkin Version=\"2\" SkinType=\"WebHelp2\" Comment=\"HTML5 skin\" Anchors=\"Width,Height\" Width=\"800\" Height=\"600\" Top=\"0\" Left=\"0\" Bottom=\"0\" Right=\"0\" Tabs=\"TOC,Glossary\" DefaultTab=\"TOC\" UseBrowserDefaultSize=\"True\" UseDefaultBrowserSetup=\"True\" conditions=\"\" AutoSyncTOC=\"true\" NavigationLinkTop=\"true\" NavigationLinkBottom=\"true\" CommentsInTopic=\"true\" Title=\"System 1 Fleet Management Online Help\" EnableResponsiveOutput=\"true\" Name=\"System1Fleet_WebsiteSkin\">';
+xmlHelpSystemData += '        <WebHelpOptions NavigationPaneWidth=\"300\" TabletBreakpoint=\"1024\" MobileBreakpoint=\"640\" />';
+xmlHelpSystemData += '        <Toolbar EnableCustomLayout=\"true\" Buttons=\"Print|RemoveHighlight|Separator|Filler|Feedback|PreviousTopic|CurrentTopicIndex|NextTopic\">';
+xmlHelpSystemData += '            <Script />';
+xmlHelpSystemData += '        </Toolbar>';
+xmlHelpSystemData += '    </CatapultSkin>';
+xmlHelpSystemData += '    <CatapultSkin Version=\"2\" SkinType=\"WebHelp2\" Comment=\"HTML5 skin\" Anchors=\"Width,Height\" Width=\"800\" Height=\"600\" Top=\"0\" Left=\"0\" Bottom=\"0\" Right=\"0\" Tabs=\"TOC,Glossary\" DefaultTab=\"TOC\" UseBrowserDefaultSize=\"True\" UseDefaultBrowserSetup=\"True\" conditions=\"\" AutoSyncTOC=\"true\" NavigationLinkTop=\"true\" NavigationLinkBottom=\"true\" CommentsInTopic=\"true\" Title=\"Your Help File\" EnableResponsiveOutput=\"true\" Name=\"WebsiteSkin\">';
+xmlHelpSystemData += '        <WebHelpOptions NavigationPaneWidth=\"300\" TabletBreakpoint=\"1024\" MobileBreakpoint=\"640\" />';
+xmlHelpSystemData += '        <Toolbar EnableCustomLayout=\"true\" Buttons=\"Print|RemoveHighlight|Separator|Filler|Feedback|PreviousTopic|CurrentTopicIndex|NextTopic\">';
+xmlHelpSystemData += '            <Script />';
+xmlHelpSystemData += '        </Toolbar>';
+xmlHelpSystemData += '    </CatapultSkin>';
+xmlHelpSystemData += '</WebHelpSystem>';
+MadCap.Utilities.Xhr._FilePathToXmlStringMap.Add('HelpSystem', xmlHelpSystemData);

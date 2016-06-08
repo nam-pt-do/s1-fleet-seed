@@ -1,0 +1,33 @@
+<div class="module-header">
+  <h2 class="voice voice-brand pull-left marginRt10">Users</h2>
+  <button class="btn pull-right" ng-click="createUser()">Add New User</button>
+</div>
+<div class="module-body alignLeftT">
+  <div native-table table-data="users" filtered="filteredUsers" page-lengths="[5,10,20]">
+    <table class="table dataTable table-bordered table-font-large">
+      <thead>
+      <tr>
+        <th native-th="userId" default-sort="asc" class="sortable">User ID</th>
+        <th native-th="name" class="sortable">Name</th>
+        <th native-th="role" class="sortable">Role</th>
+        <th native-th="customer" class="sortable">Customer Access</th>
+        <th native-th="actions"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="user in filteredUsers">
+        <td>{{user.userId}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.role}}</td>
+        <td>
+          <span ng-repeat="customer in user.customers">{{ customer.name }}{{$last ? '' : ', '}}</span>
+        </td>
+        <td>
+          <button ng-disabled="disableEdit(user)" class="btn btn-small" ng-click="editUser(user)">Edit</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

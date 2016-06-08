@@ -1,0 +1,14 @@
+
+<div class="page-header">
+  <div class="subnav pull-right">
+    <ul class="nav nav-pills pull-right">
+      <li ui-sref-active="active"><a ui-sref="admin.users">Users</a></li>
+      <li ui-sref-active="active"><a ui-sref="admin.enterprises">Enterprises</a></li>
+      <li ui-sref-active="active"><a ng-hide="{{hideFeatures}}" ng-show="{{!hideFeatures}}" ui-sref="admin.mapping">Mapping</a></li>
+    </ul>
+  </div>
+  <h1 class="voice-brand pull-left">Administration</h1>
+</div>
+
+
+<div class="module admin-wrapper" ui-view="">admin content</div>

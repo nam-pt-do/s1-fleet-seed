@@ -1,0 +1,555 @@
+/*<meta conditions="" Version="7" />*/
+
+/* MadCap Table Style: */
+
+mcTableStyle
+{
+	name: SimpleDarkBackground;
+	border-collapse: collapse;
+	border-left-style: solid;
+	border-left-width: 0px;
+	border-right-style: solid;
+	border-right-width: 0px;
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-width: 0px;
+	cell-padding-left: 5px;
+	cell-padding-right: 5px;
+	cell-padding-top: 5px;
+	cell-padding-bottom: 5px;
+	border-top-color: #749ab6;
+	max-id: 3;
+}
+
+mcTableColumnStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 0px;
+	separator-color: #000000;
+	background-color: #333333;
+	name: Column1;
+	id: 0;
+}
+
+mcTableHeadStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 0px;
+	separator-color: #000000;
+	name: Header1;
+	id: 2;
+}
+
+mcTableBodyStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 0px;
+	separator-color: #000000;
+	name: Row1;
+	id: 1;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	background-color: #333333;
+}
+
+mcTableFootStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 0px;
+	separator-color: #000000;
+	name: Footer1;
+	id: 3;
+}
+
+/* Cell Styles: */
+
+.TableStyle-SimpleDarkBackground
+{
+	border-collapse: collapse;
+	border-left-style: solid;
+	border-left-width: 0px;
+	border-right-style: solid;
+	border-right-width: 0px;
+	border-top-style: solid;
+	border-top-color: #749ab6;
+	border-top-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-width: 0px;
+	border-spacing: 0px 0px;
+}
+
+.TableStyle-SimpleDarkBackground .Column-Column1
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .Head-Header1
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .HeadI-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .HeadI-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .HeadE-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-right-width: 0px;
+	border-right-color: #000000;
+	border-right-style: solid;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .HeadE-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .HeadF-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .HeadF-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .HeadH-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-right-width: 0px;
+	border-right-color: #000000;
+	border-right-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .HeadH-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .HeadD-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .HeadD-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .HeadC-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .HeadC-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .HeadB-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-right-width: 0px;
+	border-right-color: #000000;
+	border-right-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .HeadB-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .HeadA-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .HeadA-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .HeadG-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .HeadG-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .Foot-Footer1
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .FootI-Column1-Footer1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .FootI-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .FootE-Column1-Footer1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-right-width: 0px;
+	border-right-color: #000000;
+	border-right-style: solid;
+	border-top-width: 0px;
+	border-top-color: #000000;
+	border-top-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .FootE-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .FootF-Column1-Footer1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-top-width: 0px;
+	border-top-color: #000000;
+	border-top-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .FootF-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .FootH-Column1-Footer1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-right-width: 0px;
+	border-right-color: #000000;
+	border-right-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .FootH-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .FootD-Column1-Footer1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-top-width: 0px;
+	border-top-color: #000000;
+	border-top-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .FootD-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .FootC-Column1-Footer1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .FootC-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .FootB-Column1-Footer1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+	border-right-width: 0px;
+	border-right-color: #000000;
+	border-right-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .FootB-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .FootA-Column1-Footer1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .FootA-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .FootG-Column1-Footer1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .FootG-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .Body-Row1
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .BodyI-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .BodyI-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .BodyE-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: solid;
+	background-color: #333333;
+	border-right-width: 0px;
+	border-right-color: #000000;
+	border-right-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .BodyE-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .BodyF-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: solid;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .BodyF-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .BodyH-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	background-color: #333333;
+	border-right-width: 0px;
+	border-right-color: #000000;
+	border-right-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .BodyH-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .BodyD-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	border-bottom-width: 0px;
+	border-bottom-color: #000000;
+	border-bottom-style: solid;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .BodyD-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .BodyC-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .BodyC-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .BodyB-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	background-color: #333333;
+	border-right-width: 0px;
+	border-right-color: #000000;
+	border-right-style: solid;
+}
+
+.TableStyle-SimpleDarkBackground .BodyB-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .BodyA-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .BodyA-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-SimpleDarkBackground .BodyG-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('../../Images/gescoe/diagonal_lines.png');
+	background-repeat: repeat;
+	background-color: #333333;
+}
+
+.TableStyle-SimpleDarkBackground .BodyG-Column1-Row1 p
+{
+	
+}
+
