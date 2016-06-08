@@ -67,6 +67,7 @@ define([
             tabs: [
                 //{icon: 'fa-tachometer', state: 'dashboards', label: 'Dashboards'},
                 {icon: 'fa-tachometer', state: 'assets/overview', label: 'Dashboard'},
+                {icon: 'fa-tachometer', state: 'timeseries_px', label: 'Time Series Px'},
                 {icon: 'fa-tachometer', state: 'timeseries', label: 'Time Series'
             }
                 

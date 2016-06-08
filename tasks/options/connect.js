@@ -29,6 +29,10 @@ var config = {
       url: 'https://predix-views.run.asv-pr.ice.predix.io',
       instanceId: '83ce4512-b72e-40f5-915c-144a07f7b4ed',
       pathRewrite: { '^/api/view-service': '/'}
+    },
+    '/api/ts-service': {
+      url: 'https://tsqs.ice.predix.io/v1/datapoints',
+      instanceId: '1744986e-0991-4f12-afdf-3d4ebae63523'      
     }
   }
 };

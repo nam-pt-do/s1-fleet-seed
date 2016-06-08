@@ -1,0 +1,70 @@
+
+
+<dom-module id="s1-fleet-time-series-card">
+    <template>
+        <px-card header-text="{{context.name}}">
+
+            <!-- set custom legend properties here, so it appears below the date picker controls. -->
+            <px-chart id="tsChart" height="500" legend='{"y": 25, "floating": false, "enabled": true, "useHTML": true, "verticalAlign": "top", "align": "left", "layout": "vertical", "itemStyle": {"fontSize": "inherit", "fontWeight": "normal"}}' chart-state="{{chartState}}" tooltip-type="condensed" series-events-width="1">
+                <px-chart-controls id="tsChartControls" data-controls show-date-range="true" display-options='{ "displayType": "normal","submitButtonText": "Update", "submitButtonIcon": "icon-arrow-right" }'></px-chart-controls>
+                <px-chart-yaxis id="axis0" offset="0"></px-chart-yaxis>
+            </px-chart>
+
+        </px-card>
+    </template>
+</dom-module>
+<script>
+
+  Polymer({
+    is: 's1-fleet-time-series-card',
+
+    ready: function() {
+
+
+      var self = this;
+
+
+      var query = {
+          "start": "1d-ago",
+          "end": "1mi-ago",
+          "tags": [
+              {
+                  "name": [
+                      "Compressor-2015:CompressionRatio#AssetID_001"
+                  ]
+
+              }
+          ]
+      };
+
+
+        console.log('Query : '+query);
+
+      var chart = self.$.tsChart;
+
+        px.dealer.httpRequest({
+            url: '/api/v1/datapoints',
+            method: 'POST',
+            data: query
+        }).then(function(data){
+                    console.log("GOT DATA: " + JSON.stringify(data));
+                    for (var i=0; i<data.tags.length; i++) {
+                        var query = data.tags[i];
+                        for (var j=0; j<query.results.length; j++) {
+                            var values = query.results[j].values;
+                            //var tagName = query.results[j].name + '-' + query.results[j].attributes.meta[0];
+                            var series = {
+                                id: 'box-car-timeseries',
+                                axisId: 'axis0',  // possibly add more yAxes here?
+                                data: values,
+                                name: 'box-car-timeseries'
+                            }
+                            chart.addSeries(series);
+                        }
+                    };
+                });
+
+    },
+    behaviors: [px.card]
+  });
+</script>
