@@ -1,6 +1,7 @@
 #Erik was here
 #foo
 #Nam was here
+#foobar
 ---
 applications:
   - name: s1-fleet-seed
