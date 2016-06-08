@@ -1,0 +1,43 @@
+<div class="row">
+    <!-- left side -->
+    <div class="span2">
+        <div class="page-header">
+            <h1 class="voice-brand pull-left">Dashboard</h1>
+        </div>
+    </div>
+
+    <!--***************************Fleet list ******************************-->
+    <!--***************************Fleet list ******************************-->
+    <!--***************************Fleet list ******************************-->
+    <div class="pull-left">
+        <div class="btn-group" dropdown>
+            <button type="button" class="btn btn-primary btn-large">{{customerId ||Select}} Fleet</button>
+            <button type="button" class="btn btn-primary btn-large  dropdown-toggle">
+                <i class="icon-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu myddmenu fixHeight" role="menu">
+                <li ng-if="!currentUser.customers || currentUser.customers.length ==0" style="padding: 5px;">No Data
+                    Available
+                </li>
+                <li ng-repeat="customer in currentUser.customers"
+                    ng-if="currentUser.customers && currentUser.customers.length >0">
+                    <a ng-click="setCustomer(customer.key);customerName =customer.name">{{customer.name}}</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--***************************Enterprise List***************************-->
+    <!--***************************Enterprise List***************************-->
+    <!--***************************Enterprise List***************************-->
+
+    <asset-hierarchy        
+            enterprise-list="{{enterpriseList}}"
+            selected-enterprise="selectedEnterprise"
+            selected-node="selectedNode"
+            get-enterprise-nodes="getEnterpriseNodes(node)"
+    >
+
+    </asset-hierarchy>
+    <div class="pull-right"></div>
+</div>
+<div ui-view></div>

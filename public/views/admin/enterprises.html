@@ -1,0 +1,47 @@
+<div class="module-header">
+  <h2 class="voice voice-brand pull-left marginRt10">Enterprises</h2>
+  <div class="pull-left hdr-loader" ng-show="showSpinner">
+    <i class="icon-spinner icon-spin"></i>
+    <span>{{spinnerText}}</span>
+  </div>
+  <div class="pull-right">
+    <button class="btn pull-right" ng-click="mnRefresh()">
+        <span tooltip="Refresh" tooltip-append-to-body="true">
+          <i class="icon-refresh"></i>
+        </span>
+    </button>
+  </div>
+</div>
+
+<div class="module-body alignLeft60">
+  <div native-table table-data="enterprises" filtered="filteredEnterprises" page-lengths="[5,10,20]">
+    <table class="table dataTable table-bordered">
+      <thead>
+      <tr>
+        <th native-th="enterpriseId" default-sort="asc" class="sortable">Enterprise ID</th>
+        <th native-th="name" class="sortable">Enterprise Name</th>
+        <th native-th="sourceSystemEnum" class="sortable">Source</th>
+        <th native-th="customerId" class="sortable">Customer/Tenant ID</th>
+        <th native-th="statusEnum" class="sortable">Status</th>
+        <th native-th="lastEventSyncDateTime" class="sortable">Last Event Sync Time</th>
+        <th native-th="lastConfigSyncDateTime" class="sortable">Last Config Sync Time</th>
+        <th native-th="actions"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="enterprise in filteredEnterprises">
+        <td>{{enterprise.enterpriseId}}</td>
+        <td>{{enterprise.name}}</td>
+        <td>{{enterprise.sourceSystemEnum}}</td>
+        <td>{{enterprise.customerId}}</td>
+        <td>{{enterprise.statusEnum}}</td>
+        <td>{{enterprise.lastEventSyncDateTime}}</td>
+        <td>{{enterprise.lastConfigSyncDateTime}}</td>
+        <td>
+          <button class="btn btn-small" ng-click="editEnterprise(enterprise)">Edit</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

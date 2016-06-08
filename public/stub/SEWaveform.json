@@ -1,0 +1,25 @@
+{   "datetime":"2014-04-23T18:25:43.511Z",
+    "keyphasorHits":[
+
+    ],
+    "keyphasorSpeeds":[
+
+    ],
+    "maxFrequencyScale":64,
+    "minFrequencyScale":0,
+    "numberOfAverages":1,
+    "sampleRate":128,
+    "speed":10000,
+    "statusDataStatusEnum":"valid",
+    "waveform":[
+        0.02,
+        0.01,
+        0.02,
+        0.03,
+        0.02
+    ],
+    "waveformModeEnum":"synchspectrum",
+    "windowEnum":"none",
+    "sourceId":"N1002",
+    "peakToPeak":4.5
+}

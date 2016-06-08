@@ -1,0 +1,129 @@
+
+<div class="module-header" xmlns="http://www.w3.org/1999/html">
+  <h2 class="voice-brand">Analysis</h2>
+</div>
+<div class="module-content" >
+<!--
+  <div ui-view="datavis">chart</div>
+-->
+
+    <div class="row-fluid"  ng-show="availablePoints.length>0">
+      <div class="row-fluid">
+          <span class="span1"></span>
+          <div class="span6 pull-right">
+              <div class="pull-left" >Start Date:
+               <span class="input-append">
+                    <input id="startDate" type="text" class="form-control input-small" datepicker-popup="{{format}}" ng-model="dtStartDate" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                     <button type="btn" class="btn btn-default" ng-click="open($event)"><i class="icon-calendar"></i></button>
+               </span>
+
+              </div>
+              <div class="pull-right">End Date:
+               <span class="input-append">
+                    <input id="endDate" type="text" class="form-control input-small" datepicker-popup="{{format}}" ng-model="dtEndDate" is-open="opened" min-date="dtStartDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                     <button type="btn" class="btn btn-default" ng-click="open($event)"><i class="icon-calendar"></i></button>
+               </span>
+              </div>
+          </div>
+
+          <div class="span6 pull-right" style="margin-top:-20px">
+              <div class="pull-left">Start Time:
+               <span class="input-append ">
+                   <input type="time" class="input-small" ng-model="startTime">
+                   <button type="btn" class="btn btn-default" ng-click="open($event)"><i class="icon-time"></i></button>
+               </span>
+              </div>
+              <div class="pull-right">End Time:
+                <span class="input-append">
+                   <input type="time" class="input-small" ng-model="endTime">
+                   <button type="btn" class="btn btn-default" ng-click="open($event)"><i class="icon-time"></i></button>
+               </span>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="span7 pull-left">
+            <table class="table">
+                <thead><tr>
+                       <th>Points</th>
+                   </tr>
+                   </thead>
+            </table>
+            <div style="max-height: 400px;overflow-y: auto; margin-top:-20px;">
+                <table class="table dataTable table-bordered table-hover table-condensed" data="availablePoints" style="border: 1px solid #bcbcbc">
+                    <tbody>
+                    <tr data-ng-repeat="point in availablePoints" ng-click="setSelected(this)" class="{{selected}}"><td style="border: 0px;">{{point}}</td></tr>
+                    </tbody>
+                </table>
+                <!--<select data-bind="options:point in availablePoints, optionsText:&#39;"  multiple="multiple" class="span12" style="height: 350px;background-color: transparent;margin-top:-20px;font-size: 14px;">
+                    <option ng-repeat="point in availablePoints" value="2" style="line-height: 25px;height: 25px; padding: 8px;!important;">{{point}}</option>
+                </select>-->
+            </div>
+      </div>
+
+       <div class="span4 pull-right">
+            <table class="table">
+                <thead><tr>
+                    <th> &nbsp;</th>
+                    <th> Variables</th>
+                </tr>
+                </thead>
+            </table>
+            <div style="max-height: 400px;overflow-y: auto; margin-top: -20px;">
+                <table class="table table-bordered" data="availablePoints" style="border: 1px solid #bcbcbc">
+                    <tbody>
+                    <tr data-ng-repeat="variable in pointVariables">
+                        <td style="width: 8%;">
+                            <input type="checkbox"  name="group" ng-model="variable.selected" id="{{variable.nodeId}}" data-ng-click="storeVariable({{variable.nodeId}})"/>
+                        </td>
+                        <td>{{variable.name}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        <!--    <label class="checkbox-inline">
+                <input type="checkbox" name="favoriteColors" ng-model="entity"> Red
+            </label>-->
+        </div>
+        <!--<div class="span12">
+            <div>
+                <button class="btn btn-primary" ng-click="plotChart(pointVariables)">Plot Selected Variables</button>
+                <button class="btn btn-primary">Clear Plot</button>
+            </div>
+        </div>-->
+<!--
+        <div chart-analysis-plot data="chartAnalysisData"></div>
+-->
+
+    </div>
+    <div class="row-fluid" >
+        <div class="span12">
+            <div class="text-center">
+                <button class="btn btn-primary" ng-click="plotChart(pointVariables)">Plot Selected Variables</button>
+                <button class="btn btn-primary" ng-click="clearPlot()">Clear Plot</button>
+            </div>
+        </div>
+        <div class="pull-right">
+            <button class="btn" tooltip="Save Plot Session"  ng-click="savePlotSession()" ><i class="icon-save"></i> </button>
+            <button class="btn" tooltip="Open Plot Session" ng-click="loadSavedVariables()"><i class="icon-folder-open-alt"></i> </button>
+            <button class="btn" tooltip="Copy to Clipboard"><i class="icon-copy"></i> </button>
+        </div>
+        <div>
+            <div chart-analysis-plot data="chartAnalysisData"></div>
+        </div>
+    </div>
+    <div ng-show="availablePoints.length<1" class="placeholderForCharts">
+        <div>
+            <h3 class="centerText">No Data Available</h3>
+            <h4 class="centerText">Please select a machine train or a machine to analyze points</h4>
+        </div>
+    </div>
+    <div ng-show="validationError">
+        <div class="placeholderForCharts">
+            <div class="btn-warning center-div error-message span5 centerText" style="margin-left: 30%;">
+                <span class="centerText ">Please select some valid Date and Time</span>
+            </div>
+        </div>
+    </div>
+</div>

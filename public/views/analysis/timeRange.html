@@ -1,0 +1,37 @@
+<ul class="nav nav-pills pull-left padding-t">
+    <li class="subtabs-fleetview" ng-repeat="item in subtabs" ng-class="{active: sbTabClass(item.id)}" ng-cloak="">
+        <a ui-shref=".{{item.link}}" ng-click="btnAction(item)">
+            <lang text="{{item.label}}"></lang>
+        </a>
+    </li>
+</ul>
+<div class="top-row-selector input-append pull-right btn-group" id="period-selector">
+	
+    <span class="btn">{{analysisContext.selectedTimeIndex !=11 ? staticData.buttons.timeRangeOptions[analysisContext.selectedTimeIndex].label : selectedTimeLabel}}</span>
+    
+    <button class="btn dropdown-toggle" data-toggle="dropdown" data-ng-disabled="plottedCharts.length === 0">
+        <i class="icon-calendar"></i>
+    </button>
+    <ul class="pull-right dropdown-menu">
+        <li  ng-repeat="btn in staticData.buttons.timeRangeOptions" ng-class="{'active': $index === analysisContext.selectedTimeIndex}">
+            <a href="#"
+               id="time{{btn.label}}"
+               ng-click="applyTimeFilter($index, $event)"
+               analytics-on
+               analytics-event="click"
+               analytics-category="button"
+               analytics-label="Time Range : {{btn.label}}">
+                {{btn.label}}
+            </a>
+        </li>
+    </ul>
+    <div a-datepicker
+         datepicker-on="customDate"
+         ng-show="customDate.isDatepickerVisible"
+         class="pull-left"
+         analytics-on
+         analytics-event="click"
+         analytics-category="button"
+         analytics-label="Time Range : Custom">
+    </div>
+</div>

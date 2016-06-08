@@ -1,0 +1,10 @@
+{
+  "data": {
+    "status":200,
+    "response": [
+      {"id":1, "name":"Ted H.", "role": "admin", "type":"external", "customers":["fae93dce-875b-4d57-80b3-7505a151f71d"]},
+      {"id":2, "name":"Ingrid M.", "role": "user", "type":"external", "customers":["d58e9a59-f4fe-4385-aad4-106b8724a3cb"]},
+      {"id":3, "name":"Philip J.", "role": "superadmin", "type":"external", "customers":["d58e9a59-f4fe-4385-aad4-106b8724a3cb"]}
+    ]
+  }
+}

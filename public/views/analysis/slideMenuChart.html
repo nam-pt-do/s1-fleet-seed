@@ -1,0 +1,32 @@
+<div class="chart-menu" ng-class="{show : sliderStatus}">
+    <header>
+        <button title="Apply Filter" ng-click="sliderStatus = false">
+            <i class="icon-reorder"></i>
+        </button>
+    </header>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Blah..</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Blah..</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <footer>
+        <button class="btn margin-r-10" ng-click="updateChart()" data-ng-disabled="(!btnEnabled)"> Apply</button>
+        <span tooltip="To enable this feature, set autoRefresh off">
+              <i class="icon-info-sign"></i>
+        </span>
+    </footer>
+</div>
+        <style>
+            .raw-data input[type="checkbox"]{
+                margin-top : 5px;
+            }
+        </style>

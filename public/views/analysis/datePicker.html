@@ -1,0 +1,54 @@
+<div id="custom-calendar-wrapper" class="right-absolute  clearfix" style="">
+    <div class="pull-left margin-r bg">
+        <h5 lang text="datePicker.title.startdate">Start Date</h5>
+        <div class="datepicker datepicker-inline" ng-model="dt1">
+            <datepicker show-weeks="showWeeks" fmt="shortDate" max="currentDate"></datepicker>
+        </div>
+        <div class="time-picker" ng-if="showTimePicker">
+            <label lang text="datePicker.title.time">Time</label>
+            <timepicker ng-model="startTime" ng-change="updateTime(startTime, '')" hour-step="hstep1" minute-step="mstep1" show-meridian="ismeridian1"></timepicker>
+        </div>
+    </div>
+
+    <div class="pull-left bg">
+        <h5 lang text="datePicker.title.enddate">End Date</h5>
+        <div class="datepicker datepicker-inline" ng-model="dt2">
+            <datepicker show-weeks="showWeeks" max="currentDate" min="minDate"></datepicker>
+        </div>
+        <div class="time-picker"  ng-if="showTimePicker">
+            <label  lang text="datePicker.title.time">Time</label>
+            <timepicker ng-model="endTime" ng-change="updateTime('', endTime)" hour-step="hstep2" minute-step="mstep2" show-meridian="ismeridian2"></timepicker>
+        </div>
+    </div>
+    <div class="time-keeper bg clear-fix">
+        <div>
+            <button class="btn btn-primary" ng-click="applyTimeFilter()" data-ng-disabled="!isDateSelected" lang text="fleetview.filterapplybtn">Apply</button>
+        </div>
+
+    </div>
+
+    <!--<div id="custom-calendar-wrapper" class="right-absolute  clearfix" style="">-->
+    <!--<div id="custom-calendar-start" class="pull-left margin-r bg">-->
+    <!--<div class="datepicker datepicker-inline" ng-model="dt1">-->
+    <!--<datepicker show-weeks="showWeeks" format="shortDate" max="currentDate"></datepicker>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div id="custom-calendar-stop" class="pull-left bg">-->
+    <!--<div class="datepicker datepicker-inline" ng-model="dt2">-->
+    <!--<datepicker show-weeks="shoWeeks" max="currentDate" min="minDate"></datepicker>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="time-keeper bg clear-fix">-->
+    <!--<div>-->
+    <!--<timepicker ng-model="startTime" ng-change="changed()" hour-step="hstep1" minute-step="mstep1" show-meridian="ismeridian1"></timepicker>-->
+    <!--</div>-->
+    <!--<div>-->
+    <!--<timepicker ng-model="endTime" ng-change="changed()" hour-step="hstep2" minute-step="mstep2" show-meridian="ismeridian2"></timepicker>-->
+    <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<div> <button ng-click="applyTimeFilter()">Apply</button></div>-->
+
+    <!--</div>-->

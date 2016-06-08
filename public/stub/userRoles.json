@@ -1,0 +1,10 @@
+{
+  "data": {
+    "status":200,
+    "response": [
+      {"id":"Administrator", "name":"Fleet Administrator"},
+      {"id":"User", "name":"Fleet User"}
+    ]
+  }
+}
+

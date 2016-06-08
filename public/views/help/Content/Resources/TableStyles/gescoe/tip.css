@@ -1,0 +1,864 @@
+/*<meta Version="9" />*/
+
+/* MadCap Table Style: */
+
+mcTableStyle
+{
+	name: tip;
+	border-collapse: collapse;
+	border-left-style: none;
+	border-left-width: 1px;
+	border-left-color: #000000;
+	border-right-style: none;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-top-style: none;
+	border-top-width: 1px;
+	border-top-color: #000000;
+	border-bottom-style: none;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	max-id: 4;
+	page-break-inside: avoid;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+mcTableColumnStyle
+{
+	span: 1;
+	separator-style: none;
+	separator-width: 1px;
+	separator-color: #000000;
+	name: Column1;
+	id: 0;
+	background-image: url('../../Images/gescoe/tip.png');
+	type: Automatic;
+	background-repeat: no-repeat;
+	background-position-y: top;
+	background-position-x: left;
+	cell-padding-right: 5px;
+	size: 0.3in;
+}
+
+mcTableColumnStyle
+{
+	span: 1;
+	id: 4;
+	name: Column2;
+}
+
+mcTableHeadStyle
+{
+	span: 1;
+	separator-style: none;
+	separator-width: 1px;
+	separator-color: #000000;
+	name: Header1;
+	id: 2;
+}
+
+mcTableBodyStyle
+{
+	span: 1;
+	separator-style: none;
+	separator-width: 1px;
+	separator-color: #000000;
+	name: Body1;
+	id: 1;
+	vertical-align: top;
+	page-break-inside: avoid;
+	size: 0.27in;
+}
+
+mcTableFootStyle
+{
+	span: 1;
+	separator-style: none;
+	separator-width: 1px;
+	separator-color: #000000;
+	name: Footer1;
+	id: 3;
+}
+
+/* Cell Styles: */
+
+.TableStyle-tip
+{
+	border-collapse: collapse;
+	border-left-style: none;
+	border-left-color: #000000;
+	border-left-width: 1px;
+	border-right-style: none;
+	border-right-color: #000000;
+	border-right-width: 1px;
+	border-top-style: none;
+	border-top-color: #000000;
+	border-top-width: 1px;
+	border-bottom-style: none;
+	border-bottom-color: #000000;
+	border-bottom-width: 1px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	page-break-inside: avoid;
+	border-spacing: 0px 0px;
+}
+
+.TableStyle-tip-Column-Column1
+{
+	width: 0.3in;
+}
+
+.TableStyle-tip-Column-Column2
+{
+	
+}
+
+.TableStyle-tip-Head-Header1
+{
+	
+}
+
+.TableStyle-tip-HeadI-Column1-Header1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-HeadI-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadE-Column1-Header1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-right-style: none;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-tip-HeadE-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadF-Column1-Header1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-tip-HeadF-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadH-Column1-Header1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-right-style: none;
+}
+
+.TableStyle-tip-HeadH-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadD-Column1-Header1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-tip-HeadD-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadC-Column1-Header1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-HeadC-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadB-Column1-Header1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-right-style: none;
+}
+
+.TableStyle-tip-HeadB-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadA-Column1-Header1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-HeadA-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadG-Column1-Header1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-HeadG-Column1-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadI-Column2-Header1
+{
+	
+}
+
+.TableStyle-tip-HeadI-Column2-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadE-Column2-Header1
+{
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-tip-HeadE-Column2-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadF-Column2-Header1
+{
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-tip-HeadF-Column2-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadH-Column2-Header1
+{
+	
+}
+
+.TableStyle-tip-HeadH-Column2-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadD-Column2-Header1
+{
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-tip-HeadD-Column2-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadC-Column2-Header1
+{
+	
+}
+
+.TableStyle-tip-HeadC-Column2-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadB-Column2-Header1
+{
+	
+}
+
+.TableStyle-tip-HeadB-Column2-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadA-Column2-Header1
+{
+	
+}
+
+.TableStyle-tip-HeadA-Column2-Header1 p
+{
+	
+}
+
+.TableStyle-tip-HeadG-Column2-Header1
+{
+	
+}
+
+.TableStyle-tip-HeadG-Column2-Header1 p
+{
+	
+}
+
+.TableStyle-tip-Foot-Footer1
+{
+	
+}
+
+.TableStyle-tip-FootI-Column1-Footer1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-FootI-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootE-Column1-Footer1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-right-style: none;
+	border-top-width: 1px;
+	border-top-color: #000000;
+	border-top-style: none;
+}
+
+.TableStyle-tip-FootE-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootF-Column1-Footer1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-top-width: 1px;
+	border-top-color: #000000;
+	border-top-style: none;
+}
+
+.TableStyle-tip-FootF-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootH-Column1-Footer1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-right-style: none;
+}
+
+.TableStyle-tip-FootH-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootD-Column1-Footer1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-top-width: 1px;
+	border-top-color: #000000;
+	border-top-style: none;
+}
+
+.TableStyle-tip-FootD-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootC-Column1-Footer1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-FootC-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootB-Column1-Footer1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-right-style: none;
+}
+
+.TableStyle-tip-FootB-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootA-Column1-Footer1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-FootA-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootG-Column1-Footer1
+{
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-FootG-Column1-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootI-Column2-Footer1
+{
+	
+}
+
+.TableStyle-tip-FootI-Column2-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootE-Column2-Footer1
+{
+	border-top-width: 1px;
+	border-top-color: #000000;
+	border-top-style: none;
+}
+
+.TableStyle-tip-FootE-Column2-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootF-Column2-Footer1
+{
+	border-top-width: 1px;
+	border-top-color: #000000;
+	border-top-style: none;
+}
+
+.TableStyle-tip-FootF-Column2-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootH-Column2-Footer1
+{
+	
+}
+
+.TableStyle-tip-FootH-Column2-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootD-Column2-Footer1
+{
+	border-top-width: 1px;
+	border-top-color: #000000;
+	border-top-style: none;
+}
+
+.TableStyle-tip-FootD-Column2-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootC-Column2-Footer1
+{
+	
+}
+
+.TableStyle-tip-FootC-Column2-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootB-Column2-Footer1
+{
+	
+}
+
+.TableStyle-tip-FootB-Column2-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootA-Column2-Footer1
+{
+	
+}
+
+.TableStyle-tip-FootA-Column2-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-FootG-Column2-Footer1
+{
+	
+}
+
+.TableStyle-tip-FootG-Column2-Footer1 p
+{
+	
+}
+
+.TableStyle-tip-Body-Body1
+{
+	height: 0.27in;
+	page-break-inside: avoid;
+}
+
+.TableStyle-tip-BodyI-Column1-Body1
+{
+	vertical-align: top;
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-BodyI-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyE-Column1-Body1
+{
+	vertical-align: top;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-right-style: none;
+}
+
+.TableStyle-tip-BodyE-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyF-Column1-Body1
+{
+	vertical-align: top;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-BodyF-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyH-Column1-Body1
+{
+	vertical-align: top;
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-right-style: none;
+}
+
+.TableStyle-tip-BodyH-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyD-Column1-Body1
+{
+	vertical-align: top;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-BodyD-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyC-Column1-Body1
+{
+	vertical-align: top;
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-BodyC-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyB-Column1-Body1
+{
+	vertical-align: top;
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-right-style: none;
+}
+
+.TableStyle-tip-BodyB-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyA-Column1-Body1
+{
+	vertical-align: top;
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-BodyA-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyG-Column1-Body1
+{
+	vertical-align: top;
+	background-image: url('../../Images/gescoe/tip.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	padding-right: 5px;
+}
+
+.TableStyle-tip-BodyG-Column1-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyI-Column2-Body1
+{
+	vertical-align: top;
+}
+
+.TableStyle-tip-BodyI-Column2-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyE-Column2-Body1
+{
+	vertical-align: top;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-tip-BodyE-Column2-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyF-Column2-Body1
+{
+	vertical-align: top;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-tip-BodyF-Column2-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyH-Column2-Body1
+{
+	vertical-align: top;
+}
+
+.TableStyle-tip-BodyH-Column2-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyD-Column2-Body1
+{
+	vertical-align: top;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	border-bottom-style: none;
+}
+
+.TableStyle-tip-BodyD-Column2-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyC-Column2-Body1
+{
+	vertical-align: top;
+}
+
+.TableStyle-tip-BodyC-Column2-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyB-Column2-Body1
+{
+	vertical-align: top;
+}
+
+.TableStyle-tip-BodyB-Column2-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyA-Column2-Body1
+{
+	vertical-align: top;
+}
+
+.TableStyle-tip-BodyA-Column2-Body1 p
+{
+	
+}
+
+.TableStyle-tip-BodyG-Column2-Body1
+{
+	vertical-align: top;
+}
+
+.TableStyle-tip-BodyG-Column2-Body1 p
+{
+	
+}
+

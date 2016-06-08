@@ -1,0 +1,838 @@
+/*<meta Version="9" />*/
+
+/* MadCap Table Style: */
+
+@media non-print
+{
+	mcTableStyle
+	{
+		
+	}
+
+	mcTableColumnStyle
+	{
+		
+	}
+
+	mcTableHeadStyle
+	{
+		
+	}
+
+	mcTableBodyStyle
+	{
+		font-family: 'GE Inspira';
+		color: #000000;
+	}
+}
+
+mcTableStyle
+{
+	border-collapse: collapse;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-spacing-y: 0;
+	border-spacing-x: 0;
+	name: BasicLeftHeader;
+	cell-padding-left: 5px;
+	cell-padding-right: 5px;
+	cell-padding-bottom: 5px;
+	border-left-color: #bfc2c5;
+	border-right-color: #bfc2c5;
+	border-top-color: #bfc2c5;
+	border-bottom-color: #bfc2c5;
+	max-id: 8;
+	cell-padding-top: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+mcTableColumnStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 1px;
+	separator-color: #bfc2c5;
+	name: Column1;
+	id: 0;
+	size: 50%;
+}
+
+mcTableHeadStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 1px;
+	separator-color: #3f4145;
+	background-color: #3f4145;
+	name: Header1;
+	id: 2;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	color: #ffffff;
+	text-align: left;
+}
+
+mcTableBodyStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 1px;
+	separator-color: #bfc2c5;
+	name: Row1;
+	id: 1;
+	page-break-inside: avoid;
+}
+
+/* Cell Styles: */
+
+@media non-print
+{
+	.TableStyle-BasicLeftHeader
+	{
+		border-spacing: 0px 0px;
+	}
+
+	.TableStyle-BasicLeftHeader-BodyI-Column1-Row1
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyI-Column1-Row1 p
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyE-Column1-Row1
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyE-Column1-Row1 p
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyF-Column1-Row1
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyF-Column1-Row1 p
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyH-Column1-Row1
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyH-Column1-Row1 p
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyD-Column1-Row1
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyD-Column1-Row1 p
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyC-Column1-Row1
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyC-Column1-Row1 p
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyB-Column1-Row1
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyB-Column1-Row1 p
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyA-Column1-Row1
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyA-Column1-Row1 p
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyG-Column1-Row1
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+
+	.TableStyle-BasicLeftHeader-BodyG-Column1-Row1 p
+	{
+		color: #000000;
+		font-family: 'GE Inspira';
+	}
+}
+
+.TableStyle-BasicLeftHeader
+{
+	border-collapse: collapse;
+	border-left-style: solid;
+	border-left-color: #bfc2c5;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-right-color: #bfc2c5;
+	border-right-width: 1px;
+	border-top-style: solid;
+	border-top-color: #bfc2c5;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #bfc2c5;
+	border-bottom-width: 1px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-spacing: 0px 0px;
+}
+
+.TableStyle-BasicLeftHeader-Column-Column1
+{
+	width: 50%;
+}
+
+.TableStyle-BasicLeftHeader-Head-Header1
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-HeadI-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	text-align: left;
+	background-color: #3f4145;
+}
+
+.TableStyle-BasicLeftHeader-HeadI-Column1-Header1 p
+{
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+}
+
+.TableStyle-BasicLeftHeader-HeadE-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-color: #bfc2c5;
+	border-right-style: solid;
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	text-align: left;
+	background-color: #3f4145;
+	border-bottom-width: 1px;
+	border-bottom-color: #3f4145;
+	border-bottom-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-HeadE-Column1-Header1 p
+{
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+}
+
+.TableStyle-BasicLeftHeader-HeadF-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	text-align: left;
+	background-color: #3f4145;
+	border-bottom-width: 1px;
+	border-bottom-color: #3f4145;
+	border-bottom-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-HeadF-Column1-Header1 p
+{
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+}
+
+.TableStyle-BasicLeftHeader-HeadH-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-color: #bfc2c5;
+	border-right-style: solid;
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	text-align: left;
+	background-color: #3f4145;
+}
+
+.TableStyle-BasicLeftHeader-HeadH-Column1-Header1 p
+{
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+}
+
+.TableStyle-BasicLeftHeader-HeadD-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	text-align: left;
+	background-color: #3f4145;
+	border-bottom-width: 1px;
+	border-bottom-color: #3f4145;
+	border-bottom-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-HeadD-Column1-Header1 p
+{
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+}
+
+.TableStyle-BasicLeftHeader-HeadC-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	text-align: left;
+	background-color: #3f4145;
+}
+
+.TableStyle-BasicLeftHeader-HeadC-Column1-Header1 p
+{
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+}
+
+.TableStyle-BasicLeftHeader-HeadB-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-color: #bfc2c5;
+	border-right-style: solid;
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	text-align: left;
+	background-color: #3f4145;
+}
+
+.TableStyle-BasicLeftHeader-HeadB-Column1-Header1 p
+{
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+}
+
+.TableStyle-BasicLeftHeader-HeadA-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	text-align: left;
+	background-color: #3f4145;
+}
+
+.TableStyle-BasicLeftHeader-HeadA-Column1-Header1 p
+{
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+}
+
+.TableStyle-BasicLeftHeader-HeadG-Column1-Header1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+	text-align: left;
+	background-color: #3f4145;
+}
+
+.TableStyle-BasicLeftHeader-HeadG-Column1-Header1 p
+{
+	color: #ffffff;
+	font-family: 'GE Inspira';
+	font-weight: bold;
+}
+
+.TableStyle-BasicLeftHeader-FootI-Column1-
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-FootI-Column1- p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-FootE-Column1-
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-color: #bfc2c5;
+	border-right-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-FootE-Column1- p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-FootF-Column1-
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-FootF-Column1- p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-FootH-Column1-
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-color: #bfc2c5;
+	border-right-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-FootH-Column1- p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-FootD-Column1-
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-FootD-Column1- p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-FootC-Column1-
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-FootC-Column1- p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-FootB-Column1-
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-color: #bfc2c5;
+	border-right-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-FootB-Column1- p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-FootA-Column1-
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-FootA-Column1- p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-FootG-Column1-
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-FootG-Column1- p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-Body-Row1
+{
+	page-break-inside: avoid;
+}
+
+.TableStyle-BasicLeftHeader-BodyI-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-BodyI-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-BodyE-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 1px;
+	border-bottom-color: #bfc2c5;
+	border-bottom-style: solid;
+	border-right-width: 1px;
+	border-right-color: #bfc2c5;
+	border-right-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-BodyE-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-BodyF-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 1px;
+	border-bottom-color: #bfc2c5;
+	border-bottom-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-BodyF-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-BodyH-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-color: #bfc2c5;
+	border-right-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-BodyH-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-BodyD-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 1px;
+	border-bottom-color: #bfc2c5;
+	border-bottom-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-BodyD-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-BodyC-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-BodyC-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-BodyB-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-color: #bfc2c5;
+	border-right-style: solid;
+}
+
+.TableStyle-BasicLeftHeader-BodyB-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-BodyA-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-BodyA-Column1-Row1 p
+{
+	
+}
+
+.TableStyle-BasicLeftHeader-BodyG-Column1-Row1
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.TableStyle-BasicLeftHeader-BodyG-Column1-Row1 p
+{
+	
+}
+
+mcTableStyle
+{
+	
+}
+
+mcTableColumnStyle
+{
+	
+}
+
+mcTableHeadStyle
+{
+	
+}
+
+mcTableBodyStyle
+{
+	font-family: 'GE Inspira';
+	color: #000000;
+}
+
+.TableStyle-BasicLeftHeader
+{
+	border-spacing: 0px 0px;
+}
+
+.TableStyle-BasicLeftHeader-BodyI-Column1-Row1
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyI-Column1-Row1 p
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyE-Column1-Row1
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyE-Column1-Row1 p
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyF-Column1-Row1
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyF-Column1-Row1 p
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyH-Column1-Row1
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyH-Column1-Row1 p
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyD-Column1-Row1
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyD-Column1-Row1 p
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyC-Column1-Row1
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyC-Column1-Row1 p
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyB-Column1-Row1
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyB-Column1-Row1 p
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyA-Column1-Row1
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyA-Column1-Row1 p
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyG-Column1-Row1
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+
+.TableStyle-BasicLeftHeader-BodyG-Column1-Row1 p
+{
+	color: #000000;
+	font-family: 'GE Inspira';
+}
+

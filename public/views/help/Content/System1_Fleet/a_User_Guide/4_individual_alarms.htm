@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="System1FleetManagement_OnlineHelp.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Alarms</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Resources/TableStyles/template/BasicNoFixedCol.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/gescoestyles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../../System1FleetManagement_OnlineHelp.htm#System1_Fleet/a_User_Guide/4_individual_alarms.htm">Open topic with navigation</a>
+        </p>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix"></span><span class="MCBreadcrumbs">Alarms</span>
+        </div>
+        <h1 style="margin-bottom: 30px;">Alarms</h1>
+        <p>The Alarms page contains the Alarms table with all active alarms and advisories, and the default alarm plot.</p>
+        <p>The Alarms table contains alarms or advisories triggered at each point for System 1 or each tag for SmartSignal. Points and tags correspond to where sensors for the alarm systems are installed on a machine to detect and collect operational time series data. When conditions are outside System 1 setpoint boundaries for a point, or when they violate SmartSignal rules defined for a tag, alarms are triggered. </p>
+        <p><a class="MCPopupThumbnailLink MCPopupThumbnailPopup" href="../../Resources/Images_New/alarms_table_1.png"><img class="MCPopupThumbnail img imgMaxWidth100Percent" data-mc-width="887" data-mc-height="356" src="../../Resources/Images_New/alarms_table_1_thumb_0_48.png" tabindex="" /></a>
+        </p>
+        <p><span class="OtherProdName">System 1 Fleet Management</span> identifies alarm or advisory severity according to the scale for the native system, and then normalizes the severity to High, Medium, or Low to provide a common scale in the Alarms page. </p>
+        <p style="page-break-before: always;">Bar icons, as shown below, are color-coded for each severity (System 1, indicated by S) or priority (SmartSignal, indicated by P).</p>
+        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/template/BasicNoFixedCol.css');" class="TableStyle-BasicNoFixedCol" cellspacing="0">
+            <col class="TableStyle-BasicNoFixedCol-Column-Column1" style="width: 158px;" />
+            <col class="TableStyle-BasicNoFixedCol-Column-Column1" style="width: 176px;" />
+            <col class="TableStyle-BasicNoFixedCol-Column-Column1" />
+            <col class="TableStyle-BasicNoFixedCol-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-BasicNoFixedCol-Head-Header1">
+                    <th class="TableStyle-BasicNoFixedCol-HeadE-Column1-Header1">System 1 <br />Native Scale</th>
+                    <th class="TableStyle-BasicNoFixedCol-HeadE-Column1-Header1">SmartSignal <br />Native Scale</th>
+                    <th colspan="2" class="TableStyle-BasicNoFixedCol-HeadD-Column1-Header1">System 1 Fleet Management<br /> Normalized Scale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-BasicNoFixedCol-Body-Row1">
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyE-Column1-Row1">S4</td>
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyE-Column1-Row1">P1</td>
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyE-Column1-Row1">
+                        <img src="../../Resources/Images_New/icon_alarm_high.png" />
+                    </td>
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyD-Column1-Row1">High</td>
+                </tr>
+                <tr class="TableStyle-BasicNoFixedCol-Body-Row1">
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyE-Column1-Row1">S3</td>
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyE-Column1-Row1">P2 and P3</td>
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyE-Column1-Row1">
+                        <img src="../../Resources/Images_New/icon_alarm_medium.png" />
+                    </td>
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyD-Column1-Row1">Medium</td>
+                </tr>
+                <tr class="TableStyle-BasicNoFixedCol-Body-Row1">
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyB-Column1-Row1">S1 and S2</td>
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyB-Column1-Row1">P4 and P5</td>
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyB-Column1-Row1">
+                        <img src="../../Resources/Images_New/icon_alarm_low.png" />
+                    </td>
+                    <td style="text-align: center;" class="TableStyle-BasicNoFixedCol-BodyA-Column1-Row1">Low</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Alarm plots are useful when investigating machine issues at measurable points or tags, which can range from temperature spikes to vibrations that exceed established thresholds. </p>
+        <p>When you open the Alarms page and select a System 1 or SmartSignal alarm, the corresponding alarm plots appear. You can select different plot parameters from the drop-down lists to customize the plots and tailor the data to fit your diagnostic needs. </p>
+        <p>Refer to <a href="5a_system1_alarm_plots.htm">System 1 Alarm Plots</a> and <a href="5b_smartsignal_alarm_plots.htm">SmartSignal Alarm Plots</a> for more specific information on each type.</p>&#160;<p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkBottom"><a href="../../../System1FleetManagement_OnlineHelp.htm#System1_Fleet/a_User_Guide/4_individual_alarms.htm">Open topic with navigation</a></p></body>
+</html>

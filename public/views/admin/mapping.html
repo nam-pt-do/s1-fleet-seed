@@ -1,0 +1,115 @@
+<div class="module-body">
+  <div class="module-header">
+        <h2 class="voice voice-brand pull-left marginRt10">Mapping -{{customerId || 'Select'}}&nbsp;&nbsp;</h2>&nbsp;
+        <div class="action btn-group pull-left" dropdown>
+            <button type="button" class="btn dropdown-toggle">
+                <i class="icon-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu fixHeight" role="menu">
+                <li ng-repeat="customer in currentUser.customers">
+                  <a ng-click="setCustomer(customer.key);mappingType =customer.name">{{customer.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <!--<div>
+            <button class="btn pull-right" ng-click="createUser()">Add New User</button>
+        </div>-->
+       <div class="pull-right">
+           Default Asset View:&nbsp;
+           <div class="action btn-group" dropdown>
+               <button type="button" class="btn dropdown-toggle">
+                   {{assetByType(assetType)}}&nbsp;&nbsp;<i class="icon-chevron-down"></i>
+               </button>
+               <ul class="dropdown-menu" role="menu">
+                  <!-- <li><a ui-sref="admin.mapping({assetType:'System1'})" ng-click="assetType='System1'">System 1</a></li>
+                   <li><a ui-sref="admin.mapping({assetType:'SmartSignal'})" ng-click="assetType='SmartSignal'">SmartSignal</a></li>-->
+                   <li><a ng-click="assetType='System1'"> System 1 </a></li>
+                   <li><a ng-click="assetType='SmartSignal'"> SmartSignal </a></li>
+               </ul>
+           </div>
+       </div>
+  </div>
+  <div class="module-body">
+       <div class="thumbnail span55">
+           <div class="module-header"><h3>Step 1: Export Hierarchies</h3></div>
+           <div class="">Export System 1 and SmartSignal hierarchies to an .xls file, then edit the spreadsheet to map assets together.</div>
+<!--
+           <div class="btn-block pull-right"><button class="btn btn-primary pull-right"> <a href='http://3.39.65.107:9090/service/mappingservice/customer/GE/mapping/file?primarySystem=SYSTEM1' download="mapped.xls">Export to File</a></button></div>
+-->
+<!--
+           <div class="btn-block pull-right"><button class="btn btn-primary pull-right"> <a href='download()' download="mapped.xls">Export to File</a></button></div>
+-->
+           <div class="btn-block pull-right"><button class="btn btn-primary pull-right" ng-click="download()"> Export to File</button></div>
+       </div>
+
+       <div class="thumbnail span55">
+           <div class="module-header"><h3>Step 2: Import Mapping</h3></div>
+           <div>Import mapped asset hierarchies from a .csv or .xls file.</div>
+           <!--
+                       <form method="POST" action="http://3.39.65.107:9090/service/mappingservice/customer/New%20Customer/mapping?primarySystem=System1" enctype="multipart/form-data" name="exportFile" ng-controller="MappingCtrl" >
+           -->
+          <div>
+              <form name="exportFile" ng-controller="MappingCtrl" ng-submit="prepareUpload()">
+                  <input type="file" name="file" id="file" class="btn-block">
+<!--
+                  <input type="submit" value="Import File" name="upload" id="upload"  class="btn btn-primary pull-right"/>
+-->
+                  <button type="submit" class="btn btn-primary pull-right" name="upload" id="upload" >Import File</button>
+                  <div class="pull-left" ng-show="showUploading">
+                      <i class="icon-spinner icon-spin"></i> <em>Uploading file...</em>
+                  </div>
+              </form>
+          </div>
+           <!--   <a href='http://3.39.65.107:9090/service/mappingservice/customer/New%20Customer/mapping/file?primarySystem=SYSTEM1' download="mapped.xls">Download File</a>-->
+           <!-- <form method="POST" action="http://3.39.65.107:9090/service/mappingservice/customer/New%20Customer/mapping?primarySystem=System1" enctype="multipart/form-data" >
+                File:
+                <input type="file" name="file" id="file" /> <br/>
+                Destination:
+                <input type="text" value="/tmp" name="destination"/>
+                </br>
+                <input type="submit" value="Upload" name="upload" id="upload" />
+            </form>-->
+       </div>
+   </div>
+    <p class="alert fade in alert-{{message.type}} span11" ng-if="message && message.text!=''">
+        <button type="button" class="close" data-dismiss="alert" ng-click="closeAlert()">×</button>
+        {{message.text}}
+    </p>
+    <div class="fleet-mapping span11">
+        <div native-table table-data="mappedData" filtered="filteredMappedData"
+             page-lengths="[5,10,20]" show-search="true">
+            <table class="table dataTable table-bordered table-font-large" ng-model="mappedData" id="tableMapped">
+                <thead>
+                    <tr ng-show="assetType=='System1'">
+                        <th native-th="s1NodePath" default-sort="asc" class="sortable span6">System 1</th>
+                        <th native-th="ssNodePath" class="sortable span5">SmartSignal</th>
+                    </tr>
+                    <tr ng-show="assetType=='SmartSignal'">
+                        <th native-th="s1NodePath" default-sort="asc" class="sortable span6">SmartSignal</th>
+                        <th native-th="ssNodePath" class="sortable span5">System 1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-show="(mappedData.length<1 || !mappedData)">
+                    <td colspan="6"><h3 class="centerText">No Data Available</h3></td>
+                </tr>
+                    <tr ng-model="mappedData" ng-repeat="item in filteredMappedData track by $index"
+                        ng-hide="mappedData.length<1" ng-show="assetType=='System1'">
+                        <td><b>{{item.s1NodeName}}</b> : Node Path -> <small>{{item.s1NodePath}}</small></td>
+                        <td><b>{{item.ssNodeName}}</b> : Node Path -> <small>{{item.ssNodePath}}</small></td>
+                    </tr>
+                    <tr ng-repeat="obj in filteredMappedData track by $index"
+                        ng-show="assetType=='SmartSignal'" ng-model="mappedData">
+                        <td><b>{{obj.ssNodeName||'Node Name : N/A '}}</b> : Node Path -> <small>{{obj.ssNodePath}}</small></td>
+                        <td><b>{{obj.s1NodeName||'Node Name : N/A '}}</b> : Node Path -> <small>{{obj.s1NodePath}}</small></td>
+                    </tr>
+
+                <!--<tr ng-show="showSpinner">
+                        <i class="icon-spinner icon-spin" style="font-size: 30px;margin-left: 30%;margin-top: 1%;"></i>
+                </tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

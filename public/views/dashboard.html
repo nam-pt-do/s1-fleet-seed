@@ -1,0 +1,67 @@
+<px-card header-text="Overview" id="my-card">
+<!--<div ng-show="showSpinner" ng-hide="!showSpinner" class="container content overlay-div">{{showSpinner}}
+     <div class="overlay-img">
+      <img src="/images/ajax-loader.gif" alt="Spinner"/>
+     </div>
+</div> -->
+<div class="module primary-nav">
+    <!-- left side -->
+    <div class="alert alert-warning" style="margin-left:30px" ng-if="!customerId">
+        <!--button type="button" class="close" ng-click="clearMessage()">×</button-->
+        Please refresh (F5) this page once the first Enterprise has been connected and activated.
+    </div>
+
+    <div class="pull-left" ng-show="current.controller!='analysisNewCtrl'">
+        <div class="btn-group" dropdown>
+            <button type="button" class="btn btn-primary btn-large">{{customerId ||'Select '}} Customer</button>
+            <button type="button" class="btn btn-primary btn-large  dropdown-toggle">
+                <i class="icon-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu myddmenu fixHeight" role="menu">
+                <li ng-if="!currentUser.customers || currentUser.customers.length ==0" style="padding: 5px;">No Customer(s)
+                    Available
+                </li>
+                <li ng-repeat="customer in currentUser.customers"
+                    ng-if="currentUser.customers && currentUser.customers.length >0">
+                    <a ng-click="setCustomer(customer.key);customerName =customer.name">{{customer.name}}</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <asset-hierarchy   ng-show="current.controller!='analysisNewCtrl'"     
+    		customer-id="{{customerId}}"
+            enterprise-list="{{enterpriseList}}"
+            set-customer="setCustomer(customerId)"
+            selected-enterprise="selectedEnterprise"
+            selected-node-name="{{selectedNodeName}}"
+            node-severity="{{nodeSeverity}}"
+            node-no-datapoints="{{nodeNoDatapoints}}"
+            node-type="{{nodeType}}"
+            get-enterprise-nodes="getEnterpriseNodes(node)"
+            get-enterprises="getEnterprises()"
+            show-drop-down-spinner="{{showDropDownSpinner}}"
+    >
+    </asset-hierarchy>
+    <div class="pull-right">
+        <!-- Start Date picker -->
+        <!--div time-range class="pull-left marginRt10" ng-if="!showHierarchy"></div-->
+        <!-- End Date picker -->
+        <!-- right side -->
+        <div class="pull-right">
+            <ul class="nav nav-pills pull-left">
+                <li ui-sref-active="active"><a ui-sref="assets.overview">Overview</a></li>
+                <li ui-sref-active="active"><a ui-sref="assets.alarms">Alarms</a></li>
+                <!--li ui-sref-active="active"><a ui-sref="assets.analysis">AnalysisOld</a></li-->
+                <li ui-sref-active="active"><a ui-sref="assets.analysisNew">Analysis</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div>
+	<ul class="bread-crumb-list" ng-if="current.name !== 'assets.analysisNew'">
+    	<li ng-repeat="item in breadCrumb track by $index">{{item}} <span>&gt;</span> </li>
+	</ul>	
+</div>
+
+<div ui-view></div>
+</px-card>

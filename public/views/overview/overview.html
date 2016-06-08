@@ -1,0 +1,523 @@
+<div class="module">
+    <div class="module-header">
+        <div class="viewMenu pull-right">
+            <div class="btn-group pull-right">
+                <!-- FEATURE REMOVED FOR R1 -->
+                <!--<button data-ng-disabled="{{hideFeatures}}" class="btn" ng-click="selectGridOrGauge('dashboard')"
+                        ng-class="{active:overviewTypeIcon=='dashboard'}">
+                    <span class="icon-dashboard" tooltip="View Gauges" tooltip-append-to-body="true"></span>
+                </button>-->
+                <button class="btn " ng-click="selectGridOrGauge('table')"
+                        ng-class="{active:overviewTypeIcon=='table'}">
+                   <span class="icon-table" tooltip="View Grid" tooltip-append-to-body="true"></span></button>
+            </div>
+            <button class="btn pull-right addMarginRight" ng-click="refreshFunction()" tooltip="Refresh"
+                    tooltip-append-to-body="true">
+                <i class="auto-refresh-icon" ng-show="autoRefresh == 'on'"></i>
+                <i class="icon-refresh" ng-hide="autoRefresh == 'on'"></i>
+            </button>
+
+            <div class="btn-group pull-right marginRt20">
+                <button class="btn pull-left btn-primary" ng-click="restoreHierarchySort()"
+                        tooltip="Restore Hierarchy Sort" tooltip-append-to-body="true"
+                        ng-class="{'btn-primary':!assetsView}" ng-show="!assetsView ">
+                    <span class="icon-undo"></span></button>
+                <!-- FEATURE REMOVED FOR R1 -->
+                <!--<button class="btn" data-toggle="button" data-ng-click="toggleAssetView()"
+                        ng-class="{'btn-primary':!assetsView}" tooltip="View All Assets" tooltip-append-to-body="true"
+                        ng-if="overviewTypeIcon=='table'" disabled> Assets View
+                </button>-->
+            </div>
+            <div class="module-content pull-right customDropDown" ng-if="overviewTypeIcon=='dashboard'"
+                 visibility="true">
+                Sort By:&nbsp;
+                <div class="btn-group" dropdown>
+                    <button type="submit" class="btn">{{ sortTypeName }}</button>
+                    <button type="button" class="btn dropdown-toggle"><span class="icon-chevron-down"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in ddmenuList|filter:!selected" ng-model="sortType"
+                            ng-init="sortType=item.val">
+                            <a ng-click="setSortType(item)">{{ item.name }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="pull-left col-md-6 col-sm-6 marginBt0 marginLt0">
+            <!--span class="customHeader voice-brand pull-left">Overview</span-->
+            <span ng-if="statusMessage != undefined" class="alert alert-danger">{{statusMessage}}</span>
+
+            <div class="pull-left hdr-loader" ng-show="showTableSpinner">
+                <i class="icon-spinner icon-spin"></i>
+                <em class="hidden-xs hidden-sm">Fetching Data...</em>
+            </div>
+        </div>
+
+        <!--<div class="pull-left">
+            <ul><li ng-repeat="crumb in breadCrumbs"><a ng-click="gotoCrumb(crumb.id)">{{crumb.name}}</a> </li> </ul>
+        </div>-->
+    </div>
+
+    <div class="module-content">
+        <div ng-if="overviewTypeIcon=='dashboard'" visibility="true" ng-cloak>
+            <div ng-model="overviewIndex">
+                <div class="gContainer tableOverview">
+                    <ul class="unstyled">
+                        <li ng-repeat="item in overviewIndex |orderBy:findSortType() track by $index"
+                            ng-init="item.selectedTypeName=''">
+                            <div class="childContainer">
+                                <div class="childHeader alignTop">
+                                    <!--<div class="pull-left alignTop"> -->
+                                    <span class='icon-stop icon-small statusColor_{{item.severity}}'
+                                          tooltip="Alarm Severity : {{getItemSeverity(item.severity) }}"
+                                          tooltip-append-to-body="true"></span>
+                                <span ng-class="getNodeTypeIcon(item.nodeType)"
+                                      tooltip="{{getToolTipForGauge(item.nodeType,item.name,item.name_path)}}"
+                                      tooltip-append-to-body="true"></span>
+                                <span class="alignTop"><b><a ng-click="changeNodeId(item)" tooltip="Open Folder">{{item.name
+                                    || item.nodeId || item.enterpriseId}}</a> </b>
+                                    <comment
+                                            ng-if="item.runStatus=='Running' && (item.nodeType=='machine' || item.nodeType=='machine_train')"
+                                            style="color: #868686"> | {{item.communicationMessage }}
+                                    </comment>
+                                    <comment
+                                            ng-if="item.runStatus=='Not Running' && (item.nodeType=='machine' || item.nodeType=='machine_train')"
+                                            style="color: #e2171a"> | {{item.communicationMessage }}
+                                    </comment>
+                                    <comment
+                                            ng-if="item.runStatus=='Speed Unknown' && (item.nodeType=='machine' || item.nodeType=='machine_train')"
+                                            style="color: #868686"> | {{item.communicationMessage }}
+                                    </comment>
+                                    <comment
+                                            ng-if="item.communicationMessage!='Communicating' && item.nodeType!='machine' && item.nodeType!='machine_train' &&  item.nodeType!='group_folder'"
+                                            style="color: #e2171a"> | {{item.communicationMessage }}
+                                    </comment></span>
+                                <span ng-if="item.ipNoData > 0;" style="color: #e2171a">
+                                    <!--<span class="customIconAlarmPlotBlack"
+                                       tooltip-append-to-body="true"
+                                       tooltip="Not communicating : {{item.ipNoData }}"></span> -->
+                                    <comment> | {{item.ipNoData }} points not communicating</comment>
+                                </span>
+                                    <!--</div> -->
+                                </div>
+                                <div class="span2 gChild"
+                                     ng-if="(widgetOptions.s1MachinePIndex == 'on') && (item.s1IndexEnabled =='true')">
+                                    <div><p class="textSize height40">
+                                <span class="system1Icon displayInline"
+                                      tooltip="System 1" tooltip-append-to-body="true"></span> Asset Protection</p>
+                                        <button class="btn btn-icon btn-mini pull-right marginRt20"
+                                                ng-click="showTrends(item,$index, 'ap',item.apt1,item.apt2);"
+                                                ng-class="{'active':item.selectedTypeName=='ap', 'disabled': item.selectedTypeName!='ap'}">
+                                <span tooltip="Show 30 Day Trend" tooltip-append-to-body="true"
+                                      ng-class="{'icon-minus':item.selectedTypeName=='ap', 'icon-plus':item.selectedTypeName!='ap'}"></span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <iidx-ng-gauge min="0"
+                                                       max="100"
+                                                       value="item.system1AP"
+                                                       t1="item.apt1" t2="item.apt2"
+                                                       high="item.apHighAlarms" low="item.apLowAlarms"
+                                                       med="item.apMedAlarms"
+                                                       total="item.apTotal"
+                                                       color="item.apColor"
+                                                       item="item"
+                                                       goto-alarms="gotoAlarms(item,'All',item.total)">
+                                        </iidx-ng-gauge>
+                                    </div>
+                                    <div class="childFooter" ng-show="item.selectedTypeName=='ap'"><p>30 Day Trend</p>
+
+                                        <p ng-if="!item.data || item.data.length==0">No Data Available</p></div>
+                                </div>
+                                <div class="span2 gChild"
+                                     ng-if="widgetOptions.s1MachineCMIndex == 'on' && item.s1IndexEnabled =='true'">
+                                    <div><p class="textSize height40">
+                                <span class="system1Icon displayInline"
+                                      tooltip="System 1" tooltip-append-to-body="true"></span> Asset Management</p>
+                                        <button class="btn btn-icon btn-mini pull-right marginRt20"
+                                                ng-click="showTrends(item,$index, 'am',item.amt1,item.amt2);"
+                                                ng-class="{'active':item.selectedTypeName=='am', 'disabled':item.selectedTypeName!='am'}">
+                                            <span tooltip="Show 30 Day Trend" tooltip-append-to-body="true"
+                                                  ng-class="{'icon-minus':item.selectedTypeName=='am', 'icon-plus':item.selectedTypeName!='am'}"></span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <iidx-ng-gauge min="0"
+                                                       max="100"
+                                                       value="item.system1AM"
+                                                       t1="item.amt1" t2="item.amt2"
+                                                       high="item.amHighAlarms" low="item.amLowAlarms"
+                                                       med="item.amMedAlarms"
+                                                       total="item.amTotal"
+                                                       color="item.amColor"
+                                                       item="item"
+                                                       goto-alarms="gotoAlarms(item,'All',item.total)">
+                                        </iidx-ng-gauge>
+                                    </div>
+                                    <div class="childFooter" ng-show="item.selectedTypeName=='am'"><p>30 Day Trend</p>
+
+                                        <p ng-if="!item.data || item.data.length==0">No Data Available</p></div>
+                                </div>
+                                <div class="span2 gChild"
+                                     ng-if="widgetOptions.s1MachineCIndex == 'on' && item.s1IndexEnabled =='true'">
+                                    <div><p class="textSize height40"><span class="system1Icon displayInline"
+                                                                            tooltip="System 1"
+                                                                            tooltip-append-to-body="true"></span> Asset
+                                        Combined</p>
+                                        <button class="btn btn-icon btn-mini pull-right marginRt20"
+                                                ng-click="showTrends(item,$index, 'ac',item.act1,item.act2);"
+                                                ng-class="{'active':item.selectedTypeName=='ac', 'disabled':item.selectedTypeName!='ac'}">
+                                            <span tooltip="Show 30 Day Trend" tooltip-append-to-body="true"
+                                                  ng-class="{'icon-minus':item.selectedTypeName=='ac', 'icon-plus':item.selectedTypeName!='ac'}"></span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <iidx-ng-gauge min="0"
+                                                       max="100"
+                                                       value="item.system1AC"
+                                                       t1="item.act1" t2="item.act2"
+                                                       high="item.acHighAlarms" low="item.acLowAlarms"
+                                                       med="item.acMedAlarms"
+                                                       total="item.acTotal"
+                                                       color="item.acColor"
+                                                       item="item"
+                                                       goto-alarms="gotoAlarms(item,'All',item.total)">
+                                        </iidx-ng-gauge>
+                                    </div>
+                                    <div class="childFooter" ng-show="item.selectedTypeName=='ac'"><p>30 Day Trend</p>
+
+                                        <p ng-if="!item.data || item.data.length==0">No Data Available</p></div>
+                                </div>
+                                <div class="span2 gChild"
+                                     ng-if="widgetOptions.s1InstProtectionIndex == 'on' && item.s1IndexEnabled =='true'">
+                                    <div><p class="textSize height40"><span class="system1Icon displayInline"
+                                                                            tooltip="System 1"
+                                                                            tooltip-append-to-body="true"></span>
+                                        Instrument Protection</p>
+                                        <button class="btn btn-icon btn-mini pull-right marginRt20"
+                                                ng-click="showTrends(item,$index, 'ip',item.ipt1,item.ipt2);"
+                                                ng-class="{'active':item.selectedTypeName=='ip', 'disabled':item.selectedTypeName!='ip'}">
+                                            <span tooltip="Show 30 Day Trend" tooltip-append-to-body="true"
+                                                  ng-class="{'icon-minus':item.selectedTypeName=='ip', 'icon-plus':item.selectedTypeName!='ip'}"></span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <iidx-ng-gauge min="0"
+                                                       max="100"
+                                                       value="item.system1IP"
+                                                       t1="item.ipt1" t2="item.ipt2"
+                                                       high="item.ipHighAlarms" low="item.ipLowAlarms"
+                                                       med="item.ipMedAlarms"
+                                                       total="item.ipTotal"
+                                                       color="item.ipColor"
+                                                       item="item"
+                                                       goto-alarms="gotoAlarms(item,'All',item.total)">
+                                        </iidx-ng-gauge>
+                                    </div>
+                                    <div class="childFooter" ng-show="item.selectedTypeName=='ip'"><p>30 Day Trend</p>
+
+                                        <p ng-if="!item.data || item.data.length==0">No Data Available</p></div>
+                                </div>
+                                <div class="span2 gChild"
+                                     ng-if="widgetOptions.s1InstCMIndex == 'on' && item.s1IndexEnabled =='true'">
+                                    <div><p class="textSize height40"><span class="system1Icon displayInline"
+                                                                            tooltip="System 1"
+                                                                            tooltip-append-to-body="true"></span>
+                                        Instrument Management</p>
+                                        <button class="btn btn-icon btn-mini pull-right marginRt20"
+                                                ng-click="showTrends(item,$index, 'im',item.imt1,item.imt2);"
+                                                ng-class="{'active': item.selectedTypeName=='im', 'disabled':item.selectedTypeName!='im'}">
+                                            <span tooltip="Show 30 Day Trend" tooltip-append-to-body="true"
+                                                  ng-class="{'icon-minus':item.selectedTypeName=='im', 'icon-plus':item.selectedTypeName!='im'}"></span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <iidx-ng-gauge min="0"
+                                                       max="100"
+                                                       value="item.system1IM"
+                                                       t1="item.imt1" t2="item.imt2"
+                                                       high="item.imHighAlarms" low="item.imLowAlarms"
+                                                       med="item.imMedAlarms"
+                                                       total="item.imTotal"
+                                                       color="item.imColor"
+                                                       item="item"
+                                                       goto-alarms="gotoAlarms(item,'All',item.total)">
+
+                                        </iidx-ng-gauge>
+                                    </div>
+                                    <div class="childFooter" ng-show="item.selectedTypeName=='im'"><p>30 Day Trend</p>
+
+                                        <p ng-if="!item.data || item.data.length==0">No Data Available</p></div>
+                                </div>
+                                <div class="span2 gChild"
+                                     ng-if="widgetOptions.s1InstCIndex == 'on' && item.s1IndexEnabled =='true'">
+                                    <div><p class="textSize height40"><span class="system1Icon displayInline"
+                                                  tooltip="System 1"
+                                                  tooltip-append-to-body="true"></span>
+                                            Instrument Combined</p>
+                                        <button class="btn btn-icon btn-mini pull-right marginRt20"
+                                                ng-click="showTrends(item,$index, 'ic',item.ict1,item.ict2);"
+                                                ng-class="{'active':item.selectedTypeName=='ic', 'disabled':item.selectedTypeName!='ic'}">
+                                            <span tooltip="Show 30 Day Trend" tooltip-append-to-body="true"
+                                                  ng-class="{'icon-minus':item.selectedTypeName=='ic', 'icon-plus':item.selectedTypeName!='ic'}"></span>
+                                        </button>
+                                    </div>
+                                <div>
+                                    <iidx-ng-gauge min="0"
+                                          max="100"
+                                          value="item.system1IC"
+                                          t1="item.ict1" t2="item.ict2"
+                                          high="item.icHighAlarms" low="item.icLowAlarms"
+                                          med="item.icMedAlarms"
+                                          total="item.icTotal"
+                                          color="item.icColor"
+                                          item="item"
+                                          goto-alarms="gotoAlarms(item,'All',item.total)">
+                                      </iidx-ng-gauge>
+                                  </div>
+                                    <div class="childFooter" ng-show="item.selectedTypeName=='ic'"><p>30 Day Trend</p>
+
+                                        <p ng-if="!item.data || item.data.length==0"></div>
+                                </div>
+                                <div class="span2 gChild"
+                                     ng-if="widgetOptions.ssPIndex == 'on' && item.ssIndexEnabled =='true' ">
+                                    <div><p class="textSize height40">SmartSignal</p>
+                                        <button class="btn btn-icon btn-mini pull-right marginRt20"
+                                                ng-click="showTrends(item,$index, 'ss',item.sst1,item.sst2);"
+                                                ng-class="{'active':item.selectedTypeName=='ss', 'disabled':item.selectedTypeName!='ss'}">
+                                            <span tooltip="Show 30 Day Trend" tooltip-append-to-body="true"
+                                                  ng-class="{'icon-minus':item.selectedTypeName=='ss', 'icon-plus':item.selectedTypeName!='ss'}"></span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <iidx-ng-gauge min="0"
+                                                       max="100"
+                                                       value="item.ssIndex"
+                                                       t1="item.sst1" t2="item.sst2"
+                                                       high="item.ssHighAlarms" low="item.ssLowAlarms"
+                                                       med="item.ssMedAlarms"
+                                                       total="item.ssTotal"
+                                                       color="item.ssColor"
+                                                       item="item"
+                                                       goto-alarms="gotoAlarms(item,'All',item.total)">
+                                        </iidx-ng-gauge>
+                                    </div>
+                                    <div class="childFooter" ng-show="item.selectedTypeName=='ss'"><p>30 Day Trend</p>
+
+                                        <p ng-if="!item.data || item.data.length==0">No Data Available</p></div>
+                                </div>
+                                <div class="span2 gChild"
+                                     ng-if="(item.tpEnable == 'true' && widgetOptions.tpIndex == 'on' && item.s1IndexEnabled =='true')">
+                                    <div><p class="textSize height40">Performance</p>
+                                        <button class="btn btn-icon btn-mini pull-right marginRt20"
+                                                ng-click="showTrends(item,$index, 'tp',item.tpt1,item.tpt2);"
+                                                ng-class="{'active':item.selectedTypeName=='tp', 'disabled':item.selectedTypeName!='tp'}">
+                                            <span tooltip="Show 30 Day Trend" tooltip-append-to-body="true"
+                                                  ng-class="{'icon-minus':item.selectedTypeName=='tp', 'icon-plus':item.selectedTypeName!='tp'}"></span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <iidx-ng-gauge min="0"
+                                                       max="100"
+                                                       value="item.performance"
+                                                       t1="item.tpt1" t2="item.tpt2"
+                                                       high="item.tpHighAlarms" low="item.tpLowAlarms"
+                                                       med="item.tpMedAlarms"
+                                                       total="item.tpTotal"
+                                                       color="item.tpColor"
+                                                       item="item"
+                                                       goto-alarms="">
+                                        </iidx-ng-gauge>
+                                    </div>
+                                    <div class="childFooter" ng-show="item.selectedTypeName=='tp'"><p>30 Day Trend</p>
+
+                                        <p ng-if="!item.data || item.data.length==0">No Data Available</p></div>
+                                </div>
+                            </div>
+                            <div class="pull-left trendChartContainer" ng-hide=" !item.data||item.selectedTypeName==''">
+                                <!--<div>trend will show here</div>-->
+                                <highchart id="chart{{$index}}{{item.selectedTypeName}}"
+                                           config="item.chartConfig"></highchart>
+                            </div>
+                        </li>
+                    </ul>
+                    <div ng-show="(overviewIndex.length<1 || !overviewIndex) && !showTableSpinner">
+                        <h3 class="centerText">No Data Available</h3>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="span12 pull-left" ng-if="showTrend">
+                <div trends_chart>trend will show here</div>
+            </div>-->
+
+        </div>
+
+        <div ng-if="overviewTypeIcon=='table'" visibility="true" class="alignLeft" ng-cloak>
+            <!--  <div native-table table-data="overviewIndex" filtered="overviewIndex" page-lengths="[5,10,20]"> -->
+
+            <div native-table table-data="overviewIndex" filtered="filteredOverviewIndex"
+                 page-lengths="[5,10,20]" show-search="true" searchField="name">
+                <table class="table dataTable table-bordered table-hover table-font-large tableOverview" id="tableOverview" ng-model="modelTableOverview">
+                    <!----<thead >
+                          <tr>
+                          <th native-th ng-repeat="headerObj in headers" class="sortBlock centerText sortable {{getGridSort('source')}}" default-sort={{getGridSort('severity')}}>{{headerObj['display-name']}}</th>
+                          </tr>
+                         </thead>-->
+                    <thead>
+                        <tr>
+                            <th native-th="severity" id="severity"
+                                class="sortBlock centerText sortable "
+                                title="Alarm Severity" default-sort={{getGridSort('severity')}}><span 
+                                class="dash-detail-header">Alarm <br> Severity</span></th>
+                            <th native-th="source" id="id" class="sortBlock centerText sortable "
+                                title="Source System"
+                                default-sort={{getGridSort('source')}}><!--<span class="icon-globe">-->Source <br> System</span></th>
+                            <th native-th="nodePathName" id="nodePathName" ng-show="!assetsView && !showTableSpinner"
+                                ng-hide="assetsView "
+                                class="restore-hierarchy sortBlock sortable "
+                                default-sort={{getGridSort('nodePathName')}}>Asset Path
+                            </th>
+                            <th native-th="name" id="id" class="sortable "
+                                default-sort={{getGridSort('name')}}>Name
+                            </th>
+                            <th native-th="communicationStatus" id="communicationStatus" class="sortBlock sortable width20"
+                                default-sort={{getGridSort('communicationStatus')}}>Status
+                            </th>
+                            <!-- REMOVED FOR R1 -->
+                            <!--<th native-th=system1AP id="roleAP" class="sortBlock sortable centerText indexGrp"
+                                title="System 1 Asset Protection"
+                                ng-if="widgetOptions.s1MachinePIndex == 'on'">AP
+                            </th>
+                            <th native-th="system1AM" id="roleAM" class="sortBlock sortable centerText indexGrp"
+                                title="System 1 Asset Management"
+                                ng-if="widgetOptions.s1MachineCMIndex == 'on'">AM
+                            </th>
+                            <th native-th="system1AM" id="roleAC" class="sortBlock sortable centerText indexGrp"
+                                title="System 1 Combined"
+                                ng-if="widgetOptions.s1MachineCIndex == 'on'">AC
+                            </th>
+                            <th native-th="system1IP" id="roleIP" class="sortBlock sortable centerText indexGrp"
+                                title="System 1 Instrumentation Protection"
+                                ng-if="widgetOptions.s1InstProtectionIndex == 'on'">IP
+                            </th>
+                            <th native-th="system1IM" id="roleIM" class="sortBlock sortable centerText indexGrp"
+                                title="System 1 Instrumentation Management"
+                                ng-if="widgetOptions.s1InstCMIndex == 'on'">IM
+                            </th>
+                            <th native-th="system1IM" id="roleIC" class="sortBlock sortable centerText indexGrp"
+                                title="System 1 Instrumentation Management"
+                                ng-if="widgetOptions.s1InstCIndex == 'on'">IC
+                            </th>
+                            <th native-th="ssIndex" id="roleSS" class="sortBlock sortable centerText indexGrp"
+                                title="SmartSignal"
+                                ng-if="widgetOptions.ssPIndex == 'on'">SS
+                            </th>
+                            <th native-th="performance" id="rolePR" class="sortBlock sortable centerText indexGrp"
+                                title="Performance"
+                                ng-if="widgetOptions.tpIndex == 'on'">PF
+                            </th>-->
+                            <th native-th="total" id="totalAlarms" class="sortBlock sortable "
+                                default-sort={{getGridSort('totalAlarms')}}>Total <br> Alarms
+                            </th>
+                            <th native-th="highTotal" id="highCount" class="sortBlock sortable "
+                                default-sort={{getGridSort('highAlarms')}}>High</th>
+                            <th native-th="medTotal" id="mediumCount" class="sortBlock sortable "
+                                default-sort={{getGridSort('mediumAlarms')}}>Medium</th>
+                            <th native-th="lowTotal" id="lowCount" class="sortBlock sortable "
+                                default-sort={{getGridSort('lowAlarms')}}>Low</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="!showTableSpinner && (overviewIndex.length<1 || !overviewIndex)">
+                            <td colspan="6"><h3 class="centerText">No Data Available</h3></td>
+                        </tr>
+                        <tr ng-model="overviewIndex"
+                            ng-repeat="item in filteredOverviewIndex track by $index">
+                            {{item}}
+                            <td class="centerText" ng-switch="item.severity">
+                            	<span class="icon-stop icon-small statusColor_{{item.severity}} "tooltip="Alarm Severity : None" ng-switch-when="0"></span>
+                            	<span class="icon-stop icon-small statusColor_{{item.severity}} "tooltip="Alarm Severity : Low" ng-switch-when="1"></span>
+                            	<span class="icon-stop icon-small statusColor_{{item.severity}} "tooltip="Alarm Severity : Medium" ng-switch-when="2"></span>
+                            	<span class="icon-stop icon-small statusColor_{{item.severity}} "tooltip="Alarm Severity : High" ng-switch-when="3"></span>
+                            </td>
+                            <td ng-class="{'system1Icon':item.source=='System1','smartSignalIcon':item.source=='SmartSignal'}"
+                                tooltip="{{getItemSource(item.source) }}" tooltip-append-to-body="true"></td>
+                            <td ng-show="!assetsView && !showTableSpinner" ng-hide="assetsView " class="asset-path-width">{{
+                            item.name_path}}
+                            </td>
+                            <td ng-class="{'groupCol':item.name==''}">
+                                <span class="marginRt5" ng-class="getNodeTypeIcon(item.nodeType)"
+                                      tooltip="{{getToolTipForOverview(item.nodeType,item.name,item.nodePath,item.nodePathName)}}"></span>
+                                <a tooltip="Open Folder" ng-click="changeNodeId(item)">{{item.name || item.nodeId ||
+                                item.enterpriseId}}</a>
+                                <span ng-if="item.ipNoData > 0;" class="customIconNoData"
+                                      style="font-size: small;" tooltip-append-to-body="true"
+                                      tooltip="{{item.ipNoData }} points not communicating"></span>
+                            </td>
+                            <td><span class="horizontalBar {{item.communicationStatus}}"
+                                      tooltip="{{item.communicationMessage }}">&nbsp;</span></td>
+                            <!-- REMOVED FOR R1 -->
+                            <!--<td class=" centerText indexGrp" ng-if="widgetOptions.s1MachinePIndex == 'on'">
+                                <i class=" icon-small icon-circle" ng-if="item.s1IndexEnabled =='true'"
+                                   ng-class="getBackgroundClass(item.system1AP,item.apt1, item.apt2,'ap')"
+                                   tooltip="Asset Protection : {{item.system1AP+' %'|| 'NA'}}"></i>
+                                <i class=" icon-small icon-circle bckGray" ng-if="item.s1IndexEnabled =='false'"></i>
+                            </td>
+                            <td class=" centerText indexGrp" ng-if="widgetOptions.s1MachineCMIndex == 'on'">
+                                <i class=" icon-small icon-circle" ng-if="item.s1IndexEnabled =='true'"
+                                   ng-class="getBackgroundClass(item.system1AM,item.amt1, item.amt2,'am')"
+                                   tooltip="Asset Management : {{item.system1AM+' %' || 'NA'}}"></i>
+                                <i class=" icon-small icon-circle bckGray" ng-if="item.s1IndexEnabled =='false'"></i>
+                            </td>
+                            <td class=" centerText indexGrp" ng-if="widgetOptions.s1MachineCIndex == 'on'">
+                                <i class=" icon-small icon-circle" ng-if="item.s1IndexEnabled =='true'"
+                                   ng-class="getBackgroundClass(item.system1AC,item.act1, item.act2,'ac')"
+                                   tooltip="Asset Combined : {{item.system1AC+' %' || 'NA'}}"></i>
+                                <i class=" icon-small icon-circle bckGray" ng-if="item.s1IndexEnabled =='false'"></i>
+                            </td>
+                            <td class=" centerText indexGrp" ng-if="widgetOptions.s1InstProtectionIndex == 'on'">
+                                <i class=" icon-small icon-circle" ng-if="item.s1IndexEnabled =='true'"
+                                   ng-class="getBackgroundClass(item.system1IP,item.ipt1, item.ipt2,'ip')"
+                                   tooltip="Instrumentation Protection : {{item.system1IP+' %' || 'NA'}}"></i>
+                                <i class=" icon-small icon-circle bckGray" ng-if="item.s1IndexEnabled =='false'"></i>
+                            </td>
+                            <td class=" centerText indexGrp" ng-if="widgetOptions.s1InstCMIndex == 'on'">
+                                <i class=" icon-small icon-circle" ng-if="item.s1IndexEnabled =='true'"
+                                   ng-class="getBackgroundClass(item.system1IM,item.imt1, item.imt2,'im')"
+                                   tooltip="Instrumentation Management : {{item.system1IM+' %' || 'NA'}}"></i>
+                                <i class=" icon-small icon-circle bckGray" ng-if="item.s1IndexEnabled =='false'"></i>
+                            </td>
+                            <td class=" centerText indexGrp" ng-if="widgetOptions.s1InstCIndex == 'on'">
+                                <i class=" icon-small icon-circle" ng-if="item.s1IndexEnabled =='true'"
+                                   ng-class="getBackgroundClass(item.system1IC,item.ict1, item.ict2,'ic')"
+                                   tooltip="Instrumentation Combined : {{item.system1IC+' %' || 'NA'}}"></i>
+                                <i class=" icon-small icon-circle bckGray" ng-if="item.s1IndexEnabled =='false'"></i>
+                            </td>
+                            <td class=" centerText indexGrp" ng-if="widgetOptions.ssPIndex == 'on'">
+                                <i class=" icon-small icon-circle" ng-if="item.ssIndexEnabled =='true'"
+                                   ng-class="getBackgroundClass(item.ssIndex, item.sst1, item.sst2,'ss')"
+                                   tooltip="SmartSignal : {{item.ssIndex+' %' || 'NA'}}"></i>
+                                <i class=" icon-small icon-circle bckGray" ng-if="item.ssIndexEnabled =='false'"></i>
+                            </td>
+                            <td class=" centerText indexGrp" ng-if="widgetOptions.tpIndex == 'on'">
+                                <i class=" icon-small icon-circle" ng-if="item.tpEnable =='true'"
+                                   ng-class="getBackgroundClass(item.performance,item.tpt1, item.tpt2,'tp')"
+                                   tooltip="Performance : {{item.performance+' %' || 'NA'}}"></i>
+                                <i class=" icon-small icon-circle bckGray" ng-if="item.tpEnable =='false'"></i>
+                            </td>-->
+                            <td>
+                                <a ng-click="gotoAlarms(item,'All',item.total)"
+                                   tooltip="Go To All Alarms">{{item.total}}</a>
+                            </td>
+                            <td>{{item.highTotal}}</td>
+                            <td>{{item.medTotal}}</td>
+                            <td>{{item.lowTotal}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

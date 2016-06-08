@@ -1,0 +1,49 @@
+<div class="navbar-inner">
+  <div class="container">
+
+    <!-- App Name and Logo -->
+    <a class="brand" href="#"><span class="ge-logo"></span> <span>{{appName}}<small> <i>a Predictivity Solution</i></small></span></a>
+    <div class="pull-right">
+      <div class="btn-toolbar pull-left">
+
+        <!-- User Actions -->
+        <div class="btn-group">
+          <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i><span class="user-name">{{currentUser.name}}</span> <i class="icon-chevron-down"></i></button>
+          <ul class="dropdown-menu pull-right">
+            <li><a data-ng-click="setUserProfile(currentUser)">Account Profile</a></li>
+            <li><a ui-sref="preferences">Preferences</a></li>
+            <li><a ui-sref="help">Help</a></li>
+            <li><a data-ng-click="aboutFleet()">About</a></li>
+            <li class="divider"></li>
+            <li><a data-ng-click="logout()">Sign Out</a></li>
+          </ul>
+        </div>
+        <a ui-sref="help" class="btn btn-info btn-inverse btn-group"><i class="icon-question-sign"></i></a>
+
+      </div>
+
+      <!-- Responsive Nav Link -->
+      <button class="btn btn-navbar" ng-click="toggleNavbarVisibility()">
+        <i class="icon-bar"></i>
+        <i class="icon-bar"></i>
+        <i class="icon-bar"></i>
+      </button>
+
+    </div>
+  </div>
+</div>
+<div collapse="navbarIsHidden" class="primary-navbar nav-collapse collapse" ng-class="{in: navbarIsHidden}">
+  <div class="container">
+
+    <!-- Primary Nav Tabs -->
+    <ul class="nav">
+      <li ng-class="{active: matchStatePartial('assets')}"><a ui-sref="assets.overview({customerId:''})">Dashboard</a></li>
+      <li ng-show="showAdmin" ng-class="{active: matchStatePartial('admin')}"><a ui-sref="admin.users">Administration</a></li>
+    </ul>
+      <!--<div class="pull-right">
+          <span></span>
+          <a ui-sref="#" class="btn btn-primary btn-group"><i class="icon-refresh"></i></a>
+      </div>-->
+
+  </div>
+</div>

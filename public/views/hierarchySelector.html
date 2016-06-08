@@ -1,0 +1,88 @@
+ <!-- start new dropdown -->
+    <div class="pull-left">
+        <div class="btn-group" dropdown>
+            <button type="button" class="btn btn-primary btn-large">{{customerId || 'Select '}} Fleet </button>
+            <button type="button" class="btn btn-primary btn-large  dropdown-toggle">
+                <i class="icon-chevron-down"></i></button>
+            <ul class="dropdown-menu myddmenu fixHeight" role="menu">
+                <li ng-if="!currentUser.customers || currentUser.customers.length ==0" style="padding: 5px;">No Data Available</li>
+                <li ng-repeat="customer in currentUser.customers" ng-if="currentUser.customers && currentUser.customers.length > 0">
+                    <a ng-click="setCustomer(customer.key); customerName = customer.name">{{customer.name}}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pull-left treeDropdown">
+        <div class="btn-group" dropdown is-open="status.isopen">
+            <button type="submit" class="btn btn-large btn-info paddingRt80" style="text-align: left">
+                <span ng-if="nodeSeverity >=0;" class="icon-stop statusColor_{{nodeSeverity}}"
+                      style="font-size: small;" tooltip-append-to-body="true"
+                      tooltip="Alarm Severity : {{getItemSeverity(nodeSeverity) }}" ></span>
+                <span style="font-size: small;" class="marginRt5" ng-class="{'icon-gear':nodeSelectedType == 'machine',
+                                                                'icon-gears':nodeSelectedType == 'machine_train',
+                                                                'icon-folder-open':nodeSelectedType == 'group_folder',
+                                                                'icon-map-marker':nodeSelectedType == ('Enterprise' || 'enterprise'),
+                                                                'icon-globe':!nodeSelectedType || nodeSelectedType == ''};"
+                      ng-if="selectedNodePathName || selectedNodePath" tooltip-append-to-body="true"
+                      tooltip="{{selectedNodePathName || selectedNodePath }}"></span>
+                {{ selectedNodeName || 'Select' }}
+                <span ng-if="nodeNoDatapoints > 0;" class="marginRt5 customIconNoDataWhite marginLt5"
+                           style="font-size: small;" tooltip-append-to-body="true"
+                           tooltip="{{nodeNoDatapoints}} points not communicating" ></span>
+            </button>
+            <button type="button" class="btn btn-large dropdown-toggle btn-info">
+                <i class="icon-chevron-down"></i></button>
+            <ul class="dropdown-menu myddmenu" role="menu"  ng-hide="showDropDownSpinner">
+                <li class="module-header regular" style="cursor: pointer" ng-class="{'selected':resetToCustomer,'regular':!resetToCustomer}">
+                    <span ng-click="resetCustomerSelection(customerId)">{{customerId || 'Select '}} Fleet</span>
+                </li>
+                <li class="module-header">
+                    <span class="marginRt300">{{primeHierarchy}} Hierarchy</span>
+                </li>
+                <li ng-if="filteredSystemAsset.length===0">
+                    <span style="padding:15px;">No Data Available</span>
+                </li>
+                <li class="module-content">
+                    <div class="assetHierarchy"
+                         data-angular-treeview="true"
+                         data-tree-id="tree"
+                         data-tree-model="filteredSystemAsset"
+                         data-node-id="id"
+                         data-enterprise-id="enterpriseId"
+                         data-node-label="name"
+                         data-node-children="childNodes"
+                         data-primary-system =true
+                         ng-click="selectNode()">
+                    </div>
+                </li>
+                <li class="module-header">
+                    <span>{{nextHierarchy }} Hierarchy</span>
+                </li>
+                <li ng-if="filteredSmartAsset.length === 0">
+                    <span style="padding:15px;">No Data Available</span>
+                </li>
+                <li class="module-content">
+                    <div class="assetHierarchy"
+                         data-angular-treeview="true"
+                         data-tree-id="tree"
+                         data-tree-model="filteredSmartAsset"
+                         data-node-id="id"
+                         data-enterprise-id="enterpriseId"
+                         data-node-label="name"
+                         data-primary-system =false
+                         data-node-children="childNodes"
+                         ng-click="selectNode()">
+                    </div>
+                </li>
+            </ul>
+            <ul class="dropdown-menu myddmenu" role="menu" ng-show="showDropDownSpinner">
+                <li class="module-content">
+                    <span style="margin:20px;"><i class="icon-spinner icon-spin"></i> <em>Fetching Data...</em></span>
+                </li>
+            </ul>
+            <button ng-show="showRefreshAlert" ng-click="refreshAllAssets()" type= "button" class="btn btn-large pull-right" style="background-color: lightgray;">
+                <i class="background_warning icon-warning-sign" tooltip-append-to-body="true"
+                   tooltip-html-unsafe="<div>Fleet Configuration has changed. Please refresh the browser to update the view!</div>"></i>
+            </button>
+        </div>
+    </div>
+    <!-- end new dropdown -->

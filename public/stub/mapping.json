@@ -1,0 +1,39 @@
+{
+  "data": {
+      "status": "200",
+      "classType": "Mapping",
+      "isArray": true,
+      "response": [
+          {
+              "id": 0,
+              "customerId": "QA",
+              "s1EnterpriseId": "BayStation_3043493b-0b5d-4fa2-9fc1-1e64431de3f2",
+              "s1NodeId": "585",
+              "ssEnterpriseId": "SS175_5d5dd94e-a5d4-4cca-a019-e9ab38f25fc0",
+              "ssNodeId": "42558a9b-68c4-4f73-82e6-0e80d446db4f",
+              "s1NodePath": "BayStation_3043493b-0b5d-4fa2-9fc1-1e64431de3f2/100/581/582/584/585",
+              "ssNodePath": "SS175_5d5dd94e-a5d4-4cca-a019-e9ab38f25fc0/9492c3fa-dc92-48d2-88cc-e93e19cf65e3/d506a0bd-ecc3-40b2-b062-23c9d0530643/42558a9b-68c4-4f73-82e6-0e80d446db4f"
+          },
+          {
+              "id": 0,
+              "customerId": "QA",
+              "s1EnterpriseId": "BayStation_3043493b-0b5d-4fa2-9fc1-1e64431de3f2",
+              "s1NodeId": "591",
+              "ssEnterpriseId": "SS175_5d5dd94e-a5d4-4cca-a019-e9ab38f25fc0",
+              "ssNodeId": "cc238a0e-e062-40f2-bb04-b461587b0d72",
+              "s1NodePath": "BayStation_3043493b-0b5d-4fa2-9fc1-1e64431de3f2/100/581/582/584/591",
+              "ssNodePath": "SS175_5d5dd94e-a5d4-4cca-a019-e9ab38f25fc0/9492c3fa-dc92-48d2-88cc-e93e19cf65e3/d506a0bd-ecc3-40b2-b062-23c9d0530643/cc238a0e-e062-40f2-bb04-b461587b0d72"
+          },
+          {
+              "id": 0,
+              "customerId": "QA",
+              "s1EnterpriseId": "BayStation_3043493b-0b5d-4fa2-9fc1-1e64431de3f2",
+              "s1NodeId": "1213",
+              "ssEnterpriseId": "SS175_5d5dd94e-a5d4-4cca-a019-e9ab38f25fc0",
+              "ssNodeId": "91a76259-819c-49fc-959e-b818ca1d355b",
+              "s1NodePath": "BayStation_3043493b-0b5d-4fa2-9fc1-1e64431de3f2/100/1273/1274/1212/1213",
+              "ssNodePath": "SS175_5d5dd94e-a5d4-4cca-a019-e9ab38f25fc0/9492c3fa-dc92-48d2-88cc-e93e19cf65e3/61d64ca4-7f5f-4aff-b7ce-dba848ba0079/db96880d-117c-432d-ba72-9ded0b202150/69c0468f-ef9d-4d39-a38c-05e52596d564/91a76259-819c-49fc-959e-b818ca1d355b"
+          }
+      ]
+  }
+}

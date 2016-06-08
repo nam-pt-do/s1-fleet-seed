@@ -1,0 +1,429 @@
+<div class="page-header">
+    <div class="subnav pull-right">
+        <button class="btn btn-inverse" ng-click="restoreSettings()"><i class="icon-undo marginRt10"></i> Restore Default
+            Settings
+        </button>
+    </div>
+    <h1 class="voice-brand pull-left">Preferences</h1>
+</div>
+<form class="form-vertical" name="editUserPreferences">
+<div class="custom-module-head">
+    <div class="module">
+        <button class="btn btn-primary pull-right" style="margin-left: 5px; margin-right: 5px" ng-click="save()" ng-disabled="editUserPreferences.$invalid">Save Changes</button>
+        <button class="btn pull-right" style="margin-left: 5px; margin-right: 5px" ng-click="dismiss()">Cancel</button>
+    </div>
+</div>
+
+<div class="custom-module-section">
+    <div class="module">
+        <div class="row">
+            <div class="span12">
+                <h2>General</h2>
+                <p class="error">{{preferenceErrorMsg}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <header class="module-header sub-header">Time Zone</header>
+                <div class="preference-sub-section">
+                    <label class="radio">
+                        <input type="radio" name="tzOption" id="tzGmt" value="tzGmt" ng-model="tmpUser.preference.tzOption">
+                        GMT
+                    </label>
+                    <label class="radio posRelative">
+                        <input type="radio" name="tzOption" id="tzLocal" value="tzLocal" ng-model="tmpUser.preference.tzOption">
+                        Local Time
+                    </label>
+                </div>
+            </div>
+        </div>
+        <hr class="divider" style="margin: 0px">
+        <div class="row">
+            <div class="span12" style="padding-top: 5px">
+                <header class="module-header sub-header">Auto-Refresh</header>
+               <div class="preference-sub-section">
+                   <label class="checkbox" style="padding-left:0px">
+                       <input type="checkbox" class="activate-me pull-left" name="autoRefresh" id="autoRefresh" ng-true-value="on" ng-false-value="off" ng-model="tmpUser.preference.autoRefresh"/>
+                       Auto-Refresh
+                   </label>
+                   <label class="control">
+                       Refresh every
+                       <input  type="text" name="refreshInterval" id="refreshInterval" style="width: 40px" required ng-model="tmpUser.preference.refreshInterval" ng-pattern ="/^(?:[2-9]|[1-5][0-9]|6[0])$/">
+                       minute(s)
+                       <span class="label label-warning" ng-show="editUserPreferences.refreshInterval.$error.required">Required</span>
+                       <span class="label label-warning" ng-show="editUserPreferences.refreshInterval.$error.pattern">Invalid Number - Needs to be between 2 and 60</span>
+                   </label>
+               </div>
+            </div>
+        </div>
+        <hr class="divider" style="margin: 0px">
+        <div class="row">
+            <div class="span12" style="padding-top : 5px">
+                <header class="module-header sub-header">Primary Hierarchy</header>
+                <div class="preference-sub-section hierarchyOptions">
+                        <label class="radio">
+                            <input type="radio" name="hierarchyOption" id="siHierarchy" value="System1" ng-model="tmpUser.preference.hierarchyOption">
+                            System 1
+                        </label>
+                        <label class="radio posRelative">
+                            <input type="radio" name="hierarchyOption" id="ssHierarchy" value="SmartSignal" ng-model="tmpUser.preference.hierarchyOption">
+                            SmartSignal
+                        </label>
+                </div>
+            </div>
+        </div>
+        <!-- removed for R1 -->
+        <!--<hr class="divider" style="margin: 10px">
+        <div class="row posRelative hideFeaturePreference">
+            <div class="span12">
+                <header class="module-header sub-header">Show / Hide Features</header>
+                <div class="preference-sub-section">
+                    <label class="checkbox">
+                        <input type="checkbox" class="activate-me pull-left" name="hideFeatures" id="hideFeatures" ng-true-value="true" ng-false-value="false" ng-model="tmpUser.preference.hideFeatures" />Hide Features (Gauge View + Bar Chart + Line Chart)
+                    </label>
+                </div>
+            </div>
+        </div> -->       
+</div>
+</div>
+ <!-- removed for R1 -->
+<!--
+<div class="custom-module-section">
+    <div class="module">
+        <div class="row">-->
+
+           
+            <!--<div  style="margin-bottom : 5px">
+                <div class="span2">
+                    <div >
+                        <div>
+                            <h2>Overview Page</h2>
+                            <p></p>
+                            <div>
+                                <header class="module-header sub-header">Default View</header>
+                                <div class="span3">
+                                    <label class="radio posRelative">
+                                        <input type="radio" name="overviewStyle" id="viewWidget" value="viewWidget" ng-model="tmpUser.preference.overviewStyle" disabled>
+                                        Gauge View
+                                        <div class="disabledOverlay"></div>
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="overviewStyle" id="viewGrid" value="viewGrid" ng-model="tmpUser.preference.overviewStyle">
+                                        Grid View
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>-->
+                <!-- removed for R1 -->
+                <!--<div class="span6 posRelative" style="border-right: 1px solid #cccccc;border-left: 1px solid #cccccc; min-width : 200px; padding-left:5px ">
+                    <div>
+                        <h2>Gauge View</h2>
+                        <p></p>
+                        <div class="pull-left">
+                            <header class="module-header sub-header">Gauge Options</header>
+                            <div class="span3">
+                                System 1 Asset
+                                <label class="checkbox">
+                                    <input type="checkbox" name="s1MachinePIndex" id="s1MachinePIndex" ng-true-value="on" ng-false-value="off"
+                                           ng-model="tmpUser.preference.index.s1MachinePIndex"  ng-disabled="(tmpUser.preference.index.s1MachineCIndex =='on' )">
+                                    Protection
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="s1MachineCMIndex" id="s1MachineCMIndex" ng-true-value="on" ng-false-value="off"
+                                           ng-model="tmpUser.preference.index.s1MachineCMIndex"  ng-disabled="(tmpUser.preference.index.s1MachineCIndex =='on' )">
+                                    Management
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="s1MachineCIndex" id="s1MachineCIndex" ng-true-value="on" ng-false-value="off"
+                                           ng-model="tmpUser.preference.index.s1MachineCIndex"
+                                           ng-disabled="(tmpUser.preference.index.s1MachineCMIndex=='on' || tmpUser.preference.index.s1MachinePIndex=='on')">
+                                    Combined
+                                </label>
+                                System 1 Instrumentation
+                                <label class="checkbox">
+                                    <input type="checkbox" name="s1InstProtectionIndex" id="s1InstProtectionIndex" ng-true-value="on" ng-false-value="off"
+                                           ng-model="tmpUser.preference.index.s1InstProtectionIndex" ng-disabled="(tmpUser.preference.index.s1InstCIndex =='on' )">
+                                    Protection
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="s1InstCMIndex" id="s1InstCMIndex" ng-true-value="on" ng-false-value="off"
+                                           ng-model="tmpUser.preference.index.s1InstCMIndex" ng-disabled="(tmpUser.preference.index.s1InstCIndex =='on' )">
+                                    Management
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="s1InstCIndex" id="s1InstCIndex" ng-true-value="on" ng-false-value="off"
+                                           ng-model="tmpUser.preference.index.s1InstCIndex"
+                                           ng-disabled="(tmpUser.preference.index.s1InstProtectionIndex=='on' || tmpUser.preference.index.s1InstCMIndex=='on')">
+                                    Combined
+                                </label>
+                                SmartSignal
+                                <label class="checkbox">
+                                    <input type="checkbox" name="ssPIndex" id="ssPIndex" ng-true-value="on" ng-false-value="off" ng-model="tmpUser.preference.index.ssPIndex">
+                                    SmartSignal
+                                </label>
+                                Thermal Performance
+                                <label class="checkbox">
+                                    <input type="checkbox" name="tpIndex" id="tpIndex" ng-true-value="on" ng-false-value="off" ng-model="tmpUser.preference.index.tpIndex">
+                                    Thermal Performance
+                                </label>
+                            </div>
+                        </div>
+                        <div class="pull-left">
+                            <header class="module-header sub-header">Default Sort</header>
+                            <div class="span2">
+                                <ul class="unstyled">
+                                    <li ng-repeat="item in ddmenuList">
+                                        <label class="radio">
+                                            <input class="input-large" type="radio" name="widgetSort" value={{item.val}}
+                                                   ng-model="tmpUser.preference.widgetSort" ng-disabled="(tmpUser.preference.index[item.id] =='off' )">
+                                            {{item.name}}
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>-->
+				<!-- removed for R1-->
+                <!--
+                <div class="span2">
+                                    <div>
+                                        <h2>Grid View</h2>
+                                        <p></p>
+                                        <div class="pull-left preference-sub-section">
+                                            <header class="module-header sub-header">Default Sort</header>
+                                            <div class="span2">
+                                                    <label class="radio">
+                                                        <input type="radio" name="overviewGridSort" id="name" value="name" ng-model="tmpUser.preference.overviewGridSort">
+                                                        Name
+                                                    </label>
+                                                    <label class="radio">
+                                                    <input type="radio" name="overviewGridSort" id="source" value="source" ng-model="tmpUser.preference.overviewGridSort">
+                                                    Source System
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="overviewGridSort" id="severity" value="severity" ng-model="tmpUser.preference.overviewGridSort">
+                                                        Severity Level
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="overviewGridSort" id="totalAlarms" value="totalAlarms" ng-model="tmpUser.preference.overviewGridSort">
+                                                        Total Alarms
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="overviewGridSort" id="highAlarms" value="highAlarms" ng-model="tmpUser.preference.overviewGridSort">
+                                                        High Alarms
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="overviewGridSort" id="mediumAlarms" value="mediumAlarms" ng-model="tmpUser.preference.overviewGridSort">
+                                                        Medium Alarms
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="overviewGridSort" id="lowAlarms" value="lowAlarms" ng-model="tmpUser.preference.overviewGridSort">
+                                                        Low Alarms
+                                                    </label>
+                                            </div>
+                
+                                        </div>
+                                        
+                                        <div class="pull-left" style="display: none;">
+                                            <header class="module-header sub-header">Default Number of Entries</header>
+                                            <div class="span2">
+                                                <label class="radio">
+                                                    <input type="radio" name="gridSize" id="overviewGridSize10" value="gridSize10" ng-model="tmpUser.preference.gridSize">
+                                                    10
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" name="gridSize" id="overviewGridSize20" value="gridSize20" ng-model="tmpUser.preference.gridSize">
+                                                    20
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" name="gridSize" id="overviewGridSize50" value="gridSize50" ng-model="tmpUser.preference.gridSize">
+                                                    50
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" name="gridSize" id="overviewGridSize100" value="gridSize100" ng-model="tmpUser.preference.gridSize">
+                                                    100
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                
+           <!--
+            </div>
+                   </div>
+           
+               </div>
+           </div>-->
+           
+<div class="custom-module-section">
+    <div class="module">
+        <div class="row" >
+            <div  style="margin-bottom : 5px">
+                
+                <!--<div class="span2">
+                    <h2>Alarms Page</h2>
+                    <p></p>
+                    <div class="pull-left">
+                        <header class="module-header sub-header">Default Chart Type</header>
+                        <div class="span2">
+                            <label class="radio posRelative">
+                                <input type="radio" name="alarmChart" id="category" value="category" ng-model="tmpUser.preference.alarmChart" disabled>
+                                Bar Chart
+                                <div class="disabledOverlay"></div>
+                            </label>
+                            <label class="radio posRelative">
+                                <input type="radio" name="alarmChart" id="time-series" value="time-series" ng-model="tmpUser.preference.alarmChart" disabled>
+                                Line Chart
+                                <div class="disabledOverlay"></div>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="alarmChart" id="alarm-plot" value="alarm-plot" ng-model="tmpUser.preference.alarmChart">
+                                Alarm Plot
+                            </label>
+                        </div>
+                    </div>
+                </div>-->
+                <!--<div  class="span9" style="border-left: 1px solid #cccccc;padding-left:1%;">-->
+                <div  class="span9">
+                    <h2>Alarms Grid</h2>
+                    <p></p>
+                    <div class="pull-left preference-sub-section">
+                        <header class="module-header sub-header">Default Number of Entries</header>
+                        <div class="span2">
+                            <label class="radio">
+                                <input type="radio" name="alarmGridSize" id="gridSize10" value="10" ng-model="tmpUser.preference.alarmGridSize">
+                                10
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="alarmGridSize" id="gridSize20" value="20" ng-model="tmpUser.preference.alarmGridSize">
+                                20
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="alarmGridSize" id="gridSize50" value="50" ng-model="tmpUser.preference.alarmGridSize">
+                                50
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="alarmGridSize" id="gridSize100" value="100" ng-model="tmpUser.preference.alarmGridSize">
+                                100
+                            </label>
+                        </div>
+                    </div>
+                    <!--
+                    <div>
+                    
+                                            <div class="pull-left preference-sub-section">
+                                                <header class="module-header sub-header">Default Sort</header>
+                                                <div class="span2">
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byLastOccurence" value="lastOccurrenceTime" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Last Occurence
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byFirstOcurrenceTime" value="firstOccurrenceTime" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        First Occurence
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byDataSource" value="dataSource" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Data Source
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byNormalizedSeverityLevel" value="normalizedSeverityLevel" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Fleet Level
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="bySeverityLevel" value="severityLevel" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Source Level
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byAssetNamePath" value="assetNamePath" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Asset Path
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byTrainMachine" value="trainMachine" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Asset
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byPoint" value="point" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Point/Variable
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byType" value="type" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Type/Message
+                                                    </label>                                
+                                                </div>
+                                            </div>
+                                            <div class="pull-left preference-sub-section">
+                                                <header class="module-header"></header>
+                                                <div class="span2">
+                                                <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byEventConditionCategoryEnum" value="eventConditionCategoryEnum" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Event Category
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byCount" value="count" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Count
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byDensity" value="density" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Density
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byEventStateEnum" value="eventStateEnum" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Active
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byAcknowledged" value="acknowledged" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Acknowledged
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byAcknowledgedDateTime" value="acknowledgedDateTime" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Time of Acknowledgement
+                                                    </label>                                
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="byEventId" value="eventId" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Event ID
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="alarmsGridSort" id="bySourceId" value="sourceId" ng-model="tmpUser.preference.alarmsGridSort">
+                                                        Source ID
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                    
+                    <!-- Removed for R1 -->
+                    <!--<div class="pull-left preference-sub-section">
+                        <header class="module-header sub-header">Default Sort Order</header>
+                        <div class="span2">
+                            <label class="radio">
+                                <input type="radio" name="alarmsGridSortOrder" id="alarmAsc" value="sorting_asc" ng-model="tmpUser.preference.alarmsGridSortOrder">
+                                Ascending
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="alarmsGridSortOrder" id="alarmDesc" value="sorting_desc" ng-model="tmpUser.preference.alarmsGridSortOrder">
+                                Descending
+                            </label>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="custom-module-footer">
+    <div class="module">
+        <button class="btn btn-primary pull-right" style="margin-left: 5px; margin-right: 5px" ng-click="save()" ng-disabled="editUserPreferences.$invalid">Save Changes</button>
+        <button class="btn pull-right" style="margin-left: 5px; margin-right: 5px" ng-click="dismiss()">Cancel</button>
+    </div>
+</div>
+
+</form>
+

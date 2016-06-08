@@ -1,0 +1,123 @@
+<div class="pull-left treeDropdown">
+    <div class="btn-group" dropdown is-open="status.isopen">
+        <button class="btn btn-large btn-info paddingRt80" style="text-align: left" ng-switch on="nodeSeverity">
+
+      <span class="icon-stop statusColor_0"
+                  tooltip-append-to-body="true" style="font-size: small;"
+                  ng-attr-tooltip="Alarm Severity : None" ng-switch-when="0">
+            </span>
+            <span class="icon-stop statusColor_1"
+                  tooltip-append-to-body="true" style="font-size: small;"
+                  ng-attr-tooltip="Alarm Severity : Low" ng-switch-when="1">
+            </span>
+            <span class="icon-stop statusColor_2"
+                  tooltip-append-to-body="true" style="font-size: small;"
+                  ng-attr-tooltip="Alarm Severity : Medium" ng-switch-when="2">
+            </span>
+            <span class="icon-stop statusColor_3"
+                  tooltip-append-to-body="true" style="font-size: small;"
+                  ng-attr-tooltip="Alarm Severity : High" ng-switch-when="3">
+            </span>
+            <!--<span ng-hide="nodeSeverity < 0" ng-show="nodeSeverity >= 0" class="icon-stop"  ng-class="statusColor_{{nodeSeverity}}"
+                      tooltip-append-to-body="true" style="font-size: small;"
+                      ng-attr-tooltip="Alarm Severity : {{nodeSeverity}}">
+                </span> -->
+            <span ng-if="nodeType" style="font-size: small;"
+                  class="marginRt5 {{nodeType}}"
+                  ng-class="{'icon-gear':nodeType == 'machine',
+                                'icon-gears':nodeType == 'machine_train',
+                                'icon-folder-open':nodeType == 'group_folder',
+                                'icon-map-marker':nodeType == 'enterprise',
+                                'icon-globe': node.nodeSelectedType == ''};"
+                  tooltip-append-to-body="true"
+                  tooltip="{{selectedNodePathName || selectedNodePath }}">
+            </span>
+
+            {{selectedNodeName ||'Select'}}
+            <span ng-if="nodeNoDatapoints > 0;" class="marginRt5 customIconNoDataWhite marginLt5"
+                  style="font-size: small;" tooltip-append-to-body="true"
+                  tooltip="{{nodeNoDatapoints}} points not communicating">
+                
+            </span>
+        </button>
+
+        <button type="button" class="btn btn-large dropdown-toggle btn-info" ng-click="fetchEnterprises($event)">
+            <i class="icon-chevron-down"></i>
+        </button>
+		<ul class="dropdown-menu myddmenu" role="menu" ng-show="showDropDownSpinner">
+                <li class="module-content">
+                    <span style="margin:20px;"><i class="icon-spinner icon-spin"></i> <em>Fetching Data...</em></span>
+                </li>
+            </ul>
+        <ul class="dropdown-menu myddmenu hierarchyDropDown" role="menu" id="enterpriseListWrapper" ng-hide="showDropDownSpinner">
+            <li class="module-header regular"
+                style="cursor: pointer" ng-if="customerId">
+                <span ng-click="resetHeirarchy();fetchEnterprises($event)">{{customerId ||Select}} Fleet</span>
+            </li>
+            <li ng-if="!customerId">
+                <span>No Enterprise(s) Available</span>
+            </li>
+
+            <ul ng-repeat="nodes in entprList" class="enterprise-wrapper">
+                <li class="module-header" ng-show="{{nodes.items.length > 0}}"><span class="marginRt300">{{nodes.label}}</span></li>
+                <li class="module-content enterprise-node"
+                    ng-repeat="node in nodes.items" id="{{node.id}}"  data-index="{{$index}}">
+                    <!-- wrapper node, add selected class when clicked -->
+                    <div class="enterprise node">
+                        <!-- chevron wrapper -->
+
+                        <a class="chevron-icon-container icon-chevron-right " ng-click="getChildNodes(node, $event)">
+                            <!--i myicon="" class="icon-chevron-right"  ng-click="getChildNodes(node, $event)">
+                    </i-->
+                        </a>
+
+                        <!-- wrapper div for meta data, listens for click event -->
+                        <div class="node-meta-container" ng-click="selectNode(node,$event)" ng-switch on="node.highestNormalizedSevLevel">
+
+                            <!-- health indicator -->
+                            <!-- health indicator -->
+                        <span class="statusIndicator s_0"
+                              tooltip-append-to-body="true"
+                              ng-attr-tooltip="Alarm Severity : None" ng-switch-when="0">
+                        </span>
+                        <span class="statusIndicator s_1"
+                              tooltip-append-to-body="true"
+                              ng-attr-tooltip="Alarm Severity : Low" ng-switch-when="1">
+                        </span>
+                        <span class="statusIndicator s_2"
+                              tooltip-append-to-body="true"
+                              ng-attr-tooltip="Alarm Severity : Medium" ng-switch-when="2">
+                        </span>
+                        <span class="statusIndicator s_3"
+                              tooltip-append-to-body="true"
+                              ng-attr-tooltip="Alarm Severity : High" ng-switch-when="3">
+                        </span>
+
+                            <!-- icon to display actual text -->
+                            <!-- icon to display actual text -->
+                        <span class="marginRt5 ng-scope icon-map-marker"
+                              ng-class="getNodeTypeIcon(node.type)"
+                              tooltip-append-to-body="true"
+                              tooltip="{{node.name}}">
+                        </span>
+
+                            <!-- text display for einterprise -->
+                            <!-- text display for einterprise -->
+                            <span class="ng-binding">{{node.name}} </span>
+                            <!-- status for the enterprise-->
+                            <!-- status for the enterprise-->
+                                <span ng-if="node.ipNoDataS2+node.imNoDataS2 > 0;"
+                                      class="marginRt5 addPaddingTop marginLt5 customIconNoData ng-scope"
+                                      tooltip="{{node.ipNoDataS2+node.imNoDataS2}} not communicating"
+                                      tooltip-append-to-body="true">
+                        </span>
+                            <i class="icon-spinner icon-spin"></i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </ul>
+
+    </div>
+</div>
+

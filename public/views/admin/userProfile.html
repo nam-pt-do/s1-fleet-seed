@@ -1,0 +1,80 @@
+<div class="modal-header">
+  <h3>Account Profile</h3>
+</div>
+<div class="modal-body">
+
+<form class="form-horizontal" name="userProfileForm">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="control-group">
+            <div class="control-label">Username </div>
+            <div class="controls marginTop5">{{user.userId}}</div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">Role </div>
+            <div class="controls marginTop5">{{user.role}}</div>
+        </div>
+        <div class="control-group form-group">
+            <div class="control-label">Name </div>
+            <div class="controls">
+                <input type="text" ng-model="user.userName" name="userName" required>
+                <span class="label label-warning" ng-show="userProfileForm.userName.$error.required">Required</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">Email </div>
+            <div class="controls">
+                <input type="email" ng-model="user.userEmail" name="userEmail" required ng-pattern ="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"/>
+                <span class="label label-warning" ng-show="userProfileForm.userEmail.$error.required">Required</span>
+                <span class="label label-warning" ng-show="!userProfileForm.userEmail.$error.required && (userProfileForm.userEmail.$error.email || userProfileForm.userEmail.$error.pattern)"> Invalid Email</span>
+            </div>
+        </div>
+        <br/>
+        <div class="control-group" ng-if="!editPswd && authMode =='LOCAL'">
+            <div class="control-label pull-left"><a ng-click="setEditPswd()" >Change Password</a></div>
+        </div>
+        <div ng-if="editPswd">
+        <div class="control-group">
+            <div class="control-label">Current Password </div>
+            <div class="controls">
+                <input type="password" ng-model="user.oldPassword" required  name="oldPassword" ng-init="user.oldPassword=''"/>
+                <span ng-show="userProfileForm.oldPassword.$error.required" class="label label-warning">Required</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">New Password </div>
+            <div class="controls">
+                <input type="password" ng-model="user.newPassword" required name="newPassword" id="newPassword"
+                       ng-init="user.newPassword=' '"
+                         ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" />
+                <span ng-show="userProfileForm.newPassword.$error.required" class="label label-warning">Required</span>
+                <span class="label label-warning"
+                      ng-show="!userProfileForm.newPassword.$error.required && (userProfileForm.newPassword.$error.minlength || userProfileForm.newPassword.$error.maxlength)">
+                      Passwords must be between 8 and 20 characters.</span>
+                <span class="label label-warning" ng-show="!userProfileForm.newPassword.$error.required && !userProfileForm.newPassword.$error.minlength && !userProfileForm.newPassword.$error.maxlength && userProfileForm.newPassword.$error.pattern">
+                    <p>Must contain one lower &amp; uppercase letter </p><p> and one non-alpha character (a number or a symbol.)</p></span>
+              </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">Confirm Password </div>
+            <div class="controls">
+                <input type="password" name="confirmPassword" ng-model="user.confirmPassword" id="confirmPassword"
+                       password-match="user.newPassword" required ng-init="user.confirmPassword=''"/>
+                <span ng-show="userProfileForm.confirmPassword.$error.required" class="label label-warning">Required</span>
+                <span class="label label-warning" ng-show="!userProfileForm.confirmPassword.$error.required && userProfileForm.confirmPassword.$error.unique ">Passwords do not match.</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label pull-right"><a>Don't Change Password</a><!-- Enable after demo --><!--a ng-click="setEditPswd()" >Don't Change Password</a--></div>
+        </div>
+        </div>
+    </div>
+  </div>
+</form>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="ok()" ng-disabled="userProfileForm.$invalid">Save</button>
+</div>

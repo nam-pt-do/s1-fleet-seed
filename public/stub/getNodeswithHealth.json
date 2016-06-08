@@ -1,0 +1,131 @@
+{
+  "status": "200",
+  "classType": "getNodesWithHealth",
+  "isArray": true,
+  "response": [
+    {
+      "enterprise": {
+        "severity": {
+          "hover-name": "Highest Severity Alarm",
+          "color": "green"
+        },
+        "source": {
+          "hover-name": "Data Source System",
+          "type": "System1",
+          "subtype": "devSystem1"
+        },
+        "name": {
+          "hover-name": "Name of the Node",
+          "id": "DevSystem1_827124ab-c2f5-4f9f-9ad5-d2c765a25116",
+          "name": "DevSystem1",
+          "type": "Enterprise",
+          "id-path": 23,
+          "name-path": null,
+          "mapped-name-path": null,
+          "points-no-data": 166
+        },
+        "status": {
+          "hover-name": "Connection Status for Enterprise",
+          "color": "green",
+          "message": "Daq down"
+        }
+      },
+      "parent": {
+        "severity": {
+          "hover-name": "Highest Severity Alarm",
+          "color": "green"
+        },
+        "source": {
+          "hover-name": "Data Source System",
+          "type": "System1",
+          "subtype": "devSystem1"
+        },
+        "name": {
+          "hover-name": "Name of the Node",
+          "id": "DevSystem1_827124ab-c2f5-4f9f-9ad5-d2c765a25116",
+          "name": "DevSystem1",
+          "type": "Enterprise",
+          "id-path": 23,
+          "name-path": null,
+          "mapped-name-path": null,
+          "points-no-data": 166
+        },
+        "status": {
+          "hover-name": "Connection Status for Enterprise",
+          "color": "green",
+          "message": "Daq down"
+        }
+      },
+      "childNodes": [
+        {
+          "severity": {
+            "hover-name": "Highest Severity Alarm",
+            "color": "green"
+          },
+          "source": {
+            "hover-name": "Data Source System",
+            "type": "System1",
+            "subtype": "devSystem1"
+          },
+          "name": {
+            "hover-name": "Name of the Node",
+            "id": "DevSystem1_827124ab-c2f5-4f9f-9ad5-d2c765a25116",
+            "name": "DevSystem1",
+            "type": "Enterprise",
+            "id-path": 23,
+            "name-path": null,
+            "mapped-name-path": null,
+            "points-no-data": 166
+          },
+          "status": {
+            "hover-name": "Connection Status for Enterprise",
+            "color": "green",
+            "message": "Daq down"
+          },
+          "AP": {
+            "hover-name": "Asset Protection Index",
+            "level": 1,
+            "color": "green",
+            "index": 4,
+            "alertThreshold": 4,
+            "dangerThreshold": 5,
+            "scaleMin": 0,
+            "scaleMax": 100,
+            "low-alarm-count": 0,
+            "high-alarm-count": 1,
+            "med-alarm-count": 2,
+            "total-alarm-count": 3
+          },
+          "AM": {
+            "hover-name": "Asset Protection Index",
+            "level": 1,
+            "color": "green",
+            "index": 4,
+            "alertThreshold": 4,
+            "dangerThreshold": 5,
+            "scaleMin": 0,
+            "scaleMax": 100,
+            "low-alarm-count": 0,
+            "high-alarm-count": 1,
+            "med-alarm-count": 2,
+            "total-alarm-count": 3
+          },
+          "IP": {},
+          "IM": {},
+          "AC": {},
+          "High": {
+            "hover-name": "High Severity Alarm Count",
+            "count": 3
+          },
+          "Medium": {},
+          "Low": {},
+          "total alarms": {
+            "hover-name": "Total Alarm Count",
+            "count": 6
+          }
+        },
+        {}
+      ]
+    }
+  ]
+}

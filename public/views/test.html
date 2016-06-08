@@ -1,0 +1,44 @@
+<li class="module-content" ng-repeat="node in nodeList" data-id="{{node.id}}">
+    <!-- wrapper node, add selected class when clicked -->
+    <div class="enterprise node" data-ng-class="{node:true, selected: tree.isSelected(node)}">
+
+        <!-- chevron wrapper -->
+                        <span myicon class="chevron-icon-container" data-ng-click="tree.selectNodeHead(node)">
+                            <i myicon="" class="icon-chevron-right"
+                               data-ng-click="tree.selectNodeHead(node)">
+                            </i>
+                        </span>
+
+        <!-- wrapper div for meta data, listens for click event -->
+        <div class="node-meta-container" data-ng-click="getEnterpriseNodes(node, $event)">
+
+            <!-- health indicator -->
+            <!-- health indicator -->
+                            <span class="statusIndicator s_1"
+                                  tooltip-append-to-body="true"
+                                  tooltip="Alarm Severity : Low">
+                            </span>
+
+            <!-- icon to display actual text -->
+            <!-- icon to display actual text -->
+                            <span class="marginRt5 ng-scope icon-map-marker"
+                                  ng-class="getNodeTypeIcon(node.nodeTypeEnum)"
+                                  tooltip-append-to-body="true"
+                                  tooltip="Platform_I_827124ab-c2f5-4f9f-9ad5-d2c765a25116_1">
+                            </span>
+
+            <!-- text display for einterprise -->
+            <!-- text display for einterprise -->
+            <span class="ng-binding">Platform_I_1 </span>
+
+            <!-- status for the enterprise-->
+            <!-- status for the enterprise-->
+                            <span ng-if="node.ipNoData > 0;"
+                                  class="marginRt5 addPaddingTop marginLt5 customIconNoData ng-scope"
+                                  tooltip="166 not communicating"
+                                  tooltip-append-to-body="true">
+                            </span>
+        </div>
+    </div>
+</li>
+

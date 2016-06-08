@@ -1,0 +1,66 @@
+<ul class="myddmenu open" role="menu">
+    <li class="module-content" ng-repeat="node in nodes" id="{{node.id}}" data-index="{{$index}}">
+        <!-- wrapper node, add selected class when clicked -->
+        <div class="node">
+            <!-- chevron wrapper -->
+            <a ng-if="hasChildNodes(node)" class="chevron-icon-container icon-chevron-right" ng-click="renderChildNodes(node, $event)" ng-style="{'padding-right':'5px','padding-left' : treePadding}">
+                <!--i myicon="" class="icon-chevron-right" ng-click="renderChildNodes(node, $event)">
+                </i-->
+            </a>
+            <a ng-if="hasNoChildNodes(node)" class="chevron-icon-container" ng-style="{'padding-right':'1px','height':'12px','width':'12px','padding-left' : treePadding}">
+                <!--i myicon="" class="icon-chevron-right" ng-click="renderChildNodes(node, $event)">
+                </i-->
+            </a>
+            <!-- wrapper div for meta data, listens for click event -->
+            <div class="node-meta-container" ng-click="selectNode(node)" ng-switch on="node.highestNormalizedSevLevel">
+                <!-- health indicator -->
+                <!-- health indicator -->
+                <span class="statusIndicator s_0"
+                              tooltip-append-to-body="true"
+                              ng-attr-tooltip="Alarm Severity : None" ng-switch-when="0">
+                        </span>
+                        <span class="statusIndicator s_1"
+                              tooltip-append-to-body="true"
+                              ng-attr-tooltip="Alarm Severity : Low" ng-switch-when="1">
+                        </span>
+                        <span class="statusIndicator s_2"
+                              tooltip-append-to-body="true"
+                              ng-attr-tooltip="Alarm Severity : Medium" ng-switch-when="2">
+                        </span>
+                        <span class="statusIndicator s_3"
+                              tooltip-append-to-body="true"
+                              ng-attr-tooltip="Alarm Severity : High" ng-switch-when="3">
+                        </span>
+                <!-- icon to display actual text -->
+                <!-- icon to display actual text -->
+                <span class="marginRt5 ng-scope"
+                      ng-class="{'icon-gear':node.type == 'machine',
+                                'icon-gears':node.type == 'machine_train',
+                                'icon-folder-open':node.type == 'group_folder',
+                                'icon-map-marker':node.type == ('Enterprise' || 'enterprise'),
+                                'icon-globe':!node.type || node.nodeSelectedType == ''};"
+                      tooltip-append-to-body="true"
+                      tooltip="{{node.name_path}}">
+                </span>
+                <!-- text display for einterprise -->
+                <!-- text display for einterprise -->
+                <span class="ng-binding">{{node.name}} </span>
+                
+                <!-- status for the enterprise-->
+                <!-- status for the enterprise-->
+                
+                <span ng-if="node.ipNoDataS2 + node.imNoDataS2  > 0;"
+                      class="marginRt5 addPaddingTop marginLt5 customIconNoData ng-scope"
+                      tooltip="{{node.ipNoDataS2 + node.imNoDataS2}} not communicating"
+                      tooltip-append-to-body="true">
+                </span>
+                <i class="icon-link ng-scope" ng-if="node.mapped_node_path"
+                   tooltip-append-to-body="true"
+                   tooltip="{{node.name_path}}"
+                   tooltip-placement="right">
+                </i>
+                <i class="icon-spinner icon-spin"></i>
+            </div>
+        </div>
+    </li>
+</ul>
