@@ -12,7 +12,9 @@ var serviceProxy = {
     middlewares.unshift(function (req, res, next) {
       var urlFound = false;
       var i = 0;
+
       if (req.url.match('/api')) {
+        
         urlFound = false;
         i = 0;
         while (!urlFound) {
@@ -39,6 +41,7 @@ var serviceProxy = {
         agent = require('https-proxy-agent');
     }
     routes.forEach(function(r) {
+
         var proxyOptions = {
             target: proxyConfig[r].url,
             changeOrigin: true,

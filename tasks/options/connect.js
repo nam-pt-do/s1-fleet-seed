@@ -26,17 +26,14 @@ var config = {
    */
   proxy: {
     '/api/view-service': {
-      url: 'https://predix-views.run.asv-pr.ice.predix.io',
+      url: 'https://tsqs.ice.predix.io/v1/datapoints',
       instanceId: '83ce4512-b72e-40f5-915c-144a07f7b4ed',
       pathRewrite: { '^/api/view-service': '/'}
     },
-    '/api/ts-service(.*)': {
-      url: 'https://tsqs.ice.predix.io/v1/datapoints/$1',
-      instanceId: '1744986e-0991-4f12-afdf-3d4ebae63523'      
-    },
-    '/api/lala(.*)': {
-      url: 'https://google.com',
-      instanceId: '1744986e-0991-4f12-afdf-3d4ebae63523'      
+    '/api/ts-service': {
+      url: 'https://tsqs.ice.predix.io/v1/datapoints',
+      instanceId: '1744986e-0991-4f12-afdf-3d4ebae63523',
+      pathRewrite: { '^/api/ts-service': '/'}
     }
   }
 };
