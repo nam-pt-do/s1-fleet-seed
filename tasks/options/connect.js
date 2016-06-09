@@ -11,10 +11,10 @@ var config = {
    */
        
   uaa: {
-    clientId: 'nam',
+    clientId: 'nam2',
     serverUrl: 'https://64617d19-5675-4dfb-b563-147cd48e40a3.predix-uaa.run.asv-pr.ice.predix.io',
     defaultClientRoute: '/about',
-    base64ClientCredential: 'bmFtOkFiYzEyZGVm'
+    base64ClientCredential: 'bmFtMjpBYmMxMmRlZg=='
   },
   /**
    * --------- ADD YOUR SECURE ROUTES HERE ------------
@@ -30,8 +30,12 @@ var config = {
       instanceId: '83ce4512-b72e-40f5-915c-144a07f7b4ed',
       pathRewrite: { '^/api/view-service': '/'}
     },
-    '/api/ts-service': {
-      url: 'https://tsqs.ice.predix.io/v1/datapoints',
+    '/api/ts-service(.*)': {
+      url: 'https://tsqs.ice.predix.io/v1/datapoints/$1',
+      instanceId: '1744986e-0991-4f12-afdf-3d4ebae63523'      
+    },
+    '/api/lala(.*)': {
+      url: 'https://google.com',
       instanceId: '1744986e-0991-4f12-afdf-3d4ebae63523'      
     }
   }

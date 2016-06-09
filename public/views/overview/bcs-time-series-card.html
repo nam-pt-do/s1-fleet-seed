@@ -1,6 +1,8 @@
+<link rel="import" href="../bower_components/polymer/polymer.html"/>
+<link rel="import" href="../bower_components/px-card/px-card.html"/>
+<link rel="import" href="../bower_components/px-chart/px-chart.html"/>
 
-
-<dom-module id="s1-fleet-time-series-card">
+<dom-module id="bcs-time-series-card">
     <template>
         <px-card header-text="{{context.name}}">
 
@@ -16,7 +18,7 @@
 <script>
 
   Polymer({
-    is: 's1-fleet-time-series-card',
+    is: 'bcs-time-series-card',
 
     ready: function() {
 
@@ -30,7 +32,7 @@
           "tags": [
               {
                   "name": [
-                      "Compressor-2015:CompressionRatio#AssetID_001"
+                      "tim_test"
                   ]
 
               }
@@ -43,7 +45,7 @@
       var chart = self.$.tsChart;
 
         px.dealer.httpRequest({
-            url: '/api/v1/datapoints',
+            url: '/api/ts-service',
             method: 'POST',
             data: query
         }).then(function(data){
