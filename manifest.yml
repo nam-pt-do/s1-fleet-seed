@@ -16,3 +16,5 @@ applications:
     env:
       UAA_SERVER_URL: https://64617d19-5675-4dfb-b563-147cd48e40a3.predix-uaa.run.asv-pr.ice.predix.io # change to your UAA instance url
       REDIS: redis
+      TIMESERIES_URL: https://tsqs.ice.predix.io
+      TIMESERIES_ZONE_ID: 1744986e-0991-4f12-afdf-3d4ebae63523
