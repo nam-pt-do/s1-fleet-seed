@@ -59,8 +59,7 @@ define(['angular', 'angular-ui-router'], function(angular) {
             .state('timeseries', {
                 url: '/timeseries',
                 parent : 'secure',
-                templateUrl: 'views/overview/timeseries.html',
-                controller: 'TimeSeriesCtrl'
+                templateUrl: 'views/overview/timeseries.html'
             })            
             .state('timeseries_px', {
                 url: '/timeseries_px',
