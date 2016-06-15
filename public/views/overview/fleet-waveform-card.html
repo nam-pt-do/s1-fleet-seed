@@ -1,0 +1,53 @@
+<dom-module id="fleet-waveform-card">
+	<template>
+		<px-card header-text="Waveform">
+			<px-chart id="waveformChart">
+				<px-chart-series-spline id="chart-waveform">
+					<px-chart-yaxis id="axis0" offset="0"></px-chart-yaxis>
+				</px-chart-series-spline>
+			</px-chart>
+			<!-- set custom legend properties here, so it appears below the date picker controls. -->
+			<!--px-chart id="tsChart" height="500" legend='{"y": 25, "floating": false, "enabled": true, "useHTML": true, "verticalAlign": "top", "align": "left", "layout": "vertical", "itemStyle": {"fontSize": "inherit", "fontWeight": "normal"}}' chart-state="{{chartState}}" tooltip-type="condensed" series-events-width="1"-->
+			<!--px-chart-controls id="tsChartControls" data-controls show-date-range="true" display-options='{ "displayType": "normal","submitButtonText": "Update", "submitButtonIcon": "icon-arrow-right" }'></px-chart-controls-->
+			<!--px-chart-yaxis id="axis0" offset="0"></px-chart-yaxis>
+			</px-chart-->
+
+		</px-card>
+	</template>
+</dom-module>
+<script>
+	Polymer({
+		is : 'fleet-waveform-card',
+
+		ready : function() {
+
+			var self = this;
+
+			var query = {
+				"start" : "1d-ago",
+				"end" : "1mi-ago",
+				"tags" : [{
+					"name" : ["temperature"]
+
+				}]
+			};
+
+			console.log('Query : ' + query);
+			var chart = self.$.waveformChart;
+			px.dealer.httpRequest({
+				url : '/sample-data/sample-waveform.json',
+				method : 'GET'
+			}).then(function(data) {
+				var series = {
+					id : 'box-car-timeseries',
+					axisId : 'axis0', // possibly add more yAxes here?
+					data : data.response[0].waveformFFT,
+					name : 'waveform-sample'
+				}
+				chart.addSeries(series);
+			});
+
+		},
+		behaviors : [px.card]
+	}); 
+</script>
