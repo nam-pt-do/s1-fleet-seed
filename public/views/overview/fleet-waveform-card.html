@@ -1,7 +1,7 @@
 <dom-module id="fleet-waveform-card">
 	<template>
 		<px-card header-text="Waveform">
-			<px-chart id="waveformChart">
+			<px-chart id="waveformChart" tooltip-timestamp="hide" tooltip='{"valueDecimals": 3}' navigator-disabled=true type="spline">
 				<px-chart-series-spline id="chart-waveform">
 					<px-chart-yaxis id="axis0" offset="0"></px-chart-yaxis>
 				</px-chart-series-spline>
@@ -43,8 +43,18 @@
 					axisId : 'axis0', // possibly add more yAxes here?
 					data : data.response[0].waveformFFT,
 					name : 'waveform-sample'
-				}
+				};
 				chart.addSeries(series);
+				var xAxis = chart.chart.xAxis[0];
+				xAxis.update({
+					labels : {
+						formatter : function () {
+							return "";
+						}
+					}
+				},true);
+				
+				
 			});
 
 		},
